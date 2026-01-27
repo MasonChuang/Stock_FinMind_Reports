@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Health Check - 2026-01-27</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F172A',
+                        secondary: '#1E293B',
+                        background: '#020617',
+                        text: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['IBM Plex Sans', 'Microsoft JhengHei', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #020617; color: #F8FAFC; }
+    </style>
+</head>
+<body class="p-6 min-h-screen">
+    <div class="max-w-full mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 border-b border-slate-700 pb-4">
+            <div>
+                <h1 class="text-4xl font-bold text-white mb-2 flex items-center gap-2">
+                    <span>🏥</span> Portfolio Health Check
+                </h1>
+                <p class="text-slate-400 text-base">持股健檢與風險評估報告</p>
+            </div>
+            <div class="text-right mt-4 md:mt-0">
+                <div class="text-slate-500 text-sm text-right mb-1">Report Date</div>
+                <div class="text-2xl font-mono text-white bg-slate-800 px-4 py-1 rounded border border-slate-700">2026-01-27</div>
+                <a href="index.html" class="text-blue-500 hover:text-blue-400 text-sm mt-2 inline-block transition-colors">← Back to Hub</a>
+            </div>
+        </div>
+
+        <div class="rounded-xl border border-slate-700 overflow-hidden bg-slate-800/20 backdrop-blur">
+            <div class="overflow-x-auto">
+                <table class="w-full text-base text-left">
+                    <thead class="text-sm text-slate-400 uppercase bg-slate-900 border-b border-slate-700">
+                        <tr>
+                            <th class="px-6 py-4">代號</th>
+                            <th class="px-6 py-4">名稱</th>
+                            <th class="px-6 py-4">策略</th>
+                            <th class="px-6 py-4 text-right">成本</th>
+                            <th class="px-6 py-4 text-right">現價</th>
+                            <th class="px-6 py-4 text-center">損益率%</th>
+                            <th class="px-6 py-4">建議動作</th>
+                            <th class="px-6 py-4">風險等級</th>
+                            <th class="px-6 py-4">詳細原因</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-700/50">
+    
+            <tr class="hover:bg-slate-800/50 border-l-4 border-green-500 bg-green-900/10 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">50</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">元大台灣50</td>
+                <td class="px-6 py-5 text-slate-400">ETF</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">58.11</td>
+                <td class="px-6 py-5 text-right font-mono text-yellow-400 font-bold text-lg">0.0</td>
+                <td class="px-6 py-5 text-center font-mono text-green-400 font-bold text-lg">0.0%</td>
+                <td class="px-6 py-5"><span class='text-green-400 font-bold'>✔ Unknown</span></td>
+                <td class="px-6 py-5 text-slate-300">Unknown</td>
+                <td class="px-6 py-5 text-slate-400 text-sm">未知策略: ETF</td>
+            </tr>
+        
+            <tr class="hover:bg-slate-800/50 border-l-4 border-green-500 bg-green-900/10 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">3551</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">世禾</td>
+                <td class="px-6 py-5 text-slate-400">高殖利率</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">130.0</td>
+                <td class="px-6 py-5 text-right font-mono text-yellow-400 font-bold text-lg">191.0</td>
+                <td class="px-6 py-5 text-center font-mono text-green-400 font-bold text-lg">+46.92%</td>
+                <td class="px-6 py-5"><span class='text-green-400 font-bold'>✔ 獲利了結 (Take Profit)</span></td>
+                <td class="px-6 py-5 text-slate-300">1</td>
+                <td class="px-6 py-5 text-slate-400 text-sm">殖利率過低(<3%)</td>
+            </tr>
+        
+            <tr class="hover:bg-slate-800/50 border-l-4 border-green-500 bg-green-900/10 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">2107</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">厚生</td>
+                <td class="px-6 py-5 text-slate-400">巨鯨狙擊</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">25.98</td>
+                <td class="px-6 py-5 text-right font-mono text-yellow-400 font-bold text-lg">25.4</td>
+                <td class="px-6 py-5 text-center font-mono text-red-400 font-bold text-lg">-2.23%</td>
+                <td class="px-6 py-5"><span class='text-green-400 font-bold'>✔ 續抱 (Hold)</span></td>
+                <td class="px-6 py-5 text-slate-300">Low</td>
+                <td class="px-6 py-5 text-slate-400 text-sm">趨勢正常</td>
+            </tr>
+        
+            <tr class="hover:bg-slate-800/50 border-l-4 border-green-500 bg-green-900/10 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">2412</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">中華電</td>
+                <td class="px-6 py-5 text-slate-400">高殖利率</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">130.0</td>
+                <td class="px-6 py-5 text-right font-mono text-yellow-400 font-bold text-lg">133.0</td>
+                <td class="px-6 py-5 text-center font-mono text-green-400 font-bold text-lg">+2.31%</td>
+                <td class="px-6 py-5"><span class='text-green-400 font-bold'>✔ 續抱 (Hold)</span></td>
+                <td class="px-6 py-5 text-slate-300">0</td>
+                <td class="px-6 py-5 text-slate-400 text-sm">無</td>
+            </tr>
+        
+            <tr class="hover:bg-slate-800/50 border-l-4 border-red-500 bg-red-900/10 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">2002</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">中鋼</td>
+                <td class="px-6 py-5 text-slate-400">高殖利率</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">20.18</td>
+                <td class="px-6 py-5 text-right font-mono text-yellow-400 font-bold text-lg">19.35</td>
+                <td class="px-6 py-5 text-center font-mono text-red-400 font-bold text-lg">-4.11%</td>
+                <td class="px-6 py-5"><span class='text-red-400 font-bold flex items-center gap-1'>⚠️ 避險停損 (Stop Loss)</span></td>
+                <td class="px-6 py-5 text-slate-300">2</td>
+                <td class="px-6 py-5 text-slate-400 text-sm">殖利率過低(<3%); EPS虧損</td>
+            </tr>
+        
+            <tr class="hover:bg-slate-800/50 border-l-4 border-green-500 bg-green-900/10 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">2393</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">億光</td>
+                <td class="px-6 py-5 text-slate-400">高殖利率</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">51.07</td>
+                <td class="px-6 py-5 text-right font-mono text-yellow-400 font-bold text-lg">56.3</td>
+                <td class="px-6 py-5 text-center font-mono text-green-400 font-bold text-lg">+10.24%</td>
+                <td class="px-6 py-5"><span class='text-green-400 font-bold'>✔ 續抱 (Hold)</span></td>
+                <td class="px-6 py-5 text-slate-300">0</td>
+                <td class="px-6 py-5 text-slate-400 text-sm">無</td>
+            </tr>
+        
+            <tr class="hover:bg-slate-800/50 border-l-4 border-green-500 bg-green-900/10 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">9904</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">寶成</td>
+                <td class="px-6 py-5 text-slate-400">巨鯨狙擊</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">28.9</td>
+                <td class="px-6 py-5 text-right font-mono text-yellow-400 font-bold text-lg">31.15</td>
+                <td class="px-6 py-5 text-center font-mono text-green-400 font-bold text-lg">+7.79%</td>
+                <td class="px-6 py-5"><span class='text-green-400 font-bold'>✔ 續抱 (Hold)</span></td>
+                <td class="px-6 py-5 text-slate-300">Low</td>
+                <td class="px-6 py-5 text-slate-400 text-sm">趨勢正常</td>
+            </tr>
+        
+            <tr class="hover:bg-slate-800/50 border-l-4 border-red-500 bg-red-900/10 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">3002</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">歐格</td>
+                <td class="px-6 py-5 text-slate-400">巨鯨狙擊</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">13.53</td>
+                <td class="px-6 py-5 text-right font-mono text-yellow-400 font-bold text-lg">22.55</td>
+                <td class="px-6 py-5 text-center font-mono text-green-400 font-bold text-lg">+66.67%</td>
+                <td class="px-6 py-5"><span class='text-red-400 font-bold flex items-center gap-1'>⚠️ 賣出訊號 (Submit Sell)</span></td>
+                <td class="px-6 py-5 text-slate-300">High</td>
+                <td class="px-6 py-5 text-slate-400 text-sm">跌破季線(MA60 25.32)</td>
+            </tr>
+        
+            <tr class="hover:bg-slate-800/50 border-l-4 border-green-500 bg-green-900/10 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">4417</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">金洲</td>
+                <td class="px-6 py-5 text-slate-400">高殖利率</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">54.1</td>
+                <td class="px-6 py-5 text-right font-mono text-yellow-400 font-bold text-lg">52.1</td>
+                <td class="px-6 py-5 text-center font-mono text-red-400 font-bold text-lg">-3.7%</td>
+                <td class="px-6 py-5"><span class='text-green-400 font-bold'>✔ 續抱 (Hold)</span></td>
+                <td class="px-6 py-5 text-slate-300">0</td>
+                <td class="px-6 py-5 text-slate-400 text-sm">無</td>
+            </tr>
+        
+            <tr class="hover:bg-slate-800/50 border-l-4 border-green-500 bg-green-900/10 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">5212</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">凌網</td>
+                <td class="px-6 py-5 text-slate-400">高殖利率</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">54.5</td>
+                <td class="px-6 py-5 text-right font-mono text-yellow-400 font-bold text-lg">52.2</td>
+                <td class="px-6 py-5 text-center font-mono text-red-400 font-bold text-lg">-4.22%</td>
+                <td class="px-6 py-5"><span class='text-green-400 font-bold'>✔ 續抱 (Hold)</span></td>
+                <td class="px-6 py-5 text-slate-300">0</td>
+                <td class="px-6 py-5 text-slate-400 text-sm">無</td>
+            </tr>
+        
+            <tr class="hover:bg-slate-800/50 border-l-4 border-green-500 bg-green-900/10 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">5315</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">光聯</td>
+                <td class="px-6 py-5 text-slate-400">高殖利率</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">23.95</td>
+                <td class="px-6 py-5 text-right font-mono text-yellow-400 font-bold text-lg">25.2</td>
+                <td class="px-6 py-5 text-center font-mono text-green-400 font-bold text-lg">+5.22%</td>
+                <td class="px-6 py-5"><span class='text-green-400 font-bold'>✔ 續抱 (Hold)</span></td>
+                <td class="px-6 py-5 text-slate-300">0</td>
+                <td class="px-6 py-5 text-slate-400 text-sm">無</td>
+            </tr>
+        
+            <tr class="hover:bg-slate-800/50 border-l-4 border-green-500 bg-green-900/10 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">5511</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">德昌</td>
+                <td class="px-6 py-5 text-slate-400">高殖利率</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">64.5</td>
+                <td class="px-6 py-5 text-right font-mono text-yellow-400 font-bold text-lg">67.3</td>
+                <td class="px-6 py-5 text-center font-mono text-green-400 font-bold text-lg">+4.34%</td>
+                <td class="px-6 py-5"><span class='text-green-400 font-bold'>✔ 續抱 (Hold)</span></td>
+                <td class="px-6 py-5 text-slate-300">0</td>
+                <td class="px-6 py-5 text-slate-400 text-sm">無</td>
+            </tr>
+        
+            <tr class="hover:bg-slate-800/50 border-l-4 border-green-500 bg-green-900/10 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">5519</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">隆大</td>
+                <td class="px-6 py-5 text-slate-400">高殖利率</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">32.23</td>
+                <td class="px-6 py-5 text-right font-mono text-yellow-400 font-bold text-lg">31.4</td>
+                <td class="px-6 py-5 text-center font-mono text-red-400 font-bold text-lg">-2.58%</td>
+                <td class="px-6 py-5"><span class='text-green-400 font-bold'>✔ 續抱 (Hold)</span></td>
+                <td class="px-6 py-5 text-slate-300">0</td>
+                <td class="px-6 py-5 text-slate-400 text-sm">無</td>
+            </tr>
+        
+            <tr class="hover:bg-slate-800/50 border-l-4 border-green-500 bg-green-900/10 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">2385</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">群光</td>
+                <td class="px-6 py-5 text-slate-400">高殖利率</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">115.0</td>
+                <td class="px-6 py-5 text-right font-mono text-yellow-400 font-bold text-lg">118.0</td>
+                <td class="px-6 py-5 text-center font-mono text-green-400 font-bold text-lg">+2.61%</td>
+                <td class="px-6 py-5"><span class='text-green-400 font-bold'>✔ 續抱 (Hold)</span></td>
+                <td class="px-6 py-5 text-slate-300">0</td>
+                <td class="px-6 py-5 text-slate-400 text-sm">無</td>
+            </tr>
+        
+            <tr class="hover:bg-slate-800/50 border-l-4 border-green-500 bg-green-900/10 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">3217</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">優群</td>
+                <td class="px-6 py-5 text-slate-400">高殖利率</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">169.0</td>
+                <td class="px-6 py-5 text-right font-mono text-yellow-400 font-bold text-lg">164.5</td>
+                <td class="px-6 py-5 text-center font-mono text-red-400 font-bold text-lg">-2.66%</td>
+                <td class="px-6 py-5"><span class='text-green-400 font-bold'>✔ 續抱 (Hold)</span></td>
+                <td class="px-6 py-5 text-slate-300">0</td>
+                <td class="px-6 py-5 text-slate-400 text-sm">無</td>
+            </tr>
+        
+            <tr class="hover:bg-slate-800/50 border-l-4 border-green-500 bg-green-900/10 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">2883</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">凱基金</td>
+                <td class="px-6 py-5 text-slate-400">巨鯨狙擊</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">18.1</td>
+                <td class="px-6 py-5 text-right font-mono text-yellow-400 font-bold text-lg">18.15</td>
+                <td class="px-6 py-5 text-center font-mono text-green-400 font-bold text-lg">+0.28%</td>
+                <td class="px-6 py-5"><span class='text-green-400 font-bold'>✔ 續抱 (Hold)</span></td>
+                <td class="px-6 py-5 text-slate-300">Low</td>
+                <td class="px-6 py-5 text-slate-400 text-sm">趨勢正常</td>
+            </tr>
+        
+            <tr class="hover:bg-slate-800/50 border-l-4 border-green-500 bg-green-900/10 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">6147</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">頎邦</td>
+                <td class="px-6 py-5 text-slate-400">巨鯨狙擊</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">58.5</td>
+                <td class="px-6 py-5 text-right font-mono text-yellow-400 font-bold text-lg">58.1</td>
+                <td class="px-6 py-5 text-center font-mono text-red-400 font-bold text-lg">-0.68%</td>
+                <td class="px-6 py-5"><span class='text-green-400 font-bold'>✔ 續抱 (Hold)</span></td>
+                <td class="px-6 py-5 text-slate-300">Low</td>
+                <td class="px-6 py-5 text-slate-400 text-sm">趨勢正常</td>
+            </tr>
+        
+            <tr class="hover:bg-slate-800/50 border-l-4 border-green-500 bg-green-900/10 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">4123</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">晟德</td>
+                <td class="px-6 py-5 text-slate-400">巨鯨狙擊</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">43.2</td>
+                <td class="px-6 py-5 text-right font-mono text-yellow-400 font-bold text-lg">43.3</td>
+                <td class="px-6 py-5 text-center font-mono text-green-400 font-bold text-lg">+0.23%</td>
+                <td class="px-6 py-5"><span class='text-green-400 font-bold'>✔ 續抱 (Hold)</span></td>
+                <td class="px-6 py-5 text-slate-300">Low</td>
+                <td class="px-6 py-5 text-slate-400 text-sm">趨勢正常</td>
+            </tr>
+        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <footer class="mt-8 text-center text-slate-600 text-xs">
+            Generated by FinMind Antigravity | Portfolio Health Check System
+        </footer>
+    </div>
+</body>
+</html>
+    
