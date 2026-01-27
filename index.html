@@ -1,50 +1,94 @@
 
+
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stock FinMind Reports</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F172A',
+                        secondary: '#1E293B',
+                        cta: '#22C55E',
+                        background: '#020617',
+                        text: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['IBM Plex Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root { --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --accent: #3b82f6; --hover: #2563eb; }
-        body { background: var(--bg); color: var(--text); font-family: "Microsoft JhengHei", sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
-        h1 { margin-bottom: 10px; font-weight: 700; }
-        .subtitle { color: #94a3b8; margin-bottom: 40px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 100%; max-width: 800px; padding: 20px; }
-        .card { background: var(--card); padding: 30px; border-radius: 16px; text-align: center; transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; color: var(--text); border: 1px solid #334155; display: flex; flex-direction: column; justify-content: center; height: 150px; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); border-color: var(--accent); }
-        .icon { font-size: 40px; margin-bottom: 15px; }
-        .title { font-size: 20px; font-weight: 600; margin-bottom: 5px; }
-        .desc { font-size: 14px; color: #94a3b8; }
-        footer { margin-top: 50px; color: #475569; font-size: 12px; }
+        body { background-color: #020617; color: #F8FAFC; font-family: 'IBM Plex Sans', sans-serif; }
+        .card { 
+            background: #1E293B; 
+            border-radius: 12px; 
+            padding: 24px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+            transition: all 200ms ease; 
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #334155;
+            height: 180px;
+        }
+        .card:hover { 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.15); 
+            transform: translateY(-2px); 
+            border-color: #22C55E;
+        }
+        .icon-circle {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(34, 197, 94, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 32px;
+        }
     </style>
 </head>
-<body>
-    <h1>Stock FinMind Reports</h1>
-    <div class="subtitle">自動化股票分析與資料庫監控中心</div>
+<body class="flex flex-col items-center justify-center min-h-screen p-4">
+    <div class="text-center mb-10 animation-fade-in">
+        <h1 class="text-4xl font-bold mb-2 tracking-tight text-white">Stock FinMind Reports</h1>
+        <p class="text-slate-400 font-light text-lg">自動化股票分析與資料庫監控中心</p>
+    </div>
 
-    <div class="grid">
-        <a href="dashboard.html" class="card">
-            <div class="icon">📊</div>
-            <div class="title">市場戰情室</div>
-            <div class="desc">Market Dashboard</div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
+        <a href="dashboard.html" class="card group">
+            <div class="icon-circle group-hover:bg-green-500/20 transition-colors">📊</div>
+            <div class="text-xl font-semibold mb-1 text-white">市場戰情室</div>
+            <div class="text-sm text-slate-400">Market Dashboard</div>
         </a>
         
-        <a href="unified_report.html" class="card" style="border-color: #f59e0b;">
-            <div class="icon">🐋</div>
-            <div class="title">巨鯨狙擊報告</div>
-            <div class="desc">Whale Sniper Strategy</div>
+        <a href="unified_report.html" class="card group">
+            <div class="icon-circle group-hover:bg-amber-500/20 text-amber-500" style="color: #F59E0B; background: rgba(245, 158, 11, 0.1);">🐋</div>
+            <div class="text-xl font-semibold mb-1 text-white">巨鯨狙擊報告</div>
+            <div class="text-sm text-slate-400">Whale Sniper Strategy</div>
         </a>
         
-        <a href="db_report.html" class="card">
-            <div class="icon">💾</div>
-            <div class="title">資料庫報告</div>
-            <div class="desc">Database Status Report</div>
+        <a href="db_report.html" class="card group">
+            <div class="icon-circle group-hover:bg-blue-500/20 text-blue-500" style="color: #3B82F6; background: rgba(59, 130, 246, 0.1);">💾</div>
+            <div class="text-xl font-semibold mb-1 text-white">資料庫報告</div>
+            <div class="text-sm text-slate-400">Database Status</div>
         </a>
     </div>
 
-    <footer>
-        Last Updated: 2026-01-27 15:08:39
+    <footer class="mt-16 text-slate-600 text-xs">
+        System Generated: 2026-01-27 20:19:38 | FinMind Antigravity
     </footer>
 </body>
 </html>
