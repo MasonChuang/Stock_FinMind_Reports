@@ -1,836 +1,808 @@
 
-    <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Unified Strategy Report - 2026-01-27</title>
-        <style>
-             body { font-family: "Microsoft JhengHei", sans-serif; margin: 20px; background-color: #f4f6f9; }
-             table { border-collapse: collapse; width: 100%; box-shadow: 0 2px 8px rgba(0,0,0,0.1); background: white; }
-             th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }
-             th { background-color: #2c3e50; color: white; }
-             tr:hover { background-color: #f1f1f1; }
-             .dual { background-color: #d4edda; font-weight: bold; border-left: 5px solid #28a745; }
-             .m4 { background-color: #e2e6ea; border-left: 5px solid #007bff; }
-             .m1 { background-color: #fff3cd; border-left: 5px solid #ffc107; }
-             .tag { padding: 4px 8px; border-radius: 4px; font-size: 0.9em; }
-             .tag-dual { background: #28a745; color: white; }
-             .tag-m4 { background: #007bff; color: white; }
-             .tag-m1 { background: #ffc107; color: black; }
-        </style>
-    </head>
-    <body>
-        <h2>⚔️ Antigravity Unified Strategy Report (2026-01-27)</h2>
-        <p>
-            <span class="tag tag-dual">🏆 DUAL CERTIFIED</span> Trend + Reversal<br>
-            <span class="tag tag-m4">📈 M4 Whale Trend</span> Long Term Trend<br>
-            <span class="tag tag-m1">⚡ M1 Chip Trigger</span> Short Term Reversal
-        </p>
-        <table>
-            <tr>
-                <th>代號</th><th>名稱</th><th>產業</th><th>收盤價</th><th>策略類型</th>
-                <th>5年回測勝率</th>
-                <th>止損 (MA20)</th><th>壓力 (60日高)</th><th>風報酬比</th><th>圖表</th><th>備註</th>
-            </tr>
-            <!-- Charts at: C:\AI_Tools\Stock_FinMind_Antigravity\Stock_Reports\Auxiliary_Strategies_Reports\Unified_Charts -->
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified Strategy Report - 2026-01-27</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F172A',
+                        secondary: '#1E293B',
+                        background: '#020617',
+                        text: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['IBM Plex Sans', 'Microsoft JhengHei', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #020617; color: #F8FAFC; }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    </style>
+</head>
+<body class="p-6 min-h-screen">
+    <div class="max-w-full mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 border-b border-slate-700 pb-4">
+            <div>
+                <h1 class="text-4xl font-bold text-white mb-2 flex items-center gap-2">
+                    <span>⚔️</span> Antigravity Unified Strategy
+                </h1>
+                <p class="text-slate-400 text-base">Whale Sniper & Chip Analysis Report</p>
+            </div>
+            <div class="text-right mt-4 md:mt-0">
+                <div class="text-slate-500 text-sm text-right mb-1">Report Date</div>
+                <div class="text-2xl font-mono text-white bg-slate-800 px-4 py-1 rounded border border-slate-700">2026-01-27</div>
+                <a href="index.html" class="text-blue-500 hover:text-blue-400 text-sm mt-2 inline-block transition-colors">← Back to Hub</a>
+            </div>
+        </div>
 
+        <!-- Legend -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-green-900/20 border border-green-500/30 p-5 rounded-lg flex items-center gap-4">
+                <span class="text-3xl">🏆</span>
+                <div>
+                    <div class="text-green-400 font-bold text-lg">DUAL CERTIFIED</div>
+                    <div class="text-slate-400 text-sm">Trend + Reversal Confirmed</div>
+                </div>
+            </div>
+            <div class="bg-blue-900/20 border border-blue-500/30 p-5 rounded-lg flex items-center gap-4">
+                <span class="text-3xl">📈</span>
+                <div>
+                    <div class="text-blue-400 font-bold text-lg">M4 Whale Trend</div>
+                    <div class="text-slate-400 text-sm">Long Term Institutional Trend</div>
+                </div>
+            </div>
+            <div class="bg-amber-900/20 border border-amber-500/30 p-5 rounded-lg flex items-center gap-4">
+                <span class="text-3xl">⚡</span>
+                <div>
+                    <div class="text-amber-400 font-bold text-lg">M1 Chip Trigger</div>
+                    <div class="text-slate-400 text-sm">Short Term Reversal Signal</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Table -->
+        <div class="rounded-xl border border-slate-700 overflow-hidden bg-slate-800/20 backdrop-blur">
+            <div class="overflow-x-auto">
+                <table class="w-full text-base text-left">
+                    <thead class="text-sm text-slate-400 uppercase bg-slate-900 border-b border-slate-700">
+                        <tr>
+                            <th class="px-6 py-4">代號</th>
+                            <th class="px-6 py-4">名稱</th>
+                            <th class="px-6 py-4">產業</th>
+                            <th class="px-6 py-4 text-right">收盤價</th>
+                            <th class="px-6 py-4">策略類型</th>
+                            <th class="px-6 py-4 text-center">5年回測勝率</th>
+                            <th class="px-6 py-4 text-right">止損 (MA20)</th>
+                            <th class="px-6 py-4 text-right">壓力 (60日高)</th>
+                            <th class="px-6 py-4 text-center">風報酬比</th>
+                            <th class="px-6 py-4 text-center">圖表</th>
+                            <th class="px-6 py-4">備註</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-700/50">
     
-            <tr class="dual">
-                <td>4123</td>
-                <td>晟德</td>
-                <td>🔥生技醫療業(5)</td>
-                <td>42.5</td>
-                <td>🏆 DUAL CERTIFIED</td>
-                <td>59% (10/17)</td>
-                <td>41.06</td>
-                <td>44.55</td>
-                <td>1.42</td>
-                <td>
-                    <a href="Unified_Charts/4123_晟德_🔥生技醫療業(5)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Trend + Reversal Confirmed</td>
+            <tr class="bg-green-900/10 hover:bg-green-900/20 border-l-4 border-green-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">4123</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">晟德</td>
+                <td class="px-6 py-5 text-slate-400">🔥生技醫療業(5)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">42.5</td>
+                <td class="px-6 py-5"><span class='bg-green-500/20 text-green-400 px-3 py-1 rounded text-sm font-bold border border-green-500/30'>🏆 DUAL</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">59% (10/17)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">41.06</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">44.55</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">1.42</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/4123_晟德_🔥生技醫療業(5)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Trend + Reversal Confirmed</td>
             </tr>
         
-            <tr class="dual">
-                <td>6147</td>
-                <td>頎邦</td>
-                <td>🔥半導體業(13)</td>
-                <td>57.9</td>
-                <td>🏆 DUAL CERTIFIED</td>
-                <td>60% (9/15)</td>
-                <td>55.82</td>
-                <td>61.2</td>
-                <td>1.59</td>
-                <td>
-                    <a href="Unified_Charts/6147_頎邦_🔥半導體業(13)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Trend + Reversal Confirmed</td>
+            <tr class="bg-green-900/10 hover:bg-green-900/20 border-l-4 border-green-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">6147</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">頎邦</td>
+                <td class="px-6 py-5 text-slate-400">🔥半導體業(13)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">57.9</td>
+                <td class="px-6 py-5"><span class='bg-green-500/20 text-green-400 px-3 py-1 rounded text-sm font-bold border border-green-500/30'>🏆 DUAL</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">60% (9/15)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">55.82</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">61.2</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">1.59</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/6147_頎邦_🔥半導體業(13)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Trend + Reversal Confirmed</td>
             </tr>
         
-            <tr class="m4">
-                <td>3162</td>
-                <td>精確</td>
-                <td>🔥電機機械(4)</td>
-                <td>63.9</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>⚠️71% (5/7)</td>
-                <td>60.24</td>
-                <td>72.5</td>
-                <td>2.35</td>
-                <td>
-                    <a href="Unified_Charts/3162_精確_🔥電機機械(4)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">3162</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">精確</td>
+                <td class="px-6 py-5 text-slate-400">🔥電機機械(4)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">63.9</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">⚠️71% (5/7)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">60.24</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">72.5</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">2.35</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/3162_精確_🔥電機機械(4)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure</td>
             </tr>
         
-            <tr class="m4">
-                <td>3581</td>
-                <td>博磊</td>
-                <td>🔥半導體業(13)</td>
-                <td>74.4</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>⚠️50% (1/2)</td>
-                <td>72.56</td>
-                <td>84.4</td>
-                <td>5.43</td>
-                <td>
-                    <a href="Unified_Charts/3581_博磊_🔥半導體業(13)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">3581</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">博磊</td>
+                <td class="px-6 py-5 text-slate-400">🔥半導體業(13)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">74.4</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">⚠️50% (1/2)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">72.56</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">84.4</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">5.43</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/3581_博磊_🔥半導體業(13)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure</td>
             </tr>
         
-            <tr class="m4">
-                <td>3675</td>
-                <td>德微</td>
-                <td>🔥半導體業(13)</td>
-                <td>146.5</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>⚠️38% (3/8)</td>
-                <td>142.45</td>
-                <td>166.0</td>
-                <td>4.81</td>
-                <td>
-                    <a href="Unified_Charts/3675_德微_🔥半導體業(13)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">3675</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">德微</td>
+                <td class="px-6 py-5 text-slate-400">🔥半導體業(13)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">146.5</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">⚠️38% (3/8)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">142.45</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">166.0</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">4.81</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/3675_德微_🔥半導體業(13)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure</td>
             </tr>
         
-            <tr class="m4">
-                <td>3680</td>
-                <td>家登</td>
-                <td>🔥半導體業(13)</td>
-                <td>437.0</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>60% (9/15)</td>
-                <td>410.72</td>
-                <td>450.0</td>
-                <td>0.49</td>
-                <td>
-                    <a href="Unified_Charts/3680_家登_🔥半導體業(13)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">3680</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">家登</td>
+                <td class="px-6 py-5 text-slate-400">🔥半導體業(13)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">437.0</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">60% (9/15)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">410.72</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">450.0</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">0.49</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/3680_家登_🔥半導體業(13)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure</td>
             </tr>
         
-            <tr class="m4">
-                <td>4577</td>
-                <td>達航科技</td>
-                <td>其他電子類</td>
-                <td>58.0</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>⚠️100% (1/1)</td>
-                <td>56.14</td>
-                <td>66.8</td>
-                <td>4.73</td>
-                <td>
-                    <a href="Unified_Charts/4577_達航科技_其他電子類_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">4577</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">達航科技</td>
+                <td class="px-6 py-5 text-slate-400">其他電子類</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">58.0</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">⚠️100% (1/1)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">56.14</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">66.8</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">4.73</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/4577_達航科技_其他電子類_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure</td>
             </tr>
         
-            <tr class="m4">
-                <td>5324</td>
-                <td>士開</td>
-                <td>建材營造</td>
-                <td>11.1</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>⚠️N/A (0次)</td>
-                <td>10.6</td>
-                <td>11.35</td>
-                <td>0.5</td>
-                <td>
-                    <a href="Unified_Charts/5324_士開_建材營造_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">5324</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">士開</td>
+                <td class="px-6 py-5 text-slate-400">建材營造</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">11.1</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">⚠️N/A (0次)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">10.6</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">11.35</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">0.5</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/5324_士開_建材營造_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure</td>
             </tr>
         
-            <tr class="m4">
-                <td>5328</td>
-                <td>華容</td>
-                <td>🔥電子零組件業(7)</td>
-                <td>29.5</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>⚠️0% (0/5)</td>
-                <td>24.7</td>
-                <td>34.3</td>
-                <td>1.0</td>
-                <td>
-                    <a href="Unified_Charts/5328_華容_🔥電子零組件業(7)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">5328</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">華容</td>
+                <td class="px-6 py-5 text-slate-400">🔥電子零組件業(7)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">29.5</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">⚠️0% (0/5)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">24.7</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">34.3</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">1.0</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/5328_華容_🔥電子零組件業(7)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure</td>
             </tr>
         
-            <tr class="m4">
-                <td>5340</td>
-                <td>建榮</td>
-                <td>🔥電子零組件業(7)</td>
-                <td>92.8</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>⚠️67% (2/3)</td>
-                <td>78.62</td>
-                <td>107.5</td>
-                <td>1.04</td>
-                <td>
-                    <a href="Unified_Charts/5340_建榮_🔥電子零組件業(7)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">5340</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">建榮</td>
+                <td class="px-6 py-5 text-slate-400">🔥電子零組件業(7)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">92.8</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">⚠️67% (2/3)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">78.62</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">107.5</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">1.04</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/5340_建榮_🔥電子零組件業(7)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure</td>
             </tr>
         
-            <tr class="m4">
-                <td>5371</td>
-                <td>中光電</td>
-                <td>光電業</td>
-                <td>102.0</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>40% (6/15)</td>
-                <td>91.05</td>
-                <td>107.5</td>
-                <td>0.5</td>
-                <td>
-                    <a href="Unified_Charts/5371_中光電_光電業_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">5371</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">中光電</td>
+                <td class="px-6 py-5 text-slate-400">光電業</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">102.0</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">40% (6/15)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">91.05</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">107.5</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">0.5</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/5371_中光電_光電業_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure</td>
             </tr>
         
-            <tr class="m4">
-                <td>5381</td>
-                <td>合正</td>
-                <td>🔥電子零組件業(7)</td>
-                <td>30.7</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>⚠️N/A (0次)</td>
-                <td>27.48</td>
-                <td>36.0</td>
-                <td>1.65</td>
-                <td>
-                    <a href="Unified_Charts/5381_合正_🔥電子零組件業(7)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">5381</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">合正</td>
+                <td class="px-6 py-5 text-slate-400">🔥電子零組件業(7)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">30.7</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">⚠️N/A (0次)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">27.48</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">36.0</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">1.65</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/5381_合正_🔥電子零組件業(7)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure</td>
             </tr>
         
-            <tr class="m4">
-                <td>5864</td>
-                <td>致和證</td>
-                <td>金融業</td>
-                <td>23.0</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>⚠️57% (4/7)</td>
-                <td>17.99</td>
-                <td>23.45</td>
-                <td>0.09</td>
-                <td>
-                    <a href="Unified_Charts/5864_致和證_金融業_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure ⚠️面臨壓力</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">5864</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">致和證</td>
+                <td class="px-6 py-5 text-slate-400">金融業</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">23.0</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">⚠️57% (4/7)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">17.99</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">23.45</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">0.09</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/5864_致和證_金融業_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure ⚠️面臨壓力</td>
             </tr>
         
-            <tr class="m4">
-                <td>6173</td>
-                <td>信昌電</td>
-                <td>🔥電子零組件業(7)</td>
-                <td>77.1</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>⚠️56% (5/9)</td>
-                <td>71.27</td>
-                <td>80.4</td>
-                <td>0.57</td>
-                <td>
-                    <a href="Unified_Charts/6173_信昌電_🔥電子零組件業(7)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">6173</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">信昌電</td>
+                <td class="px-6 py-5 text-slate-400">🔥電子零組件業(7)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">77.1</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">⚠️56% (5/9)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">71.27</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">80.4</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">0.57</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/6173_信昌電_🔥電子零組件業(7)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure</td>
             </tr>
         
-            <tr class="m4">
-                <td>6435</td>
-                <td>大中</td>
-                <td>🔥半導體業(13)</td>
-                <td>148.5</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>⚠️67% (6/9)</td>
-                <td>124.5</td>
-                <td>162.0</td>
-                <td>0.56</td>
-                <td>
-                    <a href="Unified_Charts/6435_大中_🔥半導體業(13)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">6435</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">大中</td>
+                <td class="px-6 py-5 text-slate-400">🔥半導體業(13)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">148.5</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">⚠️67% (6/9)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">124.5</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">162.0</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">0.56</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/6435_大中_🔥半導體業(13)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure</td>
             </tr>
         
-            <tr class="m4">
-                <td>6488</td>
-                <td>環球晶</td>
-                <td>🔥半導體業(13)</td>
-                <td>525.0</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>52% (12/23)</td>
-                <td>465.4</td>
-                <td>537.0</td>
-                <td>0.2</td>
-                <td>
-                    <a href="Unified_Charts/6488_環球晶_🔥半導體業(13)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">6488</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">環球晶</td>
+                <td class="px-6 py-5 text-slate-400">🔥半導體業(13)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">525.0</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">52% (12/23)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">465.4</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">537.0</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">0.2</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/6488_環球晶_🔥半導體業(13)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure</td>
             </tr>
         
-            <tr class="m4">
-                <td>6548</td>
-                <td>長科*</td>
-                <td>🔥半導體業(13)</td>
-                <td>61.2</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>38% (6/16)</td>
-                <td>49.4</td>
-                <td>63.6</td>
-                <td>0.2</td>
-                <td>
-                    <a href="Unified_Charts/6548_長科__🔥半導體業(13)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">6548</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">長科*</td>
+                <td class="px-6 py-5 text-slate-400">🔥半導體業(13)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">61.2</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">38% (6/16)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">49.4</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">63.6</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">0.2</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/6548_長科__🔥半導體業(13)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure</td>
             </tr>
         
-            <tr class="m4">
-                <td>6609</td>
-                <td>瀧澤科</td>
-                <td>🔥電機機械(4)</td>
-                <td>48.05</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>54% (7/13)</td>
-                <td>40.0</td>
-                <td>48.05</td>
-                <td>Breakout</td>
-                <td>
-                    <a href="Unified_Charts/6609_瀧澤科_🔥電機機械(4)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure ⚠️面臨壓力</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">6609</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">瀧澤科</td>
+                <td class="px-6 py-5 text-slate-400">🔥電機機械(4)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">48.05</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">54% (7/13)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">40.0</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">48.05</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">Breakout</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/6609_瀧澤科_🔥電機機械(4)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure ⚠️面臨壓力</td>
             </tr>
         
-            <tr class="m4">
-                <td>6934</td>
-                <td>心誠鎂</td>
-                <td>🔥生技醫療業(5)</td>
-                <td>140.5</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>⚠️N/A (0次)</td>
-                <td>117.03</td>
-                <td>164.5</td>
-                <td>1.02</td>
-                <td>
-                    <a href="Unified_Charts/6934_心誠鎂_🔥生技醫療業(5)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">6934</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">心誠鎂</td>
+                <td class="px-6 py-5 text-slate-400">🔥生技醫療業(5)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">140.5</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">⚠️N/A (0次)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">117.03</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">164.5</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">1.02</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/6934_心誠鎂_🔥生技醫療業(5)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure</td>
             </tr>
         
-            <tr class="m4">
-                <td>7822</td>
-                <td>倍利科</td>
-                <td>🔥半導體業(13)</td>
-                <td>1015.0</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>⚠️N/A (0次)</td>
-                <td>861.0</td>
-                <td>1035.0</td>
-                <td>0.13</td>
-                <td>
-                    <a href="Unified_Charts/7822_倍利科_🔥半導體業(13)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure ⚠️面臨壓力</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">7822</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">倍利科</td>
+                <td class="px-6 py-5 text-slate-400">🔥半導體業(13)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">1015.0</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">⚠️N/A (0次)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">861.0</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">1035.0</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">0.13</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/7822_倍利科_🔥半導體業(13)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure ⚠️面臨壓力</td>
             </tr>
         
-            <tr class="m4">
-                <td>8086</td>
-                <td>宏捷科</td>
-                <td>🔥半導體業(13)</td>
-                <td>123.0</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>35% (6/17)</td>
-                <td>113.22</td>
-                <td>132.0</td>
-                <td>0.92</td>
-                <td>
-                    <a href="Unified_Charts/8086_宏捷科_🔥半導體業(13)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">8086</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">宏捷科</td>
+                <td class="px-6 py-5 text-slate-400">🔥半導體業(13)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">123.0</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">35% (6/17)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">113.22</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">132.0</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">0.92</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/8086_宏捷科_🔥半導體業(13)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure</td>
             </tr>
         
-            <tr class="m4">
-                <td>8121</td>
-                <td>越峰</td>
-                <td>🔥電子零組件業(7)</td>
-                <td>32.0</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>⚠️N/A (0次)</td>
-                <td>30.2</td>
-                <td>34.8</td>
-                <td>1.56</td>
-                <td>
-                    <a href="Unified_Charts/8121_越峰_🔥電子零組件業(7)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">8121</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">越峰</td>
+                <td class="px-6 py-5 text-slate-400">🔥電子零組件業(7)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">32.0</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">⚠️N/A (0次)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">30.2</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">34.8</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">1.56</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/8121_越峰_🔥電子零組件業(7)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure</td>
             </tr>
         
-            <tr class="m4">
-                <td>8155</td>
-                <td>博智</td>
-                <td>🔥電子零組件業(7)</td>
-                <td>202.5</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>⚠️50% (2/4)</td>
-                <td>175.85</td>
-                <td>202.5</td>
-                <td>Breakout</td>
-                <td>
-                    <a href="Unified_Charts/8155_博智_🔥電子零組件業(7)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure ⚠️面臨壓力</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">8155</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">博智</td>
+                <td class="px-6 py-5 text-slate-400">🔥電子零組件業(7)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">202.5</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">⚠️50% (2/4)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">175.85</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">202.5</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">Breakout</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/8155_博智_🔥電子零組件業(7)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure ⚠️面臨壓力</td>
             </tr>
         
-            <tr class="m4">
-                <td>8933</td>
-                <td>愛地雅</td>
-                <td>運動休閒類</td>
-                <td>7.82</td>
-                <td>📈 M4 Whale Trend</td>
-                <td>⚠️N/A (0次)</td>
-                <td>6.71</td>
-                <td>9.49</td>
-                <td>1.5</td>
-                <td>
-                    <a href="Unified_Charts/8933_愛地雅_運動休閒類_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Strong Trend Structure</td>
+            <tr class="bg-blue-900/10 hover:bg-blue-900/20 border-l-4 border-blue-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">8933</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">愛地雅</td>
+                <td class="px-6 py-5 text-slate-400">運動休閒類</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">7.82</td>
+                <td class="px-6 py-5"><span class='bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm font-bold border border-blue-500/30'>📈 M4 Trend</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">⚠️N/A (0次)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">6.71</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">9.49</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">1.5</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/8933_愛地雅_運動休閒類_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Strong Trend Structure</td>
             </tr>
         
-            <tr class="m1">
-                <td>1437</td>
-                <td>勤益控</td>
-                <td>🔥其他(5)</td>
-                <td>32.3</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>36% (4/11)</td>
-                <td>33.2</td>
-                <td>34.9</td>
-                <td>Stop Broken</td>
-                <td>
-                    <a href="Unified_Charts/1437_勤益控_🔥其他(5)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">1437</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">勤益控</td>
+                <td class="px-6 py-5 text-slate-400">🔥其他(5)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">32.3</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">36% (4/11)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">33.2</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">34.9</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">Stop Broken</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/1437_勤益控_🔥其他(5)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>1463</td>
-                <td>強盛新</td>
-                <td>紡織纖維</td>
-                <td>17.25</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>46% (6/13)</td>
-                <td>17.74</td>
-                <td>19.95</td>
-                <td>Stop Broken</td>
-                <td>
-                    <a href="Unified_Charts/1463_強盛新_紡織纖維_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">1463</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">強盛新</td>
+                <td class="px-6 py-5 text-slate-400">紡織纖維</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">17.25</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">46% (6/13)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">17.74</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">19.95</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">Stop Broken</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/1463_強盛新_紡織纖維_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>1712</td>
-                <td>興農</td>
-                <td>化學生技醫療</td>
-                <td>46.35</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>59% (10/17)</td>
-                <td>45.15</td>
-                <td>47.05</td>
-                <td>0.58</td>
-                <td>
-                    <a href="Unified_Charts/1712_興農_化學生技醫療_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected ⚠️面臨壓力</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">1712</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">興農</td>
+                <td class="px-6 py-5 text-slate-400">化學生技醫療</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">46.35</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">59% (10/17)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">45.15</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">47.05</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">0.58</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/1712_興農_化學生技醫療_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected ⚠️面臨壓力</td>
             </tr>
         
-            <tr class="m1">
-                <td>1733</td>
-                <td>五鼎</td>
-                <td>化學生技醫療</td>
-                <td>29.45</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>⚠️60% (3/5)</td>
-                <td>29.87</td>
-                <td>33.3</td>
-                <td>Stop Broken</td>
-                <td>
-                    <a href="Unified_Charts/1733_五鼎_化學生技醫療_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">1733</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">五鼎</td>
+                <td class="px-6 py-5 text-slate-400">化學生技醫療</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">29.45</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">⚠️60% (3/5)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">29.87</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">33.3</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">Stop Broken</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/1733_五鼎_化學生技醫療_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>2009</td>
-                <td>第一銅</td>
-                <td>🔥鋼鐵工業(5)</td>
-                <td>48.9</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>47% (7/15)</td>
-                <td>49.83</td>
-                <td>54.4</td>
-                <td>Stop Broken</td>
-                <td>
-                    <a href="Unified_Charts/2009_第一銅_🔥鋼鐵工業(5)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">2009</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">第一銅</td>
+                <td class="px-6 py-5 text-slate-400">🔥鋼鐵工業(5)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">48.9</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">47% (7/15)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">49.83</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">54.4</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">Stop Broken</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/2009_第一銅_🔥鋼鐵工業(5)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>2014</td>
-                <td>中鴻</td>
-                <td>🔥鋼鐵工業(5)</td>
-                <td>17.05</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>44% (8/18)</td>
-                <td>16.4</td>
-                <td>17.7</td>
-                <td>1.0</td>
-                <td>
-                    <a href="Unified_Charts/2014_中鴻_🔥鋼鐵工業(5)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">2014</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">中鴻</td>
+                <td class="px-6 py-5 text-slate-400">🔥鋼鐵工業(5)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">17.05</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">44% (8/18)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">16.4</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">17.7</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">1.0</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/2014_中鴻_🔥鋼鐵工業(5)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>2022</td>
-                <td>聚亨</td>
-                <td>🔥鋼鐵工業(5)</td>
-                <td>9.0</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>41% (7/17)</td>
-                <td>8.53</td>
-                <td>9.19</td>
-                <td>0.4</td>
-                <td>
-                    <a href="Unified_Charts/2022_聚亨_🔥鋼鐵工業(5)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">2022</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">聚亨</td>
+                <td class="px-6 py-5 text-slate-400">🔥鋼鐵工業(5)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">9.0</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">41% (7/17)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">8.53</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">9.19</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">0.4</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/2022_聚亨_🔥鋼鐵工業(5)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>2027</td>
-                <td>大成鋼</td>
-                <td>🔥鋼鐵工業(5)</td>
-                <td>37.5</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>37% (7/19)</td>
-                <td>36.17</td>
-                <td>39.3</td>
-                <td>1.35</td>
-                <td>
-                    <a href="Unified_Charts/2027_大成鋼_🔥鋼鐵工業(5)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">2027</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">大成鋼</td>
+                <td class="px-6 py-5 text-slate-400">🔥鋼鐵工業(5)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">37.5</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">37% (7/19)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">36.17</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">39.3</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">1.35</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/2027_大成鋼_🔥鋼鐵工業(5)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>2038</td>
-                <td>海光</td>
-                <td>🔥鋼鐵工業(5)</td>
-                <td>14.9</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>29% (5/17)</td>
-                <td>14.92</td>
-                <td>16.15</td>
-                <td>Stop Broken</td>
-                <td>
-                    <a href="Unified_Charts/2038_海光_🔥鋼鐵工業(5)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">2038</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">海光</td>
+                <td class="px-6 py-5 text-slate-400">🔥鋼鐵工業(5)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">14.9</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">29% (5/17)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">14.92</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">16.15</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">Stop Broken</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/2038_海光_🔥鋼鐵工業(5)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>2102</td>
-                <td>泰豐</td>
-                <td>🔥橡膠工業(3)</td>
-                <td>19.75</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>59% (10/17)</td>
-                <td>19.8</td>
-                <td>21.5</td>
-                <td>Stop Broken</td>
-                <td>
-                    <a href="Unified_Charts/2102_泰豐_🔥橡膠工業(3)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">2102</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">泰豐</td>
+                <td class="px-6 py-5 text-slate-400">🔥橡膠工業(3)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">19.75</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">59% (10/17)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">19.8</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">21.5</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">Stop Broken</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/2102_泰豐_🔥橡膠工業(3)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>2104</td>
-                <td>國際中橡</td>
-                <td>🔥橡膠工業(3)</td>
-                <td>12.1</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>48% (11/23)</td>
-                <td>11.67</td>
-                <td>12.95</td>
-                <td>1.98</td>
-                <td>
-                    <a href="Unified_Charts/2104_國際中橡_🔥橡膠工業(3)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">2104</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">國際中橡</td>
+                <td class="px-6 py-5 text-slate-400">🔥橡膠工業(3)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">12.1</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">48% (11/23)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">11.67</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">12.95</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">1.98</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/2104_國際中橡_🔥橡膠工業(3)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>2108</td>
-                <td>南帝</td>
-                <td>🔥橡膠工業(3)</td>
-                <td>24.25</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>20% (5/25)</td>
-                <td>23.9</td>
-                <td>25.15</td>
-                <td>2.57</td>
-                <td>
-                    <a href="Unified_Charts/2108_南帝_🔥橡膠工業(3)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">2108</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">南帝</td>
+                <td class="px-6 py-5 text-slate-400">🔥橡膠工業(3)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">24.25</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">20% (5/25)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">23.9</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">25.15</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">2.57</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/2108_南帝_🔥橡膠工業(3)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>2426</td>
-                <td>鼎元</td>
-                <td>🔥電子工業(9)</td>
-                <td>19.2</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>65% (17/26)</td>
-                <td>17.89</td>
-                <td>21.65</td>
-                <td>1.87</td>
-                <td>
-                    <a href="Unified_Charts/2426_鼎元_🔥電子工業(9)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">2426</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">鼎元</td>
+                <td class="px-6 py-5 text-slate-400">🔥電子工業(9)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">19.2</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">65% (17/26)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">17.89</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">21.65</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">1.87</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/2426_鼎元_🔥電子工業(9)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>2436</td>
-                <td>偉詮電</td>
-                <td>🔥電子工業(9)</td>
-                <td>51.1</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>71% (10/14)</td>
-                <td>48.98</td>
-                <td>52.1</td>
-                <td>0.47</td>
-                <td>
-                    <a href="Unified_Charts/2436_偉詮電_🔥電子工業(9)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected ⚠️面臨壓力</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">2436</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">偉詮電</td>
+                <td class="px-6 py-5 text-slate-400">🔥電子工業(9)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">51.1</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">71% (10/14)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">48.98</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">52.1</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">0.47</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/2436_偉詮電_🔥電子工業(9)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected ⚠️面臨壓力</td>
             </tr>
         
-            <tr class="m1">
-                <td>2705</td>
-                <td>六福</td>
-                <td>觀光餐旅</td>
-                <td>16.3</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>53% (10/19)</td>
-                <td>16.49</td>
-                <td>17.35</td>
-                <td>Stop Broken</td>
-                <td>
-                    <a href="Unified_Charts/2705_六福_觀光餐旅_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">2705</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">六福</td>
+                <td class="px-6 py-5 text-slate-400">觀光餐旅</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">16.3</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">53% (10/19)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">16.49</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">17.35</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">Stop Broken</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/2705_六福_觀光餐旅_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>2887</td>
-                <td>台新新光金</td>
-                <td>金融保險</td>
-                <td>22.9</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>73% (19/26)</td>
-                <td>21.39</td>
-                <td>23.1</td>
-                <td>0.13</td>
-                <td>
-                    <a href="Unified_Charts/2887_台新新光金_金融保險_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected ⚠️面臨壓力</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">2887</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">台新新光金</td>
+                <td class="px-6 py-5 text-slate-400">金融保險</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">22.9</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">73% (19/26)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">21.39</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">23.1</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">0.13</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/2887_台新新光金_金融保險_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected ⚠️面臨壓力</td>
             </tr>
         
-            <tr class="m1">
-                <td>2913</td>
-                <td>農林</td>
-                <td>貿易百貨</td>
-                <td>13.55</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>38% (11/29)</td>
-                <td>13.3</td>
-                <td>14.4</td>
-                <td>3.4</td>
-                <td>
-                    <a href="Unified_Charts/2913_農林_貿易百貨_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">2913</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">農林</td>
+                <td class="px-6 py-5 text-slate-400">貿易百貨</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">13.55</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">38% (11/29)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">13.3</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">14.4</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">3.4</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/2913_農林_貿易百貨_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>3038</td>
-                <td>全台</td>
-                <td>🔥電子工業(9)</td>
-                <td>24.2</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>47% (8/17)</td>
-                <td>23.77</td>
-                <td>24.75</td>
-                <td>1.28</td>
-                <td>
-                    <a href="Unified_Charts/3038_全台_🔥電子工業(9)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">3038</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">全台</td>
+                <td class="px-6 py-5 text-slate-400">🔥電子工業(9)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">24.2</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">47% (8/17)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">23.77</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">24.75</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">1.28</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/3038_全台_🔥電子工業(9)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>3094</td>
-                <td>聯傑</td>
-                <td>🔥電子工業(9)</td>
-                <td>25.95</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>⚠️67% (4/6)</td>
-                <td>25.0</td>
-                <td>27.8</td>
-                <td>1.95</td>
-                <td>
-                    <a href="Unified_Charts/3094_聯傑_🔥電子工業(9)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">3094</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">聯傑</td>
+                <td class="px-6 py-5 text-slate-400">🔥電子工業(9)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">25.95</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">⚠️67% (4/6)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">25.0</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">27.8</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">1.95</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/3094_聯傑_🔥電子工業(9)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>3167</td>
-                <td>大量</td>
-                <td>🔥電機機械(4)</td>
-                <td>236.0</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>⚠️100% (5/5)</td>
-                <td>228.32</td>
-                <td>253.5</td>
-                <td>2.28</td>
-                <td>
-                    <a href="Unified_Charts/3167_大量_🔥電機機械(4)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">3167</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">大量</td>
+                <td class="px-6 py-5 text-slate-400">🔥電機機械(4)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">236.0</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">⚠️100% (5/5)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">228.32</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">253.5</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">2.28</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/3167_大量_🔥電機機械(4)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>3293</td>
-                <td>鈊象</td>
-                <td>文化創意業</td>
-                <td>738.0</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>59% (10/17)</td>
-                <td>733.1</td>
-                <td>794.0</td>
-                <td>11.43</td>
-                <td>
-                    <a href="Unified_Charts/3293_鈊象_文化創意業_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">3293</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">鈊象</td>
+                <td class="px-6 py-5 text-slate-400">文化創意業</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">738.0</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">59% (10/17)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">733.1</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">794.0</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">11.43</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/3293_鈊象_文化創意業_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>3374</td>
-                <td>精材</td>
-                <td>🔥半導體業(13)</td>
-                <td>179.0</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>47% (8/17)</td>
-                <td>165.52</td>
-                <td>185.5</td>
-                <td>0.48</td>
-                <td>
-                    <a href="Unified_Charts/3374_精材_🔥半導體業(13)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">3374</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">精材</td>
+                <td class="px-6 py-5 text-slate-400">🔥半導體業(13)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">179.0</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">47% (8/17)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">165.52</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">185.5</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">0.48</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/3374_精材_🔥半導體業(13)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>3548</td>
-                <td>兆利</td>
-                <td>🔥電子零組件業(7)</td>
-                <td>91.9</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>67% (8/12)</td>
-                <td>90.03</td>
-                <td>100.5</td>
-                <td>4.6</td>
-                <td>
-                    <a href="Unified_Charts/3548_兆利_🔥電子零組件業(7)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">3548</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">兆利</td>
+                <td class="px-6 py-5 text-slate-400">🔥電子零組件業(7)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">91.9</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">67% (8/12)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">90.03</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">100.5</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">4.6</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/3548_兆利_🔥電子零組件業(7)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>3591</td>
-                <td>艾笛森</td>
-                <td>🔥電子工業(9)</td>
-                <td>20.05</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>55% (12/22)</td>
-                <td>19.21</td>
-                <td>22.2</td>
-                <td>2.56</td>
-                <td>
-                    <a href="Unified_Charts/3591_艾笛森_🔥電子工業(9)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">3591</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">艾笛森</td>
+                <td class="px-6 py-5 text-slate-400">🔥電子工業(9)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">20.05</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">55% (12/22)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">19.21</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">22.2</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">2.56</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/3591_艾笛森_🔥電子工業(9)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>3703</td>
-                <td>欣陸</td>
-                <td>建材營造</td>
-                <td>23.3</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>47% (7/15)</td>
-                <td>23.03</td>
-                <td>24.95</td>
-                <td>6.11</td>
-                <td>
-                    <a href="Unified_Charts/3703_欣陸_建材營造_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">3703</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">欣陸</td>
+                <td class="px-6 py-5 text-slate-400">建材營造</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">23.3</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">47% (7/15)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">23.03</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">24.95</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">6.11</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/3703_欣陸_建材營造_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
         
-            <tr class="m1">
-                <td>4174</td>
-                <td>浩鼎</td>
-                <td>🔥生技醫療業(5)</td>
-                <td>26.0</td>
-                <td>⚡ M1 Chip Trigger</td>
-                <td>47% (9/19)</td>
-                <td>26.5</td>
-                <td>33.4</td>
-                <td>Stop Broken</td>
-                <td>
-                    <a href="Unified_Charts/4174_浩鼎_🔥生技醫療業(5)_20260127.png" target="_blank">View Chart</a>
-                </td>
-                <td>Reversal / Washout Detected</td>
+            <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
+                <td class="px-6 py-5 font-mono text-slate-300 text-lg">4174</td>
+                <td class="px-6 py-5 font-bold text-white text-xl">浩鼎</td>
+                <td class="px-6 py-5 text-slate-400">🔥生技醫療業(5)</td>
+                <td class="px-6 py-5 text-right font-mono font-bold text-yellow-400 text-xl">26.0</td>
+                <td class="px-6 py-5"><span class='bg-amber-500/20 text-amber-400 px-3 py-1 rounded text-sm font-bold border border-amber-500/30'>⚡ M1 Chip</span></td>
+                <td class="px-6 py-5 text-center font-mono text-lg">47% (9/19)</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">26.5</td>
+                <td class="px-6 py-5 text-right font-mono text-slate-400">33.4</td>
+                <td class="px-6 py-5 text-center font-mono text-lg">Stop Broken</td>
+                <td class="px-6 py-5 text-center"><a href="Unified_Charts/4174_浩鼎_🔥生技醫療業(5)_20260127.png" target="_blank" class="text-blue-400 hover:text-white transition-colors bg-slate-800 hover:bg-slate-700 px-3 py-1 rounded border border-slate-600">View</a></td>
+                <td class="px-6 py-5 text-slate-400 text-sm">Reversal / Washout Detected</td>
             </tr>
-        </table></body></html>
+        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <footer class="mt-8 text-center text-slate-600 text-xs">
+            Generated by FinMind Antigravity | AI-Enhanced Financial Analysis
+        </footer>
+    </div>
+</body>
+</html>
+    
