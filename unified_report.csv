@@ -1,51 +1,51 @@
 ﻿代號,名稱,收盤價,產業,策略類型,備註,In_M1,In_M4,Rank_Score,5年回測勝率,止損 (MA20),壓力 (60日高),風報酬比 (Risk/Reward),Chart_Link
-1313,聯成,11.35,🔥塑膠工業(3),🏆 DUAL CERTIFIED,Trend + Reversal Confirmed,True,True,3,44% (11/25),10.39,11.8,0.47,Charts/1313_聯成_🔥塑膠工業(3)_20260127.png
-6147,頎邦,58.1,🔥半導體業(14),🏆 DUAL CERTIFIED,Trend + Reversal Confirmed,True,True,3,60% (9/15),56.1,61.2,1.55,Charts/6147_頎邦_🔥半導體業(14)_20260127.png
-6274,台燿,530.0,🔥電子零組件業(11),🏆 DUAL CERTIFIED,Trend + Reversal Confirmed ⚠️面臨壓力,True,True,3,46% (6/13),483.02,536.0,0.13,Charts/6274_台燿_🔥電子零組件業(11)_20260127.png
-2887,台新新光金,23.2,🔥金融保險(4),📈 M4 Whale Trend,Strong Trend Structure ⚠️面臨壓力,False,True,2,73% (19/26),21.53,23.35,0.09,Charts/2887_台新新光金_🔥金融保險(4)_20260127.png
-3105,穩懋,241.0,🔥半導體業(14),📈 M4 Whale Trend,Strong Trend Structure ⚠️面臨壓力,False,True,2,33% (4/12),210.75,244.0,0.1,Charts/3105_穩懋_🔥半導體業(14)_20260127.png
-3265,台星科,146.0,🔥半導體業(14),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,55% (6/11),134.32,156.0,0.86,Charts/3265_台星科_🔥半導體業(14)_20260127.png
-3294,英濟,41.75,🔥電子零組件業(11),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,50% (5/10),40.12,45.75,2.45,Charts/3294_英濟_🔥電子零組件業(11)_20260127.png
-3585,聯致,16.95,🔥電子零組件業(11),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,⚠️N/A (0次),13.57,17.5,0.16,Charts/3585_聯致_🔥電子零組件業(11)_20260127.png
-3680,家登,442.0,🔥半導體業(14),📈 M4 Whale Trend,Strong Trend Structure ⚠️面臨壓力,False,True,2,60% (9/15),415.98,450.0,0.31,Charts/3680_家登_🔥半導體業(14)_20260127.png
-3707,漢磊,66.0,🔥半導體業(14),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,53% (9/17),58.34,70.0,0.52,Charts/3707_漢磊_🔥半導體業(14)_20260127.png
-4123,晟德,43.3,🔥生技醫療業(10),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,59% (10/17),41.27,44.55,0.62,Charts/4123_晟德_🔥生技醫療業(10)_20260127.png
-4543,萬在,33.65,🔥電機機械(4),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,⚠️25% (1/4),30.79,35.45,0.63,Charts/4543_萬在_🔥電機機械(4)_20260127.png
-4577,達航科技,57.8,其他電子類,📈 M4 Whale Trend,Strong Trend Structure,False,True,2,⚠️100% (1/1),55.95,66.8,4.86,Charts/4577_達航科技_其他電子類_20260127.png
-5340,建榮,97.0,🔥電子零組件業(11),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,⚠️67% (2/3),79.78,107.5,0.61,Charts/5340_建榮_🔥電子零組件業(11)_20260127.png
-5371,中光電,94.5,🔥光電業(4),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,40% (6/15),91.17,107.5,3.9,Charts/5371_中光電_🔥光電業(4)_20260127.png
-5483,中美晶,124.5,🔥半導體業(14),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,67% (8/12),117.32,129.5,0.7,Charts/5483_中美晶_🔥半導體業(14)_20260127.png
-5864,致和證,22.8,金融業,📈 M4 Whale Trend,Strong Trend Structure,False,True,2,⚠️57% (4/7),18.39,23.45,0.15,Charts/5864_致和證_金融業_20260127.png
-6016,康和證,15.85,金融業,📈 M4 Whale Trend,Strong Trend Structure,False,True,2,55% (12/22),15.0,16.7,1.0,Charts/6016_康和證_金融業_20260127.png
-6173,信昌電,78.0,🔥電子零組件業(11),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,⚠️56% (5/9),71.82,80.4,0.39,Charts/6173_信昌電_🔥電子零組件業(11)_20260127.png
-6435,大中,150.0,🔥半導體業(14),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,⚠️67% (6/9),126.5,162.0,0.51,Charts/6435_大中_🔥半導體業(14)_20260127.png
-6488,環球晶,511.0,🔥半導體業(14),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,52% (12/23),470.85,537.0,0.65,Charts/6488_環球晶_🔥半導體業(14)_20260127.png
-6548,長科*,60.1,🔥半導體業(14),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,38% (6/16),50.28,63.6,0.36,Charts/6548_長科__🔥半導體業(14)_20260127.png
-6934,心誠鎂,136.0,🔥生技醫療業(10),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,⚠️N/A (0次),119.37,164.5,1.71,Charts/6934_心誠鎂_🔥生技醫療業(10)_20260127.png
-7777,能率亞洲,35.35,其他,📈 M4 Whale Trend,Strong Trend Structure,False,True,2,⚠️N/A (0次),27.52,37.6,0.29,Charts/7777_能率亞洲_其他_20260127.png
-8121,越峰,30.75,🔥電子零組件業(11),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,⚠️N/A (0次),30.26,34.8,8.27,Charts/8121_越峰_🔥電子零組件業(11)_20260127.png
-1103,嘉泥,14.15,水泥工業,⚡ M1 Chip Trigger,Reversal / Washout Detected ⚠️面臨壓力,True,False,1,24% (4/17),13.98,14.3,0.88,Charts/1103_嘉泥_水泥工業_20260127.png
-1307,三芳,32.6,🔥塑膠工業(3),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,⚠️0% (0/2),31.97,34.6,3.17,Charts/1307_三芳_🔥塑膠工業(3)_20260127.png
-1337,再生-KY,6.16,🔥塑膠工業(3),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,⚠️33% (3/9),5.06,6.33,0.15,Charts/1337_再生-KY_🔥塑膠工業(3)_20260127.png
-1535,中宇,52.4,🔥電機機械(4),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,55% (6/11),53.0,55.5,Stop Broken,Charts/1535_中宇_🔥電機機械(4)_20260127.png
-1560,中砂,431.5,🔥電機機械(4),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,50% (6/12),420.0,472.5,3.57,Charts/1560_中砂_🔥電機機械(4)_20260127.png
-1597,直得,83.0,🔥電機機械(4),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,⚠️62% (5/8),77.46,85.9,0.52,Charts/1597_直得_🔥電機機械(4)_20260127.png
-1617,榮星,17.2,電器電纜,⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,⚠️40% (2/5),15.68,18.45,0.82,Charts/1617_榮星_電器電纜_20260127.png
-1785,光洋科,65.4,其他電子類,⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,50% (10/20),64.24,70.6,4.48,Charts/1785_光洋科_其他電子類_20260127.png
-2102,泰豐,20.05,橡膠工業,⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,59% (10/17),19.82,21.5,6.3,Charts/2102_泰豐_橡膠工業_20260127.png
-2327,國巨*,295.0,🔥電子零組件業(11),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,73% (11/15),265.1,304.5,0.32,Charts/2327_國巨__🔥電子零組件業(11)_20260127.png
-2351,順德,89.6,🔥電子工業(10),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,43% (6/14),79.09,94.8,0.49,Charts/2351_順德_🔥電子工業(10)_20260127.png
-2383,台光電,1820.0,🔥電子零組件業(11),⚡ M1 Chip Trigger,Reversal / Washout Detected ⚠️面臨壓力,True,False,1,71% (17/24),1638.5,1840.0,0.11,Charts/2383_台光電_🔥電子零組件業(11)_20260127.png
-2454,聯發科,1775.0,🔥電子工業(10),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,69% (9/13),1510.25,1820.0,0.17,Charts/2454_聯發科_🔥電子工業(10)_20260127.png
-2488,漢平,46.7,🔥電子工業(10),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,⚠️80% (4/5),45.77,49.0,2.47,Charts/2488_漢平_🔥電子工業(10)_20260127.png
-2524,京城,42.3,🔥建材營造(3),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,⚠️12% (1/8),41.97,45.45,9.55,Charts/2524_京城_🔥建材營造(3)_20260127.png
-2543,皇昌,65.1,🔥建材營造(3),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,⚠️11% (1/9),63.14,71.4,3.21,Charts/2543_皇昌_🔥建材營造(3)_20260127.png
-2601,益航,5.72,貿易百貨,⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,41% (14/34),5.53,6.11,2.05,Charts/2601_益航_貿易百貨_20260127.png
-2610,華航,22.9,航運業,⚡ M1 Chip Trigger,Reversal / Washout Detected ⚠️面臨壓力,True,False,1,61% (14/23),21.22,23.0,0.06,Charts/2610_華航_航運業_20260127.png
-2855,統一證,29.1,🔥金融保險(4),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,60% (15/25),26.79,29.8,0.3,Charts/2855_統一證_🔥金融保險(4)_20260127.png
-2880,華南金,33.05,🔥金融保險(4),⚡ M1 Chip Trigger,Reversal / Washout Detected ⚠️面臨壓力,True,False,1,52% (15/29),32.35,33.55,0.71,Charts/2880_華南金_🔥金融保險(4)_20260127.png
-2884,玉山金,33.6,🔥金融保險(4),⚡ M1 Chip Trigger,Reversal / Washout Detected ⚠️面臨壓力,True,False,1,56% (15/27),33.2,34.2,1.5,Charts/2884_玉山金_🔥金融保險(4)_20260127.png
-2906,高林,12.55,貿易百貨,⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,43% (9/21),12.56,13.8,Stop Broken,Charts/2906_高林_貿易百貨_20260127.png
-3010,華立,122.0,電子通路業,⚡ M1 Chip Trigger,Reversal / Washout Detected ⚠️面臨壓力,True,False,1,47% (9/19),112.98,122.5,0.06,Charts/3010_華立_電子通路業_20260127.png
-3062,建漢,26.85,🔥電子工業(10),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,77% (10/13),24.87,29.0,1.09,Charts/3062_建漢_🔥電子工業(10)_20260127.png
-3325,旭品,15.85,電腦及週邊設備業,⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,⚠️50% (4/8),16.37,18.7,Stop Broken,Charts/3325_旭品_電腦及週邊設備業_20260127.png
+1313,聯成,11.45,塑膠工業,🏆 DUAL CERTIFIED,Trend + Reversal Confirmed,True,True,3,44% (11/25),10.45,11.8,0.35,Charts/1313_聯成_塑膠工業_20260128.png
+6147,頎邦,58.8,🔥半導體業(10),🏆 DUAL CERTIFIED,Trend + Reversal Confirmed,True,True,3,60% (9/15),56.4,61.2,1.0,Charts/6147_頎邦_🔥半導體業(10)_20260128.png
+6274,台燿,539.0,🔥電子零組件業(9),🏆 DUAL CERTIFIED,Trend + Reversal Confirmed,True,True,3,46% (6/13),485.82,552.0,0.24,Charts/6274_台燿_🔥電子零組件業(9)_20260128.png
+2887,台新新光金,22.85,金融保險,📈 M4 Whale Trend,Strong Trend Structure,False,True,2,73% (19/26),21.64,23.4,0.45,Charts/2887_台新新光金_金融保險_20260128.png
+3105,穩懋,258.0,🔥半導體業(10),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,33% (4/12),214.4,265.0,0.16,Charts/3105_穩懋_🔥半導體業(10)_20260128.png
+3265,台星科,147.5,🔥半導體業(10),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,55% (6/11),135.57,156.0,0.71,Charts/3265_台星科_🔥半導體業(10)_20260128.png
+3680,家登,455.5,🔥半導體業(10),📈 M4 Whale Trend,Strong Trend Structure ⚠️面臨壓力,False,True,2,60% (9/15),421.12,462.0,0.19,Charts/3680_家登_🔥半導體業(10)_20260128.png
+4123,晟德,42.45,🔥生技醫療業(4),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,59% (10/17),41.32,44.55,1.86,Charts/4123_晟德_🔥生技醫療業(4)_20260128.png
+4577,達航科技,56.2,其他電子類,📈 M4 Whale Trend,Strong Trend Structure,False,True,2,⚠️100% (1/1),55.74,66.8,23.04,Charts/4577_達航科技_其他電子類_20260128.png
+5483,中美晶,123.5,🔥半導體業(10),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,67% (8/12),118.3,129.5,1.15,Charts/5483_中美晶_🔥半導體業(10)_20260128.png
+5864,致和證,23.8,🔥金融業(4),📈 M4 Whale Trend,Strong Trend Structure ⚠️面臨壓力,False,True,2,⚠️57% (4/7),18.84,24.0,0.04,Charts/5864_致和證_🔥金融業(4)_20260128.png
+6016,康和證,16.35,🔥金融業(4),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,55% (12/22),15.16,16.75,0.34,Charts/6016_康和證_🔥金融業(4)_20260128.png
+6488,環球晶,509.0,🔥半導體業(10),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,52% (12/23),475.65,537.0,0.84,Charts/6488_環球晶_🔥半導體業(10)_20260128.png
+6548,長科*,60.6,🔥半導體業(10),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,38% (6/16),51.12,65.0,0.46,Charts/6548_長科__🔥半導體業(10)_20260128.png
+6640,均華,850.0,🔥半導體業(10),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,⚠️N/A (0次),738.4,867.0,0.15,Charts/6640_均華_🔥半導體業(10)_20260128.png
+6934,心誠鎂,156.5,🔥生技醫療業(4),📈 M4 Whale Trend,Strong Trend Structure,False,True,2,⚠️N/A (0次),122.84,164.5,0.24,Charts/6934_心誠鎂_🔥生技醫療業(4)_20260128.png
+8299,群聯,2285.0,🔥半導體業(10),📈 M4 Whale Trend,Strong Trend Structure ⚠️面臨壓力,False,True,2,67% (12/18),1820.75,2285.0,Breakout,Charts/8299_群聯_🔥半導體業(10)_20260128.png
+8935,邦泰,21.3,其他,📈 M4 Whale Trend,Strong Trend Structure,False,True,2,⚠️N/A (0次),18.92,23.75,1.03,Charts/8935_邦泰_其他_20260128.png
+1101,台泥,26.35,🔥水泥工業(3),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,31% (5/16),24.81,26.95,0.39,Charts/1101_台泥_🔥水泥工業(3)_20260128.png
+1103,嘉泥,14.3,🔥水泥工業(3),⚡ M1 Chip Trigger,Reversal / Washout Detected ⚠️面臨壓力,True,False,1,24% (4/17),13.99,14.3,Breakout,Charts/1103_嘉泥_🔥水泥工業(3)_20260128.png
+1108,幸福,15.15,🔥水泥工業(3),⚡ M1 Chip Trigger,Reversal / Washout Detected ⚠️面臨壓力,True,False,1,25% (3/12),15.02,15.25,0.77,Charts/1108_幸福_🔥水泥工業(3)_20260128.png
+1215,卜蜂,151.5,🔥食品工業(3),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,57% (8/14),144.93,158.0,0.99,Charts/1215_卜蜂_🔥食品工業(3)_20260128.png
+1225,福懋油,28.65,🔥食品工業(3),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,64% (7/11),28.4,31.35,10.8,Charts/1225_福懋油_🔥食品工業(3)_20260128.png
+1326,台化,44.1,塑膠工業,⚡ M1 Chip Trigger,Reversal / Washout Detected ⚠️面臨壓力,True,False,1,25% (4/16),34.15,44.6,0.05,Charts/1326_台化_塑膠工業_20260128.png
+1536,和大,65.1,汽車工業,⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,82% (9/11),59.65,66.7,0.29,Charts/1536_和大_汽車工業_20260128.png
+1597,直得,84.5,電機機械,⚡ M1 Chip Trigger,Reversal / Washout Detected ⚠️面臨壓力,True,False,1,⚠️62% (5/8),78.08,85.9,0.22,Charts/1597_直得_電機機械_20260128.png
+1612,宏泰,38.1,電器電纜,⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,60% (15/25),35.86,40.95,1.27,Charts/1612_宏泰_電器電纜_20260128.png
+1723,中碳,73.6,化學生技醫療,⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,40% (6/15),70.47,81.9,2.65,Charts/1723_中碳_化學生技醫療_20260128.png
+1737,臺鹽,31.75,🔥食品工業(3),⚡ M1 Chip Trigger,Reversal / Washout Detected ⚠️面臨壓力,True,False,1,⚠️50% (4/8),31.61,32.0,1.79,Charts/1737_臺鹽_🔥食品工業(3)_20260128.png
+1795,美時,346.0,🔥生技醫療業(4),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,36% (4/11),305.23,353.5,0.18,Charts/1795_美時_🔥生技醫療業(4)_20260128.png
+1903,士紙,59.4,造紙工業,⚡ M1 Chip Trigger,Reversal / Washout Detected ⚠️面臨壓力,True,False,1,24% (5/21),56.13,60.2,0.24,Charts/1903_士紙_造紙工業_20260128.png
+2010,春源,20.95,🔥鋼鐵工業(5),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,48% (10/21),21.04,21.65,Stop Broken,Charts/2010_春源_🔥鋼鐵工業(5)_20260128.png
+2012,春雨,17.0,🔥鋼鐵工業(5),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,33% (5/15),17.06,18.0,Stop Broken,Charts/2012_春雨_🔥鋼鐵工業(5)_20260128.png
+2069,運錩,20.3,🔥鋼鐵工業(5),⚡ M1 Chip Trigger,Reversal / Washout Detected ⚠️面臨壓力,True,False,1,50% (8/16),19.1,20.4,0.08,Charts/2069_運錩_🔥鋼鐵工業(5)_20260128.png
+2108,南帝,24.7,橡膠工業,⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,20% (5/25),24.01,25.4,1.01,Charts/2108_南帝_橡膠工業_20260128.png
+2308,台達電,1280.0,🔥電子零組件業(9),⚡ M1 Chip Trigger,Reversal / Washout Detected ⚠️面臨壓力,True,False,1,53% (9/17),1101.9,1285.0,0.03,Charts/2308_台達電_🔥電子零組件業(9)_20260128.png
+2324,仁寶,32.55,🔥電腦及週邊設備業(5),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,80% (16/20),31.41,35.1,2.24,Charts/2324_仁寶_🔥電腦及週邊設備業(5)_20260128.png
+2328,廣宇,53.3,🔥電子零組件業(9),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,55% (11/20),50.61,56.9,1.34,Charts/2328_廣宇_🔥電子零組件業(9)_20260128.png
+2351,順德,96.2,🔥電子工業(11),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,43% (6/14),80.04,98.3,0.13,Charts/2351_順德_🔥電子工業(11)_20260128.png
+2392,正崴,40.55,🔥電子零組件業(9),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,48% (10/21),38.9,49.5,5.42,Charts/2392_正崴_🔥電子零組件業(9)_20260128.png
+2449,京元電子,311.0,🔥半導體業(10),⚡ M1 Chip Trigger,Reversal / Washout Detected ⚠️面臨壓力,True,False,1,73% (19/26),273.62,313.5,0.07,Charts/2449_京元電子_🔥半導體業(10)_20260128.png
+2454,聯發科,1780.0,🔥電子工業(11),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,69% (9/13),1528.25,1820.0,0.16,Charts/2454_聯發科_🔥電子工業(11)_20260128.png
+2481,強茂,93.2,🔥電子工業(11),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,71% (12/17),86.3,102.5,1.35,Charts/2481_強茂_🔥電子工業(11)_20260128.png
+2486,一詮,131.0,🔥電子工業(11),⚡ M1 Chip Trigger,Reversal / Washout Detected ⚠️面臨壓力,True,False,1,⚠️57% (4/7),98.38,132.0,0.03,Charts/2486_一詮_🔥電子工業(11)_20260128.png
+2603,長榮,192.0,航運業,⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,53% (8/15),191.68,198.0,18.75,Charts/2603_長榮_航運業_20260128.png
+2617,台航,32.0,航運業,⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,33% (6/18),30.97,35.05,2.96,Charts/2617_台航_航運業_20260128.png
+3004,豐達科,115.0,🔥鋼鐵工業(5),⚡ M1 Chip Trigger,Reversal / Washout Detected,True,False,1,⚠️71% (5/7),114.18,120.0,6.1,Charts/3004_豐達科_🔥鋼鐵工業(5)_20260128.png
+3042,晶技,90.3,🔥電子零組件業(9),⚡ M1 Chip Trigger,Reversal / Washout Detected ⚠️面臨壓力,True,False,1,62% (13/21),84.14,91.5,0.19,Charts/3042_晶技_🔥電子零組件業(9)_20260128.png
+3044,健鼎,393.5,🔥電子零組件業(9),⚡ M1 Chip Trigger,Reversal / Washout Detected ⚠️面臨壓力,True,False,1,45% (5/11),329.42,397.0,0.05,Charts/3044_健鼎_🔥電子零組件業(9)_20260128.png
+3081,聯亞,900.0,通信網路業,⚡ M1 Chip Trigger,Reversal / Washout Detected ⚠️面臨壓力,True,False,1,72% (13/18),694.85,900.0,Breakout,Charts/3081_聯亞_通信網路業_20260128.png
