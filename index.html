@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -28,22 +27,20 @@
     </script>
     <style>
         body { background-color: #020617; color: #F8FAFC; font-family: 'IBM Plex Sans', sans-serif; }
-        .card { 
+        .card-container { 
             background: #1E293B; 
             border-radius: 12px; 
             padding: 24px; 
             box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
             transition: all 200ms ease; 
-            cursor: pointer;
-            text-decoration: none;
+            border: 1px solid #334155;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            border: 1px solid #334155;
-            height: 180px;
+            justify-content: space-between;
+            min-height: 200px;
         }
-        .card:hover { 
+        .card-container:hover { 
             box-shadow: 0 10px 15px rgba(0,0,0,0.15); 
             transform: translateY(-2px); 
             border-color: #22C55E;
@@ -56,8 +53,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             font-size: 32px;
+        }
+        .card-main {
+            text-decoration: none;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-grow: 1;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -68,45 +74,93 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
-        <a href="dashboard.html" class="card group">
-            <div class="icon-circle group-hover:bg-green-500/20 transition-colors">📊</div>
-            <div class="text-xl font-semibold mb-1 text-white">市場戰情室</div>
-            <div class="text-sm text-slate-400">Market Dashboard</div>
-        </a>
+        <!-- Dashboard -->
+        <div class="card-container group">
+             <a href="dashboard.html" class="card-main">
+                <div class="icon-circle group-hover:bg-green-500/20 transition-colors">📊</div>
+                <div class="text-xl font-semibold mb-1 text-white">市場戰情室</div>
+                <div class="text-sm text-slate-400">Market Dashboard</div>
+            </a>
+            <div class="mt-4 pt-3 border-t border-slate-700 w-full flex justify-center opacity-0"><span class="text-xs">-</span></div>
+        </div>
         
-        <a href="unified_report.html" class="card group">
-            <div class="icon-circle group-hover:bg-amber-500/20 text-amber-500" style="color: #F59E0B; background: rgba(245, 158, 11, 0.1);">🐋</div>
-            <div class="text-xl font-semibold mb-1 text-white">巨鯨狙擊報告</div>
-            <div class="text-sm text-slate-400">Whale Sniper Strategy</div>
-        </a>
+        <!-- Whale -->
+        <div class="card-container group">
+            <a href="unified_report.html" class="card-main">
+                <div class="icon-circle group-hover:bg-amber-500/20 text-amber-500" style="color: #F59E0B; background: rgba(245, 158, 11, 0.1);">🐋</div>
+                <div class="text-xl font-semibold mb-1 text-white">巨鯨狙擊報告</div>
+                <div class="text-sm text-slate-400">Whale Sniper Strategy</div>
+            </a>
+            
+            <div class="mt-4 pt-3 border-t border-slate-700 w-full flex justify-center">
+                <a href="unified_report.csv" class="text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1 transition-colors group-hover:text-emerald-300" onclick="event.stopPropagation();">
+                    <span class="text-lg">📥</span> Download CSV
+                </a>
+            </div>
+            
+        </div>
         
-        <a href="db_report.html" class="card group">
-            <div class="icon-circle group-hover:bg-blue-500/20 text-blue-500" style="color: #3B82F6; background: rgba(59, 130, 246, 0.1);">💾</div>
-            <div class="text-xl font-semibold mb-1 text-white">資料庫報告</div>
-            <div class="text-sm text-slate-400">Database Status</div>
-        </a>
+        <!-- DB Report -->
+        <div class="card-container group">
+            <a href="db_report.html" class="card-main">
+                <div class="icon-circle group-hover:bg-blue-500/20 text-blue-500" style="color: #3B82F6; background: rgba(59, 130, 246, 0.1);">💾</div>
+                <div class="text-xl font-semibold mb-1 text-white">資料庫報告</div>
+                <div class="text-sm text-slate-400">Database Status</div>
+            </a>
+            <div class="mt-4 pt-3 border-t border-slate-700 w-full flex justify-center opacity-0"><span class="text-xs">-</span></div>
+        </div>
         
-        <a href="high_yield_strict.html" class="card group">
-            <div class="icon-circle group-hover:bg-green-500/20 text-green-500" style="color: #22c55e; background: rgba(34, 197, 94, 0.1);">🛡️</div>
-            <div class="text-xl font-semibold mb-1 text-white">高殖利率 (嚴格)</div>
-            <div class="text-sm text-slate-400">Strict High Yield</div>
-        </a>
+        <!-- High Yield Strict -->
+        <div class="card-container group">
+            <a href="high_yield_strict.html" class="card-main">
+                <div class="icon-circle group-hover:bg-green-500/20 text-green-500" style="color: #22c55e; background: rgba(34, 197, 94, 0.1);">🛡️</div>
+                <div class="text-xl font-semibold mb-1 text-white">高殖利率 (嚴格)</div>
+                <div class="text-sm text-slate-400">Strict High Yield</div>
+            </a>
+            
+            <div class="mt-4 pt-3 border-t border-slate-700 w-full flex justify-center">
+                <a href="high_yield_strict.csv" class="text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1 transition-colors group-hover:text-emerald-300" onclick="event.stopPropagation();">
+                    <span class="text-lg">📥</span> Download CSV
+                </a>
+            </div>
+            
+        </div>
         
-        <a href="high_yield_score.html" class="card group">
-            <div class="icon-circle group-hover:bg-amber-500/20 text-amber-500" style="color: #F59E0B; background: rgba(245, 158, 11, 0.1);">💰</div>
-            <div class="text-xl font-semibold mb-1 text-white">高殖利率 (評分)</div>
-            <div class="text-sm text-slate-400">High Yield Score</div>
-        </a>
+        <!-- High Yield Score -->
+        <div class="card-container group">
+            <a href="high_yield_score.html" class="card-main">
+                <div class="icon-circle group-hover:bg-amber-500/20 text-amber-500" style="color: #F59E0B; background: rgba(245, 158, 11, 0.1);">💰</div>
+                <div class="text-xl font-semibold mb-1 text-white">高殖利率 (評分)</div>
+                <div class="text-sm text-slate-400">High Yield Score</div>
+            </a>
+             
+            <div class="mt-4 pt-3 border-t border-slate-700 w-full flex justify-center">
+                <a href="high_yield_score.csv" class="text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1 transition-colors group-hover:text-emerald-300" onclick="event.stopPropagation();">
+                    <span class="text-lg">📥</span> Download CSV
+                </a>
+            </div>
+            
+        </div>
         
-        <a href="portfolio_check.html" class="card group">
-            <div class="icon-circle group-hover:bg-red-500/20 text-red-500" style="color: #EF4444; background: rgba(239, 68, 68, 0.1);">🏥</div>
-            <div class="text-xl font-semibold mb-1 text-white">持股健檢</div>
-            <div class="text-sm text-slate-400">Portfolio Health Check</div>
-        </a>
+        <!-- Portfolio Check -->
+        <div class="card-container group">
+            <a href="portfolio_check.html" class="card-main">
+                <div class="icon-circle group-hover:bg-red-500/20 text-red-500" style="color: #EF4444; background: rgba(239, 68, 68, 0.1);">🏥</div>
+                <div class="text-xl font-semibold mb-1 text-white">持股健檢</div>
+                <div class="text-sm text-slate-400">Portfolio Health Check</div>
+            </a>
+             
+            <div class="mt-4 pt-3 border-t border-slate-700 w-full flex justify-center">
+                <a href="portfolio_check.csv" class="text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1 transition-colors group-hover:text-emerald-300" onclick="event.stopPropagation();">
+                    <span class="text-lg">📥</span> Download CSV
+                </a>
+            </div>
+            
+        </div>
     </div>
 
     <footer class="mt-16 text-slate-600 text-xs">
-        System Generated: 2026-01-28 13:05:09 | FinMind Antigravity
+        System Generated: 2026-01-28 13:46:02 | FinMind Antigravity
     </footer>
 </body>
 </html>
