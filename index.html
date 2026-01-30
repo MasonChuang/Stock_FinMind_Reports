@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stock FinMind Reports</title>
+    <!-- ... Styles (Same as before) ... -->
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -74,7 +75,17 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
-        <!-- Dashboard -->
+        <!-- 1. Database Report -->
+        <div class="card-container group">
+            <a href="db_report.html" class="card-main">
+                <div class="icon-circle group-hover:bg-blue-500/20 text-blue-500" style="color: #3B82F6; background: rgba(59, 130, 246, 0.1);">💾</div>
+                <div class="text-xl font-semibold mb-1 text-white">資料庫報告</div>
+                <div class="text-sm text-slate-400">Database Status</div>
+            </a>
+            <div class="mt-4 pt-3 border-t border-slate-700 w-full flex justify-center opacity-0"><span class="text-xs">-</span></div>
+        </div>
+
+        <!-- 2. Dashboard -->
         <div class="card-container group">
              <a href="dashboard.html" class="card-main">
                 <div class="icon-circle group-hover:bg-green-500/20 transition-colors">📊</div>
@@ -84,7 +95,23 @@
             <div class="mt-4 pt-3 border-t border-slate-700 w-full flex justify-center opacity-0"><span class="text-xs">-</span></div>
         </div>
         
-        <!-- Whale -->
+        <!-- 3. Portfolio Check -->
+        <div class="card-container group">
+            <a href="portfolio_check.html" class="card-main">
+                <div class="icon-circle group-hover:bg-red-500/20 text-red-500" style="color: #EF4444; background: rgba(239, 68, 68, 0.1);">🏥</div>
+                <div class="text-xl font-semibold mb-1 text-white">持股健檢</div>
+                <div class="text-sm text-slate-400">Portfolio Health Check</div>
+            </a>
+             
+            <div class="mt-4 pt-3 border-t border-slate-700 w-full flex justify-center">
+                <a href="portfolio_check.csv" class="text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1 transition-colors group-hover:text-emerald-300" onclick="event.stopPropagation();">
+                    <span class="text-lg">📥</span> Download CSV
+                </a>
+            </div>
+            
+        </div>
+        
+        <!-- 4. AFASS V5 (Whale) -->
         <div class="card-container group">
             <a href="unified_report.html" class="card-main">
                 <div class="icon-circle group-hover:bg-amber-500/20 text-amber-500" style="color: #F59E0B; background: rgba(245, 158, 11, 0.1);">🚀</div>
@@ -100,17 +127,7 @@
             
         </div>
         
-        <!-- DB Report -->
-        <div class="card-container group">
-            <a href="db_report.html" class="card-main">
-                <div class="icon-circle group-hover:bg-blue-500/20 text-blue-500" style="color: #3B82F6; background: rgba(59, 130, 246, 0.1);">💾</div>
-                <div class="text-xl font-semibold mb-1 text-white">資料庫報告</div>
-                <div class="text-sm text-slate-400">Database Status</div>
-            </a>
-            <div class="mt-4 pt-3 border-t border-slate-700 w-full flex justify-center opacity-0"><span class="text-xs">-</span></div>
-        </div>
-        
-        <!-- High Yield Strict -->
+        <!-- 5. High Yield Strict -->
         <div class="card-container group">
             <a href="high_yield_strict.html" class="card-main">
                 <div class="icon-circle group-hover:bg-green-500/20 text-green-500" style="color: #22c55e; background: rgba(34, 197, 94, 0.1);">🛡️</div>
@@ -126,7 +143,7 @@
             
         </div>
         
-        <!-- High Yield Score -->
+        <!-- 6. High Yield Score -->
         <div class="card-container group">
             <a href="high_yield_score.html" class="card-main">
                 <div class="icon-circle group-hover:bg-amber-500/20 text-amber-500" style="color: #F59E0B; background: rgba(245, 158, 11, 0.1);">💰</div>
@@ -148,17 +165,17 @@
             </div>
             
         </div>
-        
-        <!-- Portfolio Check -->
+
+        <!-- 7. High Yield Bias Rate -->
         <div class="card-container group">
-            <a href="portfolio_check.html" class="card-main">
-                <div class="icon-circle group-hover:bg-red-500/20 text-red-500" style="color: #EF4444; background: rgba(239, 68, 68, 0.1);">🏥</div>
-                <div class="text-xl font-semibold mb-1 text-white">持股健檢</div>
-                <div class="text-sm text-slate-400">Portfolio Health Check</div>
+            <a href="high_yield_bias.html" class="card-main">
+                <div class="icon-circle group-hover:bg-purple-500/20 text-purple-500" style="color: #A855F7; background: rgba(168, 85, 247, 0.1);">📉</div>
+                <div class="text-xl font-semibold mb-1 text-white">高殖利率 (乖離)</div>
+                <div class="text-sm text-slate-400">High Yield + Bias Rate</div>
             </a>
              
             <div class="mt-4 pt-3 border-t border-slate-700 w-full flex justify-center">
-                <a href="portfolio_check.csv" class="text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1 transition-colors group-hover:text-emerald-300" onclick="event.stopPropagation();">
+                <a href="high_yield_bias.csv" class="text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1 transition-colors group-hover:text-emerald-300" onclick="event.stopPropagation();">
                     <span class="text-lg">📥</span> Download CSV
                 </a>
             </div>
@@ -167,7 +184,7 @@
     </div>
 
     <footer class="mt-16 text-slate-600 text-xs">
-        System Generated: 2026-01-30 11:08:56 | FinMind Antigravity
+        System Generated: 2026-01-30 13:11:25 | FinMind Antigravity
     </footer>
 </body>
 </html>
