@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>高殖利率評分報告 (1415)</title>
+    <title>高殖利率股評分報告 (Scoring)</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts -->
@@ -117,12 +117,8 @@
         
         <div class="container-fluid">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="display-6 text-dark mb-0">高殖利率評分報告 (1415)</h2>
+                <h2 class="display-6 text-dark mb-0">高殖利率股評分報告 (Scoring)</h2>
                 
-        <div class="float-end">
-            <a href="high_yield_score.csv" class="btn btn-outline-success btn-sm"><i class="bi bi-file-earmark-spreadsheet"></i> 下載 Excel (CSV)</a>
-        </div>
-        
             </div>
             
             
@@ -135,40 +131,18 @@
       <th>股票名稱</th>
       <th>產業別</th>
       <th>收盤價</th>
-      <th>年線價格</th>
-      <th>年線乖離率</th>
-      <th>成交量狀態</th>
-      <th>最近年度股利</th>
-      <th>最近年度EPS</th>
-      <th>殖利率(%)</th>
+      <th>殖利率</th>
       <th>平均填息天數</th>
-      <th>Payout</th>
-      <th>近3月的營收</th>
-      <th>Rev_Trend_Score</th>
-      <th>近1季毛利率</th>
-      <th>近2季毛利率</th>
-      <th>GM_Trend_Status</th>
-      <th>GM_Trend_Score</th>
-      <th>近3年平均殖利率</th>
-      <th>近3年平均配發率</th>
-      <th>目標殖利率價格(6%)</th>
       <th>分數</th>
-      <th>評分-殖利率</th>
-      <th>評分-填息</th>
-      <th>評分-連續配息</th>
-      <th>評分-年資</th>
-      <th>評分-連續獲利</th>
-      <th>評分-ROA</th>
-      <th>評分-本業</th>
-      <th>Yield_Avg_5Y</th>
-      <th>策略評價結果</th>
-      <th>Risk_Index</th>
-      <th>Detailed_Reason</th>
-      <th>Yield_Risk</th>
-      <th>EPS_Risk</th>
-      <th>Dividend_Risk</th>
-      <th>ROA_Risk</th>
-      <th>Core_Risk</th>
+      <th>評級</th>
+      <th>殖利率</th>
+      <th>填息</th>
+      <th>連續配息</th>
+      <th>年資</th>
+      <th>連續獲利</th>
+      <th>ROA</th>
+      <th>本業</th>
+      <th>年線乖離率</th>
       <th>建議動作</th>
     </tr>
   </thead>
@@ -178,40 +152,18 @@
       <td>微星</td>
       <td>電腦及週邊設備業</td>
       <td>90.20</td>
-      <td>131.98</td>
-      <td>-31.66</td>
-      <td>正常</td>
-      <td>5.00</td>
-      <td>4.87</td>
-      <td>5.54</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.5432372505543235%</span></td>
       <td>30.25</td>
-      <td>102.67</td>
-      <td>正常</td>
-      <td>0</td>
-      <td>11.26</td>
-      <td>11.11</td>
-      <td>持平</td>
-      <td>0</td>
-      <td>6.28</td>
-      <td>81.27</td>
-      <td>112.00</td>
       <td>7</td>
-      <td>●</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      <td>✗</td>
-      <td>○</td>
-      <td>7.45</td>
-      <td>優選</td>
-      <td>0.0</td>
-      <td>無</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.5432372505543235%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-31.66</td>
       <td>續抱 (Hold)</td>
     </tr>
     <tr>
@@ -219,40 +171,18 @@
       <td>飛捷</td>
       <td>電子工業</td>
       <td>91.70</td>
-      <td>112.22</td>
-      <td>-18.28</td>
-      <td>正常</td>
-      <td>6.00</td>
-      <td>5.33</td>
-      <td>6.54</td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.543075245365322%</span></td>
       <td>75.25</td>
-      <td>112.57</td>
-      <td>留意(月增>10%)</td>
-      <td>1</td>
-      <td>42.89</td>
-      <td>43.86</td>
-      <td>持平</td>
-      <td>0</td>
-      <td>5.63</td>
-      <td>109.00</td>
-      <td>78.33</td>
       <td>7</td>
-      <td>●</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      <td>✗</td>
-      <td>○</td>
-      <td>5.13</td>
-      <td>優選</td>
-      <td>0.0</td>
-      <td>無</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.543075245365322%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-18.28</td>
       <td>續抱 (Hold)</td>
     </tr>
     <tr>
@@ -260,40 +190,18 @@
       <td>百和</td>
       <td>其他</td>
       <td>50.00</td>
-      <td>56.51</td>
-      <td>-11.52</td>
-      <td>正常</td>
-      <td>3.00</td>
-      <td>3.37</td>
-      <td>6.00</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>6.0%</span></td>
       <td>22.80</td>
-      <td>89.02</td>
-      <td>留意(月增>10%)</td>
-      <td>1</td>
-      <td>35.81</td>
-      <td>34.58</td>
-      <td>成長</td>
-      <td>1</td>
-      <td>4.33</td>
-      <td>79.43</td>
-      <td>43.33</td>
       <td>7</td>
-      <td>○</td>
-      <td>●</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      <td>✗</td>
-      <td>○</td>
-      <td>5.20</td>
-      <td>優選</td>
-      <td>0.0</td>
-      <td>無</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>6.0%</span></td>
+      <td><span style='color:#198754; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-11.52</td>
       <td>續抱 (Hold)</td>
     </tr>
     <tr>
@@ -301,40 +209,18 @@
       <td>隆大</td>
       <td>建材營造</td>
       <td>30.85</td>
-      <td>31.76</td>
-      <td>-2.87</td>
-      <td>正常</td>
-      <td>3.00</td>
-      <td>4.31</td>
-      <td>9.72</td>
+      <td><span style='color:#dc3545; font-weight:bold;'>9.724473257698541%</span></td>
       <td>86.50</td>
-      <td>69.61</td>
-      <td>價值陷阱(連3黑)</td>
-      <td>-1</td>
-      <td>35.35</td>
-      <td>22.85</td>
-      <td>成長</td>
-      <td>1</td>
-      <td>7.89</td>
-      <td>60.98</td>
-      <td>37.00</td>
       <td>7</td>
-      <td>●</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      <td>✗</td>
-      <td>○</td>
-      <td>7.20</td>
-      <td>優選</td>
-      <td>0.0</td>
-      <td>無</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#dc3545; font-weight:bold;'>9.724473257698541%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-2.87</td>
       <td>續抱 (Hold)</td>
     </tr>
     <tr>
@@ -342,40 +228,18 @@
       <td>明安</td>
       <td>運動休閒類</td>
       <td>70.70</td>
-      <td>66.90</td>
-      <td>5.68</td>
-      <td>正常</td>
-      <td>4.09</td>
-      <td>3.56</td>
-      <td>5.78</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.783135912305516%</span></td>
       <td>13.67</td>
-      <td>114.85</td>
-      <td>正常</td>
-      <td>0</td>
-      <td>16.34</td>
-      <td>12.44</td>
-      <td>成長</td>
-      <td>1</td>
-      <td>6.91</td>
-      <td>643.71</td>
-      <td>76.21</td>
       <td>7</td>
-      <td>○</td>
-      <td>●</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      <td>✗</td>
-      <td>○</td>
-      <td>6.47</td>
-      <td>優選</td>
-      <td>0.0</td>
-      <td>無</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.783135912305516%</span></td>
+      <td><span style='color:#198754; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>5.68</td>
       <td>續抱 (Hold)</td>
     </tr>
     <tr>
@@ -383,40 +247,18 @@
       <td>裕融</td>
       <td>其他</td>
       <td>77.90</td>
-      <td>101.48</td>
-      <td>-23.24</td>
-      <td>量縮</td>
-      <td>4.38</td>
-      <td>5.80</td>
-      <td>5.62</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.622593068035943%</span></td>
       <td>176.00</td>
-      <td>75.52</td>
-      <td>價值陷阱(連3黑)</td>
-      <td>-1</td>
-      <td>44.54</td>
-      <td>43.21</td>
-      <td>成長</td>
-      <td>1</td>
-      <td>6.88</td>
-      <td>64.93</td>
-      <td>87.60</td>
       <td>6</td>
-      <td>●</td>
-      <td>✗</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      <td>✗</td>
-      <td>○</td>
-      <td>6.75</td>
-      <td>優選</td>
-      <td>0.0</td>
-      <td>無</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.622593068035943%</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-23.24</td>
       <td>續抱 (Hold)</td>
     </tr>
     <tr>
@@ -424,40 +266,18 @@
       <td>華碩</td>
       <td>電腦及週邊設備業</td>
       <td>496.00</td>
-      <td>625.00</td>
-      <td>-20.64</td>
-      <td>正常</td>
-      <td>34.00</td>
-      <td>44.63</td>
-      <td>6.85</td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.854838709677419%</span></td>
       <td>101.60</td>
-      <td>76.18</td>
-      <td>正常</td>
-      <td>0</td>
-      <td>14.33</td>
-      <td>13.81</td>
-      <td>成長</td>
-      <td>1</td>
-      <td>4.44</td>
-      <td>62.12</td>
-      <td>446.67</td>
       <td>6</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      <td>✗</td>
-      <td>○</td>
-      <td>5.40</td>
-      <td>優選</td>
-      <td>0.0</td>
-      <td>無</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.854838709677419%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-20.64</td>
       <td>續抱 (Hold)</td>
     </tr>
     <tr>
@@ -465,40 +285,18 @@
       <td>拓凱</td>
       <td>運動休閒</td>
       <td>158.00</td>
-      <td>183.64</td>
-      <td>-13.96</td>
-      <td>正常</td>
-      <td>11.00</td>
-      <td>12.08</td>
-      <td>6.96</td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.962025316455696%</span></td>
       <td>71.60</td>
-      <td>91.06</td>
-      <td>留意(月增>10%)</td>
-      <td>1</td>
-      <td>34.76</td>
-      <td>37.97</td>
-      <td>季減>2%</td>
-      <td>-1</td>
-      <td>6.43</td>
-      <td>68.91</td>
-      <td>138.33</td>
       <td>6</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      <td>✗</td>
-      <td>○</td>
-      <td>5.25</td>
-      <td>優選</td>
-      <td>0.0</td>
-      <td>無</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.962025316455696%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-13.96</td>
       <td>續抱 (Hold)</td>
     </tr>
     <tr>
@@ -506,40 +304,18 @@
       <td>亞泥</td>
       <td>水泥工業</td>
       <td>35.15</td>
-      <td>40.14</td>
-      <td>-12.43</td>
-      <td>正常</td>
-      <td>2.20</td>
-      <td>2.42</td>
-      <td>6.26</td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.258890469416786%</span></td>
       <td>94.75</td>
-      <td>90.91</td>
-      <td>價值陷阱(連3黑)</td>
-      <td>-1</td>
-      <td>16.69</td>
-      <td>18.07</td>
-      <td>持平</td>
-      <td>0</td>
-      <td>6.26</td>
-      <td>71.81</td>
-      <td>44.87</td>
       <td>6</td>
-      <td>●</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      <td>✗</td>
-      <td>✗</td>
-      <td>7.66</td>
-      <td>優選</td>
-      <td>0.0</td>
-      <td>無</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.258890469416786%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td>-12.43</td>
       <td>續抱 (Hold)</td>
     </tr>
     <tr>
@@ -547,40 +323,778 @@
       <td>安勤</td>
       <td>電腦及週邊設備業</td>
       <td>89.60</td>
-      <td>101.83</td>
-      <td>-12.01</td>
-      <td>出量</td>
-      <td>5.20</td>
-      <td>5.03</td>
-      <td>5.80</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.80357142857143%</span></td>
       <td>89.00</td>
-      <td>103.38</td>
-      <td>留意(月增>10%)</td>
-      <td>1</td>
-      <td>25.80</td>
-      <td>26.12</td>
-      <td>持平</td>
-      <td>0</td>
-      <td>6.00</td>
-      <td>83.25</td>
-      <td>70.98</td>
       <td>6</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
-      <td>✗</td>
-      <td>○</td>
-      <td>4.75</td>
-      <td>優選</td>
-      <td>0.0</td>
-      <td>無</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
-      <td>正常</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.80357142857143%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-12.01</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>6278</td>
+      <td>台表科</td>
+      <td>光電業</td>
+      <td>92.20</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.96529284164859%</span></td>
+      <td>64.00</td>
+      <td>6</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.96529284164859%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-11.69</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>1210</td>
+      <td>大成</td>
+      <td>食品工業</td>
+      <td>50.90</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.5568760510805495%</span></td>
+      <td>62.25</td>
+      <td>6</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.5568760510805495%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-9.59</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>2379</td>
+      <td>瑞昱</td>
+      <td>電子工業</td>
+      <td>483.50</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.274043433298862%</span></td>
+      <td>65.20</td>
+      <td>6</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.274043433298862%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-9.21</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>3014</td>
+      <td>聯陽</td>
+      <td>電子工業</td>
+      <td>120.00</td>
+      <td><span style='color:#dc3545; font-weight:bold;'>7.5%</span></td>
+      <td>222.50</td>
+      <td>6</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#dc3545; font-weight:bold;'>7.5%</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-8.81</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>3213</td>
+      <td>茂訊</td>
+      <td>電腦及週邊設備業</td>
+      <td>98.70</td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.079027355623101%</span></td>
+      <td>77.20</td>
+      <td>6</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.079027355623101%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-8.74</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>6605</td>
+      <td>帝寶</td>
+      <td>汽車工業</td>
+      <td>151.00</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.960264900662252%</span></td>
+      <td>18.00</td>
+      <td>6</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.960264900662252%</span></td>
+      <td><span style='color:#198754; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-8.53</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>1535</td>
+      <td>中宇</td>
+      <td>電機機械</td>
+      <td>52.10</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.758157389635317%</span></td>
+      <td>72.25</td>
+      <td>6</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.758157389635317%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-6.66</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>3303</td>
+      <td>岱稜</td>
+      <td>其他電子類</td>
+      <td>45.50</td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.079753274725275%</span></td>
+      <td>54.80</td>
+      <td>6</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.079753274725275%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-5.70</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>3217</td>
+      <td>優群</td>
+      <td>電子零組件業</td>
+      <td>156.50</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.631315405750799%</span></td>
+      <td>113.20</td>
+      <td>6</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.631315405750799%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-3.56</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>2488</td>
+      <td>漢平</td>
+      <td>電子工業</td>
+      <td>46.00</td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.956521739130435%</span></td>
+      <td>114.25</td>
+      <td>6</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.956521739130435%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-3.22</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>9911</td>
+      <td>櫻花</td>
+      <td>居家生活</td>
+      <td>83.20</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.649038461538462%</span></td>
+      <td>67.20</td>
+      <td>6</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.649038461538462%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-3.11</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>8016</td>
+      <td>矽創</td>
+      <td>電子工業</td>
+      <td>195.50</td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.138107416879795%</span></td>
+      <td>39.00</td>
+      <td>6</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.138107416879795%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-2.96</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>4942</td>
+      <td>嘉彰</td>
+      <td>電子工業</td>
+      <td>37.60</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.319148936170213%</span></td>
+      <td>131.25</td>
+      <td>6</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.319148936170213%</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-2.43</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>4532</td>
+      <td>瑞智</td>
+      <td>電機機械</td>
+      <td>25.45</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.895755206286838%</span></td>
+      <td>29.40</td>
+      <td>6</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.895755206286838%</span></td>
+      <td><span style='color:#198754; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-1.12</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>2414</td>
+      <td>精技</td>
+      <td>電子通路業</td>
+      <td>40.85</td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.119951040391677%</span></td>
+      <td>177.20</td>
+      <td>6</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.119951040391677%</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-0.69</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>2015</td>
+      <td>豐興</td>
+      <td>鋼鐵工業</td>
+      <td>64.60</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.41795665634675%</span></td>
+      <td>143.33</td>
+      <td>6</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.41795665634675%</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-0.64</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>5609</td>
+      <td>中菲行</td>
+      <td>航運業</td>
+      <td>78.70</td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.607369758576874%</span></td>
+      <td>330.33</td>
+      <td>6</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.607369758576874%</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-0.24</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>4915</td>
+      <td>致伸</td>
+      <td>電子零組件業</td>
+      <td>78.70</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.338469301143584%</span></td>
+      <td>93.75</td>
+      <td>6</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.338469301143584%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-0.07</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>9942</td>
+      <td>茂順</td>
+      <td>其他</td>
+      <td>113.50</td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.167400881057269%</span></td>
+      <td>74.00</td>
+      <td>6</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.167400881057269%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>1.84</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>2010</td>
+      <td>春源</td>
+      <td>鋼鐵工業</td>
+      <td>21.55</td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.0324825986078885%</span></td>
+      <td>98.67</td>
+      <td>6</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.0324825986078885%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>8.46</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>5511</td>
+      <td>德昌</td>
+      <td>建材營造</td>
+      <td>67.40</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.637982195845696%</span></td>
+      <td>95.50</td>
+      <td>6</td>
+      <td><span class='badge rounded-pill bg-info text-dark'>優選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.637982195845696%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>9.21</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>3078</td>
+      <td>僑威</td>
+      <td>電子零組件業</td>
+      <td>62.60</td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.3897763578274756%</span></td>
+      <td>228.25</td>
+      <td>5</td>
+      <td><span class='badge rounded-pill bg-secondary'>入選</span></td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.3897763578274756%</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-20.71</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>6203</td>
+      <td>海韻電</td>
+      <td>電子零組件業</td>
+      <td>64.80</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.401562299382716%</span></td>
+      <td>216.80</td>
+      <td>5</td>
+      <td><span class='badge rounded-pill bg-secondary'>入選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.401562299382716%</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td>-9.35</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>5403</td>
+      <td>中菲</td>
+      <td>資訊服務業</td>
+      <td>111.00</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.858417306306307%</span></td>
+      <td>175.25</td>
+      <td>5</td>
+      <td><span class='badge rounded-pill bg-secondary'>入選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.858417306306307%</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-9.24</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>2031</td>
+      <td>新光鋼</td>
+      <td>鋼鐵工業</td>
+      <td>39.50</td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.329113924050633%</span></td>
+      <td>34.00</td>
+      <td>5</td>
+      <td><span class='badge rounded-pill bg-secondary'>入選</span></td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.329113924050633%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td>-6.37</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>1604</td>
+      <td>聲寶</td>
+      <td>電器電纜</td>
+      <td>24.10</td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.224066390041493%</span></td>
+      <td>199.00</td>
+      <td>5</td>
+      <td><span class='badge rounded-pill bg-secondary'>入選</span></td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.224066390041493%</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td>-5.53</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>9930</td>
+      <td>中聯資源</td>
+      <td>綠能環保</td>
+      <td>70.10</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.706134094151213%</span></td>
+      <td>101.20</td>
+      <td>5</td>
+      <td><span class='badge rounded-pill bg-secondary'>入選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.706134094151213%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-2.73</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>9907</td>
+      <td>統一實</td>
+      <td>其他</td>
+      <td>17.90</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.418994413407821%</span></td>
+      <td>165.20</td>
+      <td>5</td>
+      <td><span class='badge rounded-pill bg-secondary'>入選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.418994413407821%</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-2.53</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>1612</td>
+      <td>宏泰</td>
+      <td>電器電纜</td>
+      <td>36.25</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.793103448275862%</span></td>
+      <td>153.00</td>
+      <td>5</td>
+      <td><span class='badge rounded-pill bg-secondary'>入選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.793103448275862%</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>2.20</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>4736</td>
+      <td>泰博</td>
+      <td>生技醫療業</td>
+      <td>134.50</td>
+      <td><span style='color:#dc3545; font-weight:bold;'>7.434944237918216%</span></td>
+      <td>168.67</td>
+      <td>5</td>
+      <td><span class='badge rounded-pill bg-secondary'>入選</span></td>
+      <td><span style='color:#dc3545; font-weight:bold;'>7.434944237918216%</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td>3.79</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>2477</td>
+      <td>美隆電</td>
+      <td>電子工業</td>
+      <td>24.65</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.273833671399595%</span></td>
+      <td>100.20</td>
+      <td>5</td>
+      <td><span class='badge rounded-pill bg-secondary'>入選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.273833671399595%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td>4.59</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>2006</td>
+      <td>東和鋼鐵</td>
+      <td>鋼鐵工業</td>
+      <td>69.40</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.763688760806916%</span></td>
+      <td>302.50</td>
+      <td>5</td>
+      <td><span class='badge rounded-pill bg-secondary'>入選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.763688760806916%</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>5.30</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>4987</td>
+      <td>科誠</td>
+      <td>電腦及週邊設備業</td>
+      <td>81.50</td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.38036809815951%</span></td>
+      <td>200.50</td>
+      <td>5</td>
+      <td><span class='badge rounded-pill bg-secondary'>入選</span></td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.38036809815951%</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>8.45</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>5515</td>
+      <td>建國</td>
+      <td>建材營造</td>
+      <td>32.45</td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.625577812018489%</span></td>
+      <td>111.80</td>
+      <td>5</td>
+      <td><span class='badge rounded-pill bg-secondary'>入選</span></td>
+      <td><span style='color:#dc3545; font-weight:bold;'>6.625577812018489%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>14.44</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>3005</td>
+      <td>神基</td>
+      <td>電腦及週邊設備業</td>
+      <td>112.50</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.320867404444445%</span></td>
+      <td>337.20</td>
+      <td>4</td>
+      <td><span class='badge rounded-pill bg-secondary'>入選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.320867404444445%</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-9.62</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>8446</td>
+      <td>華研</td>
+      <td>文化創意業</td>
+      <td>93.80</td>
+      <td><span style='color:#dc3545; font-weight:bold;'>8.528784648187633%</span></td>
+      <td>290.00</td>
+      <td>4</td>
+      <td><span class='badge rounded-pill bg-secondary'>入選</span></td>
+      <td><span style='color:#dc3545; font-weight:bold;'>8.528784648187633%</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td>-6.58</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>4173</td>
+      <td>久裕</td>
+      <td>生技醫療業</td>
+      <td>21.45</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.539404242424243%</span></td>
+      <td>198.60</td>
+      <td>4</td>
+      <td><span class='badge rounded-pill bg-secondary'>入選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.539404242424243%</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td>-6.53</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>9904</td>
+      <td>寶成</td>
+      <td>運動休閒</td>
+      <td>30.45</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.582922824302135%</span></td>
+      <td>277.50</td>
+      <td>4</td>
+      <td><span class='badge rounded-pill bg-secondary'>入選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.582922824302135%</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td>-1.71</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>2897</td>
+      <td>王道銀行</td>
+      <td>金融保險</td>
+      <td>9.13</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.476451259583789%</span></td>
+      <td>91.33</td>
+      <td>4</td>
+      <td><span class='badge rounded-pill bg-secondary'>入選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.476451259583789%</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td>-1.70</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>1104</td>
+      <td>環泥</td>
+      <td>水泥工業</td>
+      <td>29.65</td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.733558178752108%</span></td>
+      <td>203.25</td>
+      <td>4</td>
+      <td><span class='badge rounded-pill bg-secondary'>入選</span></td>
+      <td><span style='color:#ffc107; font-weight:bold;'>5.733558178752108%</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#ffc107; font-size:1.2em;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td><span style='color:#dc3545; opacity:0.3;'>●</span></td>
+      <td>0.31</td>
       <td>續抱 (Hold)</td>
     </tr>
   </tbody>
