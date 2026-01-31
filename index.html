@@ -1,191 +1,289 @@
 
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stock FinMind Reports</title>
-    <!-- ... Styles (Same as before) ... -->
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#0F172A',
-                        secondary: '#1E293B',
-                        cta: '#22C55E',
-                        background: '#020617',
-                        text: '#F8FAFC'
-                    },
-                    fontFamily: {
-                        sans: ['IBM Plex Sans', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    
     <style>
-        body { background-color: #020617; color: #F8FAFC; font-family: 'IBM Plex Sans', sans-serif; }
-        .card-container { 
-            background: #1E293B; 
-            border-radius: 12px; 
-            padding: 24px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-            transition: all 200ms ease; 
-            border: 1px solid #334155;
+        body {
+            font-family: 'IBM Plex Sans', "Microsoft JhengHei", sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            padding-bottom: 60px;
+        }
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            background-color: #ffffff;
+        }
+        .navbar-brand {
+            font-weight: 600;
+            color: #0d6efd !important;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            min-height: 200px;
+            gap: 10px;
         }
-        .card-container:hover { 
-            box-shadow: 0 10px 15px rgba(0,0,0,0.15); 
-            transform: translateY(-2px); 
-            border-color: #22C55E;
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 20px;
+            background-color: #ffffff;
         }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .card-header {
+            background-color: transparent;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-weight: 600;
+            padding: 15px 20px;
+        }
+        .footer {
+            margin-top: 50px;
+            padding: 20px 0;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        /* Table Enhancements */
+        .table thead th {
+            background-color: #f1f5f9;
+            border-bottom: 2px solid #e2e8f0;
+            color: #475569;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            vertical-align: middle;
+        }
+        .table-hover tbody tr:hover {
+            background-color: #f8fafc;
+        }
+        
+        /* Custom Colors */
+        .text-primary { color: #0d6efd !important; }
+        .bg-primary-soft { background-color: rgba(13, 110, 253, 0.1); color: #0d6efd; }
+        
+        /* Utility */
         .icon-circle {
-            width: 64px;
-            height: 64px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            background: rgba(34, 197, 94, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 12px;
-            font-size: 32px;
-        }
-        .card-main {
-            text-decoration: none;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex-grow: 1;
-            cursor: pointer;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen p-4">
-    <div class="text-center mb-10 animation-fade-in">
-        <h1 class="text-4xl font-bold mb-2 tracking-tight text-white">Stock FinMind Reports</h1>
-        <p class="text-slate-400 font-light text-lg">自動化股票分析與資料庫監控中心</p>
-    </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
-        <!-- 1. Database Report -->
-        <div class="card-container group">
-            <a href="db_report.html" class="card-main">
-                <div class="icon-circle group-hover:bg-blue-500/20 text-blue-500" style="color: #3B82F6; background: rgba(59, 130, 246, 0.1);">💾</div>
-                <div class="text-xl font-semibold mb-1 text-white">資料庫報告</div>
-                <div class="text-sm text-slate-400">Database Status</div>
-            </a>
-            <div class="mt-4 pt-3 border-t border-slate-700 w-full flex justify-center opacity-0"><span class="text-xs">-</span></div>
-        </div>
-
-        <!-- 2. Dashboard -->
-        <div class="card-container group">
-             <a href="dashboard.html" class="card-main">
-                <div class="icon-circle group-hover:bg-green-500/20 transition-colors">📊</div>
-                <div class="text-xl font-semibold mb-1 text-white">市場戰情室</div>
-                <div class="text-sm text-slate-400">Market Dashboard</div>
-            </a>
-            <div class="mt-4 pt-3 border-t border-slate-700 w-full flex justify-center opacity-0"><span class="text-xs">-</span></div>
-        </div>
-        
-        <!-- 3. Portfolio Check -->
-        <div class="card-container group">
-            <a href="portfolio_check.html" class="card-main">
-                <div class="icon-circle group-hover:bg-red-500/20 text-red-500" style="color: #EF4444; background: rgba(239, 68, 68, 0.1);">🏥</div>
-                <div class="text-xl font-semibold mb-1 text-white">持股健檢</div>
-                <div class="text-sm text-slate-400">Portfolio Health Check</div>
-            </a>
-             
-            <div class="mt-4 pt-3 border-t border-slate-700 w-full flex justify-center">
-                <a href="portfolio_check.csv" class="text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1 transition-colors group-hover:text-emerald-300" onclick="event.stopPropagation();">
-                    <span class="text-lg">📥</span> Download CSV
-                </a>
+<body>
+    
+<nav class="navbar navbar-expand-lg navbar-light fixed-top mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <i class="bi bi-graph-up-arrow"></i>
+            <div>
+                <div>Stock FinMind</div>
+                <div style="font-size: 0.75rem; font-weight: 400; color: #6c757d;">Reports Hub</div>
             </div>
-            
-        </div>
-        
-        <!-- 4. AFASS V5 (Whale) -->
-        <div class="card-container group">
-            <a href="unified_report.html" class="card-main">
-                <div class="icon-circle group-hover:bg-amber-500/20 text-amber-500" style="color: #F59E0B; background: rgba(245, 158, 11, 0.1);">🚀</div>
-                <div class="text-xl font-semibold mb-1 text-white">AFASS V6 Sniper</div>
-                <div class="text-sm text-slate-400">Advanced Fund+Chip+Tech</div>
-            </a>
-            
-            <div class="mt-4 pt-3 border-t border-slate-700 w-full flex justify-center">
-                <a href="unified_report.csv" class="text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1 transition-colors group-hover:text-emerald-300" onclick="event.stopPropagation();">
-                    <span class="text-lg">📥</span> Download CSV
-                </a>
-            </div>
-            
-        </div>
-        
-        <!-- 5. High Yield Strict -->
-        <div class="card-container group">
-            <a href="high_yield_strict.html" class="card-main">
-                <div class="icon-circle group-hover:bg-green-500/20 text-green-500" style="color: #22c55e; background: rgba(34, 197, 94, 0.1);">🛡️</div>
-                <div class="text-xl font-semibold mb-1 text-white">高殖利率 (嚴格)</div>
-                <div class="text-sm text-slate-400">Strict High Yield</div>
-            </a>
-            
-            <div class="mt-4 pt-3 border-t border-slate-700 w-full flex justify-center">
-                <a href="high_yield_strict.csv" class="text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1 transition-colors group-hover:text-emerald-300" onclick="event.stopPropagation();">
-                    <span class="text-lg">📥</span> Download CSV
-                </a>
-            </div>
-            
-        </div>
-        
-        <!-- 6. High Yield Score -->
-        <div class="card-container group">
-            <a href="high_yield_score.html" class="card-main">
-                <div class="icon-circle group-hover:bg-amber-500/20 text-amber-500" style="color: #F59E0B; background: rgba(245, 158, 11, 0.1);">💰</div>
-                <div class="text-xl font-semibold mb-1 text-white">高殖利率 (評分)</div>
-                <div class="text-sm text-slate-400">High Yield Score</div>
-            </a>
-             
-            <div class="mt-4 pt-3 border-t border-slate-700 w-full flex justify-center">
-                <a href="high_yield_score.csv" class="text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1 transition-colors group-hover:text-emerald-300" onclick="event.stopPropagation();">
-                    <span class="text-lg">📥</span> Download CSV
-                </a>
-            </div>
-            
-             
-            <div class="mt-4 pt-3 border-t border-slate-700 w-full flex justify-center">
-                <a href="high_yield_best10.csv" class="text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1 transition-colors group-hover:text-emerald-300" onclick="event.stopPropagation();">
-                    <span class="text-lg">📥</span> Download CSV
-                </a>
-            </div>
-            
-        </div>
-
-        <!-- 7. High Yield Bias Rate -->
-        <div class="card-container group">
-            <a href="high_yield_bias.html" class="card-main">
-                <div class="icon-circle group-hover:bg-purple-500/20 text-purple-500" style="color: #A855F7; background: rgba(168, 85, 247, 0.1);">📉</div>
-                <div class="text-xl font-semibold mb-1 text-white">高殖利率 (乖離)</div>
-                <div class="text-sm text-slate-400">High Yield + Bias Rate</div>
-            </a>
-             
-            <div class="mt-4 pt-3 border-t border-slate-700 w-full flex justify-center">
-                <a href="high_yield_bias.csv" class="text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1 transition-colors group-hover:text-emerald-300" onclick="event.stopPropagation();">
-                    <span class="text-lg">📥</span> Download CSV
-                </a>
-            </div>
+        </a>
+        <div class="d-flex align-items-center gap-3">
+            <span class="text-muted small d-none d-md-block">Report Date: 2026-01-31</span>
             
         </div>
     </div>
+</nav>
+<div style="height: 80px;"></div> <!-- Spacer for fixed navbar -->
 
-    <footer class="mt-16 text-slate-600 text-xs">
-        System Generated: 2026-01-31 14:18:58 | FinMind Antigravity
-    </footer>
+    
+    <div class="container">
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bold text-dark">Analysis Hub</h1>
+            <p class="lead text-muted">Centralized Stock Analysis & Monitoring System</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <!-- 1. Database Report -->
+            
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 p-4 align-items-center text-center">
+                <div class="icon-circle bg-primary-soft text-primary mb-3">
+                    <i class="bi bi-database"></i>
+                </div>
+                <a href="db_report.html" class="text-decoration-none text-dark stretched-link">
+                    <h5 class="card-title mb-1">資料庫報告</h5>
+                    <p class="text-muted small mb-0">Database Status</p>
+                </a>
+                <div style="position: relative; z-index: 2; width: 100%;">
+                    
+                </div>
+            </div>
+        </div>
+        
+            
+            <!-- 2. Dashboard -->
+            
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 p-4 align-items-center text-center">
+                <div class="icon-circle bg-success-soft text-success mb-3">
+                    <i class="bi bi-speedometer2"></i>
+                </div>
+                <a href="dashboard.html" class="text-decoration-none text-dark stretched-link">
+                    <h5 class="card-title mb-1">市場戰情室</h5>
+                    <p class="text-muted small mb-0">Market Dashboard</p>
+                </a>
+                <div style="position: relative; z-index: 2; width: 100%;">
+                    
+                </div>
+            </div>
+        </div>
+        
+            
+            <!-- 3. Portfolio Check -->
+            
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 p-4 align-items-center text-center">
+                <div class="icon-circle bg-danger-soft text-danger mb-3">
+                    <i class="bi bi-bandaid"></i>
+                </div>
+                <a href="portfolio_check.html" class="text-decoration-none text-dark stretched-link">
+                    <h5 class="card-title mb-1">持股健檢</h5>
+                    <p class="text-muted small mb-0">Portfolio Health Check</p>
+                </a>
+                <div style="position: relative; z-index: 2; width: 100%;">
+                    
+            <div class="mt-3 pt-3 border-top w-100 text-center">
+                <a href="portfolio_check.csv" class="btn btn-sm btn-outline-success w-100" onclick="event.stopPropagation();">
+                    <i class="bi bi-download"></i> CSV
+                </a>
+            </div>
+            
+                </div>
+            </div>
+        </div>
+        
+            
+            <!-- 4. AFASS V6 -->
+            
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 p-4 align-items-center text-center">
+                <div class="icon-circle bg-warning-soft text-warning mb-3">
+                    <i class="bi bi-rocket-takeoff"></i>
+                </div>
+                <a href="unified_report.html" class="text-decoration-none text-dark stretched-link">
+                    <h5 class="card-title mb-1">AFASS V6 Sniper</h5>
+                    <p class="text-muted small mb-0">Advanced Fund+Chip+Tech</p>
+                </a>
+                <div style="position: relative; z-index: 2; width: 100%;">
+                    
+            <div class="mt-3 pt-3 border-top w-100 text-center">
+                <a href="unified_report.csv" class="btn btn-sm btn-outline-success w-100" onclick="event.stopPropagation();">
+                    <i class="bi bi-download"></i> CSV
+                </a>
+            </div>
+            
+                </div>
+            </div>
+        </div>
+        
+            
+            <!-- 5. High Yield Strict -->
+            
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 p-4 align-items-center text-center">
+                <div class="icon-circle bg-success-soft text-success mb-3">
+                    <i class="bi bi-shield-check"></i>
+                </div>
+                <a href="high_yield_strict.html" class="text-decoration-none text-dark stretched-link">
+                    <h5 class="card-title mb-1">高殖利率 (嚴格)</h5>
+                    <p class="text-muted small mb-0">Strict High Yield</p>
+                </a>
+                <div style="position: relative; z-index: 2; width: 100%;">
+                    
+            <div class="mt-3 pt-3 border-top w-100 text-center">
+                <a href="high_yield_strict.csv" class="btn btn-sm btn-outline-success w-100" onclick="event.stopPropagation();">
+                    <i class="bi bi-download"></i> CSV
+                </a>
+            </div>
+            
+                </div>
+            </div>
+        </div>
+        
+            
+            <!-- 6. High Yield Score -->
+            
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 p-4 align-items-center text-center">
+                <div class="icon-circle bg-warning-soft text-warning mb-3">
+                    <i class="bi bi-cash-coin"></i>
+                </div>
+                <a href="high_yield_score.html" class="text-decoration-none text-dark stretched-link">
+                    <h5 class="card-title mb-1">高殖利率 (評分)</h5>
+                    <p class="text-muted small mb-0">High Yield Score</p>
+                </a>
+                <div style="position: relative; z-index: 2; width: 100%;">
+                    
+            <div class="mt-3 pt-3 border-top w-100 text-center">
+                <a href="high_yield_score.csv" class="btn btn-sm btn-outline-success w-100" onclick="event.stopPropagation();">
+                    <i class="bi bi-download"></i> CSV
+                </a>
+            </div>
+            
+                </div>
+            </div>
+        </div>
+        
+            
+            <!-- 7. High Yield Bias -->
+            
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 p-4 align-items-center text-center">
+                <div class="icon-circle bg-info-soft text-info mb-3">
+                    <i class="bi bi-graph-down"></i>
+                </div>
+                <a href="high_yield_bias.html" class="text-decoration-none text-dark stretched-link">
+                    <h5 class="card-title mb-1">高殖利率 (乖離)</h5>
+                    <p class="text-muted small mb-0">High Yield + Bias Rate</p>
+                </a>
+                <div style="position: relative; z-index: 2; width: 100%;">
+                    
+            <div class="mt-3 pt-3 border-top w-100 text-center">
+                <a href="high_yield_bias.csv" class="btn btn-sm btn-outline-success w-100" onclick="event.stopPropagation();">
+                    <i class="bi bi-download"></i> CSV
+                </a>
+            </div>
+            
+                </div>
+            </div>
+        </div>
+        
+        </div>
+    </div>
+    
+    
+<footer class="footer">
+    <div class="container">
+        <p class="mb-0">© 2026 FinMind Antigravity. Generated by Automated Analysis System.</p>
+    </div>
+</footer>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
     
