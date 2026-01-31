@@ -1,1192 +1,623 @@
 
-<!DOCTYPE html>
-<html lang="zh-TW">
+    <!DOCTYPE html>
+    <html lang="zh-TW">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>高殖利率股評分報告</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>高殖利率評分報告 (1415)</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#0F172A',
-                        secondary: '#1E293B',
-                        background: '#020617',
-                        text: '#F8FAFC'
-                    },
-                    fontFamily: {
-                        sans: ['IBM Plex Sans', 'Microsoft JhengHei', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    
     <style>
-        body { background-color: #020617; color: #F8FAFC; }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        body {
+            font-family: 'IBM Plex Sans', "Microsoft JhengHei", sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            padding-bottom: 60px;
+        }
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            background-color: #ffffff;
+        }
+        .navbar-brand {
+            font-weight: 600;
+            color: #0d6efd !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .card-header {
+            background-color: transparent;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-weight: 600;
+            padding: 15px 20px;
+        }
+        .footer {
+            margin-top: 50px;
+            padding: 20px 0;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            text-align: center;
+            font-size: 0.9rem;
+        }
         
-        .score-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; }
-        .dot-pass { background-color: #22c55e; box-shadow: 0 0 5px rgba(34, 197, 94, 0.5); }
-        .dot-fail { background-color: #ef4444; opacity: 0.3; }
-        .dot-half { background-color: #f59e0b; }
+        /* Table Enhancements */
+        .table thead th {
+            background-color: #f1f5f9;
+            border-bottom: 2px solid #e2e8f0;
+            color: #475569;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            vertical-align: middle;
+            text-align: center !important;
+        }
+        .table tbody td {
+            text-align: center !important;
+            vertical-align: middle;
+        }
+        .table-hover tbody tr:hover {
+            background-color: #f8fafc;
+        }
+        
+        /* Custom Colors */
+        .text-primary { color: #0d6efd !important; }
+        .bg-primary-soft { background-color: rgba(13, 110, 253, 0.1); color: #0d6efd; }
+        
+        /* Utility */
+        .icon-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
-<body class="p-6 min-h-screen">
-    <div class="max-w-full mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 border-b border-slate-700 pb-4">
-            <div>
-                <h1 class="text-3xl font-bold text-white mb-2 flex items-center gap-2">
-                    <span class="text-amber-400">💰</span> 高殖利率股評分報告
-                </h1>
-                <p class="text-slate-400 text-sm">7 Shields Filtration & multi-factor Scoring</p>
-            </div>
-            <div class="text-right mt-4 md:mt-0">
-                <div class="text-slate-500 text-xs text-right mb-1">Report Date</div>
-                <div class="text-xl font-mono text-white bg-slate-800 px-3 py-1 rounded border border-slate-700">2026-01-31</div>
-            </div>
-        </div>
 
-        <div class="rounded-xl border border-slate-700 overflow-hidden bg-slate-800/20 backdrop-blur">
-            <div class="overflow-x-auto">
-                <table class="w-full text-base text-left whitespace-nowrap">
-                    <thead class="text-sm text-slate-400 uppercase bg-slate-900 border-b border-slate-700 sticky top-0 z-10">
-                        <tr>
-                            <th class="px-5 py-4 bg-slate-900">代號</th>
-                            <th class="px-5 py-4 bg-slate-900">名稱</th>
-                            <th class="px-5 py-4 bg-slate-900">產業</th>
-                            <th class="px-5 py-4 text-right bg-slate-900">股價</th>
-                            <th class="px-5 py-4 text-center bg-slate-900">殖利率</th>
-                            <th class="px-5 py-4 text-center bg-slate-900">平均填息(天)</th>
-                            <th class="px-5 py-4 text-center bg-slate-900">總分</th>
-                            <th class="px-5 py-4 text-center bg-slate-900">評級</th>
-                            <th class="px-5 py-4 text-center bg-slate-900" title="殖利率穩定度">殖</th>
-                            <th class="px-5 py-4 text-center bg-slate-900" title="填息能力">填</th>
-                            <th class="px-5 py-4 text-center bg-slate-900" title="連續配息">連</th>
-                            <th class="px-5 py-4 text-center bg-slate-900" title="上市年資">齡</th>
-                            <th class="px-5 py-4 text-center bg-slate-900" title="連續EPS">賺</th>
-                            <th class="px-5 py-4 text-center bg-slate-900" title="ROA">資</th>
-                            <th class="px-5 py-4 text-center bg-slate-900" title="本業比重">本</th>
-                            <th class="px-5 py-4 text-right bg-slate-900">乖離率</th>
-                            <th class="px-5 py-4 bg-slate-900">操作建議</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-700/50">
+    <body>
         
-                <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300"><span class='text-amber-400 text-2xl mr-2'>★</span>2377</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">微星</td>
-                    <td class="px-5 py-4 text-slate-400">電腦及週邊設備業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">90.2</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.5432372505543235%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">30</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">7</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-pass' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-31.66%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <i class="bi bi-graph-up-arrow"></i>
+            <div>
+                <div>Stock FinMind</div>
+                <div style="font-size: 0.75rem; font-weight: 400; color: #6c757d;">Report Viewer</div>
+            </div>
+        </a>
+        <div class="d-flex align-items-center gap-3">
+            <span class="text-muted small d-none d-md-block">Report Date: 2026-01-31</span>
+            <a href="index.html" class="btn btn-outline-secondary btn-sm"><i class="bi bi-arrow-left"></i> Back</a>
+        </div>
+    </div>
+</nav>
+<div style="height: 80px;"></div> <!-- Spacer for fixed navbar -->
+
+        
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="display-6 text-dark mb-0">高殖利率評分報告 (1415)</h2>
+                
+        <div class="float-end">
+            <a href="high_yield_score.csv" class="btn btn-outline-success btn-sm"><i class="bi bi-file-earmark-spreadsheet"></i> 下載 Excel (CSV)</a>
+        </div>
+        
+            </div>
             
-                <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300"><span class='text-amber-400 text-2xl mr-2'>★</span>6206</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">飛捷</td>
-                    <td class="px-5 py-4 text-slate-400">電子工業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">91.7</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-lg">6.543075245365322%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">75</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">7</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-pass' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-18.28%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
             
-                <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300"><span class='text-amber-400 text-2xl mr-2'>★</span>9938</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">百和</td>
-                    <td class="px-5 py-4 text-slate-400">其他</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">50.0</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">6.0%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">22</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">7</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-pass' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-11.52%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300"><span class='text-amber-400 text-2xl mr-2'>★</span>5519</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">隆大</td>
-                    <td class="px-5 py-4 text-slate-400">建材營造</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">30.85</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-lg">9.724473257698541%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">86</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">7</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-pass' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-2.87%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300"><span class='text-amber-400 text-2xl mr-2'>★</span>8938</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">明安</td>
-                    <td class="px-5 py-4 text-slate-400">運動休閒類</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">70.7</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.783135912305516%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">13</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">7</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-pass' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-red-400">5.68%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300"><span class='text-amber-400 text-2xl mr-2'>★</span>9941</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">裕融</td>
-                    <td class="px-5 py-4 text-slate-400">其他</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">77.9</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.622593068035943%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">176</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-pass' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-23.24%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300"><span class='text-amber-400 text-2xl mr-2'>★</span>2357</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">華碩</td>
-                    <td class="px-5 py-4 text-slate-400">電腦及週邊設備業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">496.0</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-lg">6.854838709677419%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">101</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-20.64%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300"><span class='text-amber-400 text-2xl mr-2'>★</span>4536</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">拓凱</td>
-                    <td class="px-5 py-4 text-slate-400">運動休閒</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">158.0</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-lg">6.962025316455696%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">71</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-13.96%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300"><span class='text-amber-400 text-2xl mr-2'>★</span>1102</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">亞泥</td>
-                    <td class="px-5 py-4 text-slate-400">水泥工業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">35.15</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-lg">6.258890469416786%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">94</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-pass' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-12.43%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="bg-amber-900/10 hover:bg-amber-900/20 border-l-4 border-amber-500 transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300"><span class='text-amber-400 text-2xl mr-2'>★</span>3479</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">安勤</td>
-                    <td class="px-5 py-4 text-slate-400">電腦及週邊設備業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">89.6</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.80357142857143%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">89</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-12.01%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">6278</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">台表科</td>
-                    <td class="px-5 py-4 text-slate-400">光電業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">92.2</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.96529284164859%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">64</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-11.69%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">1210</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">大成</td>
-                    <td class="px-5 py-4 text-slate-400">食品工業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">50.9</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.5568760510805495%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">62</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-9.59%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">2379</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">瑞昱</td>
-                    <td class="px-5 py-4 text-slate-400">電子工業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">483.5</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.274043433298862%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">65</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-9.21%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">3014</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">聯陽</td>
-                    <td class="px-5 py-4 text-slate-400">電子工業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">120.0</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-lg">7.5%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">222</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-pass' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-8.81%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">3213</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">茂訊</td>
-                    <td class="px-5 py-4 text-slate-400">電腦及週邊設備業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">98.7</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-lg">6.079027355623101%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">77</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-8.74%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">6605</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">帝寶</td>
-                    <td class="px-5 py-4 text-slate-400">汽車工業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">151.0</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.960264900662252%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">18</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-pass' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-8.53%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">1535</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">中宇</td>
-                    <td class="px-5 py-4 text-slate-400">電機機械</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">52.1</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.758157389635317%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">72</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-6.66%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">3303</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">岱稜</td>
-                    <td class="px-5 py-4 text-slate-400">其他電子類</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">45.5</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-lg">6.079753274725275%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">54</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-5.7%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">3217</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">優群</td>
-                    <td class="px-5 py-4 text-slate-400">電子零組件業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">156.5</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.631315405750799%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">113</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-3.56%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">2488</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">漢平</td>
-                    <td class="px-5 py-4 text-slate-400">電子工業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">46.0</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-lg">6.956521739130435%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">114</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-3.22%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">9911</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">櫻花</td>
-                    <td class="px-5 py-4 text-slate-400">居家生活</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">83.2</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.649038461538462%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">67</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-3.11%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">8016</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">矽創</td>
-                    <td class="px-5 py-4 text-slate-400">電子工業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">195.5</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-lg">6.138107416879795%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">39</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-2.96%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">4942</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">嘉彰</td>
-                    <td class="px-5 py-4 text-slate-400">電子工業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">37.6</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.319148936170213%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">131</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-pass' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-2.43%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">4532</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">瑞智</td>
-                    <td class="px-5 py-4 text-slate-400">電機機械</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">25.45</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.895755206286838%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">29</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-pass' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-1.12%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">2414</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">精技</td>
-                    <td class="px-5 py-4 text-slate-400">電子通路業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">40.85</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-lg">6.119951040391677%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">177</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-pass' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-0.69%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">2015</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">豐興</td>
-                    <td class="px-5 py-4 text-slate-400">鋼鐵工業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">64.6</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.41795665634675%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">143</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-pass' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-0.64%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">5609</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">中菲行</td>
-                    <td class="px-5 py-4 text-slate-400">航運業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">78.7</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-lg">6.607369758576874%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">330</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-pass' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-0.24%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">4915</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">致伸</td>
-                    <td class="px-5 py-4 text-slate-400">電子零組件業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">78.7</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.338469301143584%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">93</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-0.07%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">9942</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">茂順</td>
-                    <td class="px-5 py-4 text-slate-400">其他</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">113.5</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-lg">6.167400881057269%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">74</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-red-400">1.84%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">2010</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">春源</td>
-                    <td class="px-5 py-4 text-slate-400">鋼鐵工業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">21.55</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-lg">6.0324825986078885%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">98</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-red-400">8.46%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">5511</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">德昌</td>
-                    <td class="px-5 py-4 text-slate-400">建材營造</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">67.4</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.637982195845696%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">95</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">6</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>優選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-red-400">9.21%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">3078</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">僑威</td>
-                    <td class="px-5 py-4 text-slate-400">電子零組件業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">62.6</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-lg">6.3897763578274756%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">228</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">5</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>入選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-20.71%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">6203</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">海韻電</td>
-                    <td class="px-5 py-4 text-slate-400">電子零組件業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">64.8</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.401562299382716%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">216</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">5</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>入選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-pass' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-9.35%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">5403</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">中菲</td>
-                    <td class="px-5 py-4 text-slate-400">資訊服務業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">111.0</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.858417306306307%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">175</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">5</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>入選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-9.24%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">2031</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">新光鋼</td>
-                    <td class="px-5 py-4 text-slate-400">鋼鐵工業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">39.5</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-lg">6.329113924050633%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">34</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">5</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>入選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-6.37%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">1604</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">聲寶</td>
-                    <td class="px-5 py-4 text-slate-400">電器電纜</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">24.1</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-lg">6.224066390041493%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">199</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">5</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>入選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-pass' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-5.53%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">9930</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">中聯資源</td>
-                    <td class="px-5 py-4 text-slate-400">綠能環保</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">70.1</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.706134094151213%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">101</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">5</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>入選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-2.73%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">9907</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">統一實</td>
-                    <td class="px-5 py-4 text-slate-400">其他</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">17.9</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.418994413407821%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">165</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">5</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>入選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-2.53%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">1612</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">宏泰</td>
-                    <td class="px-5 py-4 text-slate-400">電器電纜</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">36.25</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.793103448275862%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">153</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">5</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>入選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-red-400">2.2%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">4736</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">泰博</td>
-                    <td class="px-5 py-4 text-slate-400">生技醫療業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">134.5</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-lg">7.434944237918216%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">168</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">5</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>入選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-pass' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-red-400">3.79%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">2477</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">美隆電</td>
-                    <td class="px-5 py-4 text-slate-400">電子工業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">24.65</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.273833671399595%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">100</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">5</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>入選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-red-400">4.59%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">2006</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">東和鋼鐵</td>
-                    <td class="px-5 py-4 text-slate-400">鋼鐵工業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">69.4</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.763688760806916%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">302</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">5</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>入選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-red-400">5.3%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">4987</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">科誠</td>
-                    <td class="px-5 py-4 text-slate-400">電腦及週邊設備業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">81.5</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-lg">6.38036809815951%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">200</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">5</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>入選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-red-400">8.45%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">5515</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">建國</td>
-                    <td class="px-5 py-4 text-slate-400">建材營造</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">32.45</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-lg">6.625577812018489%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">111</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">5</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>入選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-red-400">14.44%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">3005</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">神基</td>
-                    <td class="px-5 py-4 text-slate-400">電腦及週邊設備業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">112.5</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.320867404444445%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">337</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">4</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>入選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-9.62%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">8446</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">華研</td>
-                    <td class="px-5 py-4 text-slate-400">文化創意業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">93.8</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-lg">8.528784648187633%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">290</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">4</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>入選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-6.58%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">4173</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">久裕</td>
-                    <td class="px-5 py-4 text-slate-400">生技醫療業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">21.45</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.539404242424243%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">198</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">4</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>入選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-6.53%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">9904</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">寶成</td>
-                    <td class="px-5 py-4 text-slate-400">運動休閒</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">30.45</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.582922824302135%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">277</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">4</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>入選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-1.71%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">2897</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">王道銀行</td>
-                    <td class="px-5 py-4 text-slate-400">金融保險</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">9.13</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.476451259583789%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">91</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">4</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>入選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-green-400">-1.7%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                <tr class="hover:bg-slate-700/30 border-l-4 border-transparent transition-colors">
-                    <td class="px-5 py-4 font-mono text-slate-300">1104</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">環泥</td>
-                    <td class="px-5 py-4 text-slate-400">水泥工業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">29.65</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-amber-400 text-lg">5.733558178752108%</td>
-                    <td class="px-5 py-4 text-center font-mono text-cyan-300 text-lg">203</td>
-                    <td class="px-5 py-4 text-center font-bold text-2xl text-white">4</td>
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-slate-700 text-slate-300'>入選</span></td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-half' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    <td class="px-5 py-4 text-center"><span class='score-dot dot-fail' style='width:12px; height:12px;'></span></td>
-                    
-                    <td class="px-5 py-4 text-right font-mono text-red-400">0.31%</td>
-                    <td class="px-5 py-4 text-sm text-slate-400">續抱 (Hold)</td>
-                </tr>
-            
-                    </tbody>
-                </table>
+            <div class="card p-3">
+                <div class="table-responsive">
+                    <table class="dataframe table table-striped table-hover text-center align-middle">
+  <thead>
+    <tr style="text-align: right;">
+      <th>股票代號</th>
+      <th>股票名稱</th>
+      <th>產業別</th>
+      <th>收盤價</th>
+      <th>年線價格</th>
+      <th>年線乖離率</th>
+      <th>成交量狀態</th>
+      <th>最近年度股利</th>
+      <th>最近年度EPS</th>
+      <th>殖利率(%)</th>
+      <th>平均填息天數</th>
+      <th>Payout</th>
+      <th>近3月的營收</th>
+      <th>Rev_Trend_Score</th>
+      <th>近1季毛利率</th>
+      <th>近2季毛利率</th>
+      <th>GM_Trend_Status</th>
+      <th>GM_Trend_Score</th>
+      <th>近3年平均殖利率</th>
+      <th>近3年平均配發率</th>
+      <th>目標殖利率價格(6%)</th>
+      <th>分數</th>
+      <th>評分-殖利率</th>
+      <th>評分-填息</th>
+      <th>評分-連續配息</th>
+      <th>評分-年資</th>
+      <th>評分-連續獲利</th>
+      <th>評分-ROA</th>
+      <th>評分-本業</th>
+      <th>Yield_Avg_5Y</th>
+      <th>策略評價結果</th>
+      <th>Risk_Index</th>
+      <th>Detailed_Reason</th>
+      <th>Yield_Risk</th>
+      <th>EPS_Risk</th>
+      <th>Dividend_Risk</th>
+      <th>ROA_Risk</th>
+      <th>Core_Risk</th>
+      <th>建議動作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2377</td>
+      <td>微星</td>
+      <td>電腦及週邊設備業</td>
+      <td>90.20</td>
+      <td>131.98</td>
+      <td>-31.66</td>
+      <td>正常</td>
+      <td>5.00</td>
+      <td>4.87</td>
+      <td>5.54</td>
+      <td>30.25</td>
+      <td>102.67</td>
+      <td>正常</td>
+      <td>0</td>
+      <td>11.26</td>
+      <td>11.11</td>
+      <td>持平</td>
+      <td>0</td>
+      <td>6.28</td>
+      <td>81.27</td>
+      <td>112.00</td>
+      <td>7</td>
+      <td>●</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>✗</td>
+      <td>○</td>
+      <td>7.45</td>
+      <td>優選</td>
+      <td>0.0</td>
+      <td>無</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>6206</td>
+      <td>飛捷</td>
+      <td>電子工業</td>
+      <td>91.70</td>
+      <td>112.22</td>
+      <td>-18.28</td>
+      <td>正常</td>
+      <td>6.00</td>
+      <td>5.33</td>
+      <td>6.54</td>
+      <td>75.25</td>
+      <td>112.57</td>
+      <td>留意(月增>10%)</td>
+      <td>1</td>
+      <td>42.89</td>
+      <td>43.86</td>
+      <td>持平</td>
+      <td>0</td>
+      <td>5.63</td>
+      <td>109.00</td>
+      <td>78.33</td>
+      <td>7</td>
+      <td>●</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>✗</td>
+      <td>○</td>
+      <td>5.13</td>
+      <td>優選</td>
+      <td>0.0</td>
+      <td>無</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>9938</td>
+      <td>百和</td>
+      <td>其他</td>
+      <td>50.00</td>
+      <td>56.51</td>
+      <td>-11.52</td>
+      <td>正常</td>
+      <td>3.00</td>
+      <td>3.37</td>
+      <td>6.00</td>
+      <td>22.80</td>
+      <td>89.02</td>
+      <td>留意(月增>10%)</td>
+      <td>1</td>
+      <td>35.81</td>
+      <td>34.58</td>
+      <td>成長</td>
+      <td>1</td>
+      <td>4.33</td>
+      <td>79.43</td>
+      <td>43.33</td>
+      <td>7</td>
+      <td>○</td>
+      <td>●</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>✗</td>
+      <td>○</td>
+      <td>5.20</td>
+      <td>優選</td>
+      <td>0.0</td>
+      <td>無</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>5519</td>
+      <td>隆大</td>
+      <td>建材營造</td>
+      <td>30.85</td>
+      <td>31.76</td>
+      <td>-2.87</td>
+      <td>正常</td>
+      <td>3.00</td>
+      <td>4.31</td>
+      <td>9.72</td>
+      <td>86.50</td>
+      <td>69.61</td>
+      <td>價值陷阱(連3黑)</td>
+      <td>-1</td>
+      <td>35.35</td>
+      <td>22.85</td>
+      <td>成長</td>
+      <td>1</td>
+      <td>7.89</td>
+      <td>60.98</td>
+      <td>37.00</td>
+      <td>7</td>
+      <td>●</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>✗</td>
+      <td>○</td>
+      <td>7.20</td>
+      <td>優選</td>
+      <td>0.0</td>
+      <td>無</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>8938</td>
+      <td>明安</td>
+      <td>運動休閒類</td>
+      <td>70.70</td>
+      <td>66.90</td>
+      <td>5.68</td>
+      <td>正常</td>
+      <td>4.09</td>
+      <td>3.56</td>
+      <td>5.78</td>
+      <td>13.67</td>
+      <td>114.85</td>
+      <td>正常</td>
+      <td>0</td>
+      <td>16.34</td>
+      <td>12.44</td>
+      <td>成長</td>
+      <td>1</td>
+      <td>6.91</td>
+      <td>643.71</td>
+      <td>76.21</td>
+      <td>7</td>
+      <td>○</td>
+      <td>●</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>✗</td>
+      <td>○</td>
+      <td>6.47</td>
+      <td>優選</td>
+      <td>0.0</td>
+      <td>無</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>9941</td>
+      <td>裕融</td>
+      <td>其他</td>
+      <td>77.90</td>
+      <td>101.48</td>
+      <td>-23.24</td>
+      <td>量縮</td>
+      <td>4.38</td>
+      <td>5.80</td>
+      <td>5.62</td>
+      <td>176.00</td>
+      <td>75.52</td>
+      <td>價值陷阱(連3黑)</td>
+      <td>-1</td>
+      <td>44.54</td>
+      <td>43.21</td>
+      <td>成長</td>
+      <td>1</td>
+      <td>6.88</td>
+      <td>64.93</td>
+      <td>87.60</td>
+      <td>6</td>
+      <td>●</td>
+      <td>✗</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>✗</td>
+      <td>○</td>
+      <td>6.75</td>
+      <td>優選</td>
+      <td>0.0</td>
+      <td>無</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>2357</td>
+      <td>華碩</td>
+      <td>電腦及週邊設備業</td>
+      <td>496.00</td>
+      <td>625.00</td>
+      <td>-20.64</td>
+      <td>正常</td>
+      <td>34.00</td>
+      <td>44.63</td>
+      <td>6.85</td>
+      <td>101.60</td>
+      <td>76.18</td>
+      <td>正常</td>
+      <td>0</td>
+      <td>14.33</td>
+      <td>13.81</td>
+      <td>成長</td>
+      <td>1</td>
+      <td>4.44</td>
+      <td>62.12</td>
+      <td>446.67</td>
+      <td>6</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>✗</td>
+      <td>○</td>
+      <td>5.40</td>
+      <td>優選</td>
+      <td>0.0</td>
+      <td>無</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>4536</td>
+      <td>拓凱</td>
+      <td>運動休閒</td>
+      <td>158.00</td>
+      <td>183.64</td>
+      <td>-13.96</td>
+      <td>正常</td>
+      <td>11.00</td>
+      <td>12.08</td>
+      <td>6.96</td>
+      <td>71.60</td>
+      <td>91.06</td>
+      <td>留意(月增>10%)</td>
+      <td>1</td>
+      <td>34.76</td>
+      <td>37.97</td>
+      <td>季減>2%</td>
+      <td>-1</td>
+      <td>6.43</td>
+      <td>68.91</td>
+      <td>138.33</td>
+      <td>6</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>✗</td>
+      <td>○</td>
+      <td>5.25</td>
+      <td>優選</td>
+      <td>0.0</td>
+      <td>無</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>1102</td>
+      <td>亞泥</td>
+      <td>水泥工業</td>
+      <td>35.15</td>
+      <td>40.14</td>
+      <td>-12.43</td>
+      <td>正常</td>
+      <td>2.20</td>
+      <td>2.42</td>
+      <td>6.26</td>
+      <td>94.75</td>
+      <td>90.91</td>
+      <td>價值陷阱(連3黑)</td>
+      <td>-1</td>
+      <td>16.69</td>
+      <td>18.07</td>
+      <td>持平</td>
+      <td>0</td>
+      <td>6.26</td>
+      <td>71.81</td>
+      <td>44.87</td>
+      <td>6</td>
+      <td>●</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>✗</td>
+      <td>✗</td>
+      <td>7.66</td>
+      <td>優選</td>
+      <td>0.0</td>
+      <td>無</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+    <tr>
+      <td>3479</td>
+      <td>安勤</td>
+      <td>電腦及週邊設備業</td>
+      <td>89.60</td>
+      <td>101.83</td>
+      <td>-12.01</td>
+      <td>出量</td>
+      <td>5.20</td>
+      <td>5.03</td>
+      <td>5.80</td>
+      <td>89.00</td>
+      <td>103.38</td>
+      <td>留意(月增>10%)</td>
+      <td>1</td>
+      <td>25.80</td>
+      <td>26.12</td>
+      <td>持平</td>
+      <td>0</td>
+      <td>6.00</td>
+      <td>83.25</td>
+      <td>70.98</td>
+      <td>6</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>✗</td>
+      <td>○</td>
+      <td>4.75</td>
+      <td>優選</td>
+      <td>0.0</td>
+      <td>無</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>正常</td>
+      <td>續抱 (Hold)</td>
+    </tr>
+  </tbody>
+</table>
+                </div>
             </div>
         </div>
-        <footer class="mt-8 text-center text-slate-600 text-xs">
-            Generated by FinMind Antigravity
-        </footer>
-    </div>
-</body>
-</html>
         
+        
+<footer class="footer">
+    <div class="container">
+        <p class="mb-0">© 2026 FinMind Antigravity. Generated by Automated Analysis System.</p>
+    </div>
+</footer>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+        <!-- DataTables Script override for Bootstrap 5 style if needed (or standard) -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+        
+        <script>
+            $(document).ready(function() {
+                $('.table').DataTable({
+                    "pageLength": 50,
+                    "order": [[ 0, "asc" ]], 
+                    "language": {
+                        "search": "🔍 搜尋:",
+                        "lengthMenu": "每頁顯示 _MENU_ 筆",
+                        "info": "顯示 _START_ 到 _END_ 筆 (共 _TOTAL_ 筆)",
+                        "paginate": { "first": "首頁", "last": "末頁", "next": "下一頁", "previous": "上一頁" }
+                    }
+                });
+            });
+        </script>
+    </body>
+    </html>
+    
