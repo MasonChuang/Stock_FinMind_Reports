@@ -1,101 +1,200 @@
 
-<!DOCTYPE html>
-<html lang="zh-TW">
+    <!DOCTYPE html>
+    <html lang="zh-TW">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>嚴格版高殖利率篩選報告</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>嚴格版高殖利率篩選 (1028)</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#0F172A',
-                        secondary: '#1E293B',
-                        background: '#020617',
-                        text: '#F8FAFC'
-                    },
-                    fontFamily: {
-                        sans: ['IBM Plex Sans', 'Microsoft JhengHei', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    
     <style>
-        body { background-color: #020617; color: #F8FAFC; }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        body {
+            font-family: 'IBM Plex Sans', "Microsoft JhengHei", sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            padding-bottom: 60px;
+        }
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            background-color: #ffffff;
+        }
+        .navbar-brand {
+            font-weight: 600;
+            color: #0d6efd !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .card-header {
+            background-color: transparent;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-weight: 600;
+            padding: 15px 20px;
+        }
+        .footer {
+            margin-top: 50px;
+            padding: 20px 0;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        /* Table Enhancements */
+        .table thead th {
+            background-color: #f1f5f9;
+            border-bottom: 2px solid #e2e8f0;
+            color: #475569;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            vertical-align: middle;
+            text-align: center !important;
+        }
+        .table tbody td {
+            text-align: center !important;
+            vertical-align: middle;
+        }
+        .table-hover tbody tr:hover {
+            background-color: #f8fafc;
+        }
+        
+        /* Custom Colors */
+        .text-primary { color: #0d6efd !important; }
+        .bg-primary-soft { background-color: rgba(13, 110, 253, 0.1); color: #0d6efd; }
+        
+        /* Utility */
+        .icon-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
-<body class="p-6 min-h-screen">
-    <div class="max-w-full mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 border-b border-slate-700 pb-4">
-            <div>
-                <h1 class="text-3xl font-bold text-white mb-2 flex items-center gap-2">
-                    <span class="text-green-400">🛡️</span> 嚴格版高殖利率篩選結果
-                </h1>
-                <p class="text-slate-400 text-sm">7 Strict Shields: ROA > 5% | Yield > 4% | Fill < 30 Days | Div > 5Y | EPS > 0 | Core > 70% | Age > 10Y</p>
-            </div>
-            <div class="text-right mt-4 md:mt-0">
-                <div class="text-slate-500 text-xs text-right mb-1">Report Date</div>
-                <div class="text-xl font-mono text-white bg-slate-800 px-3 py-1 rounded border border-slate-700">2026-01-31</div>
-            </div>
-        </div>
 
-        <div class="rounded-xl border border-slate-700 overflow-hidden bg-slate-800/20 backdrop-blur">
-            <div class="overflow-x-auto">
-                <table class="w-full text-base text-left whitespace-nowrap">
-                    <thead class="text-sm text-slate-400 uppercase bg-slate-900 border-b border-slate-700 sticky top-0 z-10">
-                        <tr>
-                            <th class="px-5 py-4 bg-slate-900">代號</th>
-                            <th class="px-5 py-4 bg-slate-900">名稱</th>
-                            <th class="px-5 py-4 bg-slate-900">產業</th>
-                            <th class="px-5 py-4 text-right bg-slate-900">收盤價</th>
-                            <th class="px-5 py-4 text-center bg-slate-900">ROA(%)</th>
-                            <th class="px-5 py-4 text-center bg-slate-900">連續配息</th>
-                            <th class="px-5 py-4 text-center bg-slate-900">填息天數</th>
-                            <th class="px-5 py-4 text-center bg-slate-900">殖利率(%)</th>
-                            <th class="px-5 py-4 text-center bg-slate-900">EPS狀況</th>
-                            <th class="px-5 py-4 text-center bg-slate-900">本業比(%)</th>
-                            <th class="px-5 py-4 text-center bg-slate-900">上市年資</th>
-                            <th class="px-5 py-4 text-center bg-slate-900">年線狀態</th>
-                            <th class="px-5 py-4 text-right bg-slate-900">乖離率</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-700/50">
+    <body>
         
-                <tr class="hover:bg-slate-700/30 transition-colors border-l-4 border-l-transparent hover:border-l-green-500">
-                    <td class="px-5 py-4 font-mono text-slate-300">3526</td>
-                    <td class="px-5 py-4 font-bold text-white text-lg">凡甲</td>
-                    <td class="px-5 py-4 text-slate-400">電子零組件業</td>
-                    <td class="px-5 py-4 text-right font-mono font-bold text-white text-lg">249.0</td>
-                    
-                    <td class="px-5 py-4 text-center font-mono text-red-400 text-lg">15.53%</td>
-                    <td class="px-5 py-4 text-center font-mono text-lg">19</td>
-                    <td class="px-5 py-4 text-center font-mono text-green-400 text-lg">13.8</td>
-                    <td class="px-5 py-4 text-center font-mono font-bold text-red-400 text-xl">6.1%</td>
-                    <td class="px-5 py-4 text-center"><span class="text-green-400">✔ PASS</span></td>
-                    <td class="px-5 py-4 text-center font-mono text-lg">90.08%</td>
-                    <td class="px-5 py-4 text-center font-mono text-lg">18.62</td>
-                    
-                    <td class="px-5 py-4 text-center"><span class='px-2 py-1 rounded text-sm font-bold bg-red-500/20 text-red-300'>Above</span></td>
-                    <td class="px-5 py-4 text-right font-mono text-red-400 text-lg">0.98%</td>
-                </tr>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <i class="bi bi-graph-up-arrow"></i>
+            <div>
+                <div>Stock FinMind</div>
+                <div style="font-size: 0.75rem; font-weight: 400; color: #6c757d;">Report Viewer</div>
+            </div>
+        </a>
+        <div class="d-flex align-items-center gap-3">
+            <span class="text-muted small d-none d-md-block">Report Date: 2026-01-31</span>
+            <a href="index.html" class="btn btn-outline-secondary btn-sm"><i class="bi bi-arrow-left"></i> Back</a>
+        </div>
+    </div>
+</nav>
+<div style="height: 80px;"></div> <!-- Spacer for fixed navbar -->
+
+        
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="display-6 text-dark mb-0">嚴格版高殖利率篩選 (1028)</h2>
+                
+            </div>
             
-                    </tbody>
-                </table>
+            
+            <div class="card p-3">
+                <div class="table-responsive">
+                    <table class="dataframe table table-striped table-hover text-center align-middle">
+  <thead>
+    <tr style="text-align: right;">
+      <th>股票代號</th>
+      <th>股票名稱</th>
+      <th>產業別</th>
+      <th>收盤價</th>
+      <th>1.ROA(%)</th>
+      <th>2.連續配息(年)</th>
+      <th>3.填息天數(日)</th>
+      <th>4.殖利率(%)</th>
+      <th>5.EPS狀況</th>
+      <th>6.本業佔比(%)</th>
+      <th>7.上市年資(年)</th>
+      <th>年線狀態</th>
+      <th>乖離率(%)</th>
+      <th>綜合結果</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3526</td>
+      <td>凡甲</td>
+      <td>電子零組件業</td>
+      <td>249.0</td>
+      <td>15.53</td>
+      <td>19</td>
+      <td>13.8</td>
+      <td>6.1</td>
+      <td>PASS</td>
+      <td>90.08</td>
+      <td>18.62</td>
+      <td>Above</td>
+      <td>0.98</td>
+      <td>PASS</td>
+    </tr>
+  </tbody>
+</table>
+                </div>
             </div>
         </div>
-        <footer class="mt-8 text-center text-slate-600 text-xs">
-            Generated by FinMind Antigravity | Strict High Yield Strategy
-        </footer>
-    </div>
-</body>
-</html>
         
+        
+<footer class="footer">
+    <div class="container">
+        <p class="mb-0">© 2026 FinMind Antigravity. Generated by Automated Analysis System.</p>
+    </div>
+</footer>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+        <!-- DataTables Script override for Bootstrap 5 style if needed (or standard) -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+        
+        <script>
+            $(document).ready(function() {
+                $('.table').DataTable({
+                    "pageLength": 50,
+                    "order": [[ 0, "asc" ]], 
+                    "language": {
+                        "search": "🔍 搜尋:",
+                        "lengthMenu": "每頁顯示 _MENU_ 筆",
+                        "info": "顯示 _START_ 到 _END_ 筆 (共 _TOTAL_ 筆)",
+                        "paginate": { "first": "首頁", "last": "末頁", "next": "下一頁", "previous": "上一頁" }
+                    }
+                });
+            });
+        </script>
+    </body>
+    </html>
+    

@@ -1,41 +1,133 @@
 
     <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8">
-        <title>High Yield & Slow Bull Strategy V2</title>
-        <!-- Bootstrap & DataTables CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <html lang="zh-TW">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高殖利率乖離率報告 (1029)</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    
+    <style>
+        body {
+            font-family: 'IBM Plex Sans', "Microsoft JhengHei", sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            padding-bottom: 60px;
+        }
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            background-color: #ffffff;
+        }
+        .navbar-brand {
+            font-weight: 600;
+            color: #0d6efd !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .card-header {
+            background-color: transparent;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-weight: 600;
+            padding: 15px 20px;
+        }
+        .footer {
+            margin-top: 50px;
+            padding: 20px 0;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            text-align: center;
+            font-size: 0.9rem;
+        }
         
-        <style>
-            body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f8f9fa; }
-            .container-fluid { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-            h1 { color: #2c3e50; margin-bottom: 20px; font-weight: 600; }
-            
-            /* Table Styling */
-            table.dataTable thead { background-color: #2c3e50; color: white; }
-            
-            /* Conditional Formatting Custom Classes (Applied via JS usually, or we inject styles) */
-            .val-positive { color: #dc3545; font-weight: bold; } /* Red for positive (TW Stock convention) */
-            .val-negative { color: #198754; font-weight: bold; } /* Green for negative */
-            
-            /* Badge Styles */
-            .badge-elite { background-color: #ffc107; color: #000; }
-            .badge-superior { background-color: #0d6efd; }
-            
-        </style>
-    </head>
+        /* Table Enhancements */
+        .table thead th {
+            background-color: #f1f5f9;
+            border-bottom: 2px solid #e2e8f0;
+            color: #475569;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            vertical-align: middle;
+            text-align: center !important;
+        }
+        .table tbody td {
+            text-align: center !important;
+            vertical-align: middle;
+        }
+        .table-hover tbody tr:hover {
+            background-color: #f8fafc;
+        }
+        
+        /* Custom Colors */
+        .text-primary { color: #0d6efd !important; }
+        .bg-primary-soft { background-color: rgba(13, 110, 253, 0.1); color: #0d6efd; }
+        
+        /* Utility */
+        .icon-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
     <body>
+        
+<nav class="navbar navbar-expand-lg navbar-light fixed-top mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <i class="bi bi-graph-up-arrow"></i>
+            <div>
+                <div>Stock FinMind</div>
+                <div style="font-size: 0.75rem; font-weight: 400; color: #6c757d;">Report Viewer</div>
+            </div>
+        </a>
+        <div class="d-flex align-items-center gap-3">
+            <span class="text-muted small d-none d-md-block">Report Date: 2026-01-31</span>
+            <a href="index.html" class="btn btn-outline-secondary btn-sm"><i class="bi bi-arrow-left"></i> Back</a>
+        </div>
+    </div>
+</nav>
+<div style="height: 80px;"></div> <!-- Spacer for fixed navbar -->
+
+        
         <div class="container-fluid">
-            <h1>📊 High Yield & Slow Bull Strategy V2</h1>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="display-6 text-dark mb-0">高殖利率乖離率報告 (1029)</h2>
+                
+            </div>
             
-            <p class="text-muted">Generated by Antigravity | 2026-01-31 10:29</p>
-            <hr>
-            <div class="table-responsive">
-                <table class="dataframe table table-striped table-hover">
+            
+            <div class="card p-3">
+                <div class="table-responsive">
+                    <table class="dataframe table table-striped table-hover text-center align-middle">
   <thead>
     <tr style="text-align: right;">
+      <th>stock_id</th>
       <th>StrategyRank</th>
       <th>Chart</th>
       <th>stock_name</th>
@@ -59,6 +151,7 @@
   </thead>
   <tbody>
     <tr>
+      <td>1442</td>
       <td>1</td>
       <td><a href="HighYield_V2_Charts/Chart_1442.html" target="_blank">📊 View</a></td>
       <td>名軒</td>
@@ -80,6 +173,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>5508</td>
       <td>2</td>
       <td><a href="HighYield_V2_Charts/Chart_5508.html" target="_blank">📊 View</a></td>
       <td>永信建</td>
@@ -101,6 +195,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>3056</td>
       <td>3</td>
       <td><a href="HighYield_V2_Charts/Chart_3056.html" target="_blank">📊 View</a></td>
       <td>富華新</td>
@@ -122,6 +217,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>2377</td>
       <td>4</td>
       <td><a href="HighYield_V2_Charts/Chart_2377.html" target="_blank">📊 View</a></td>
       <td>微星</td>
@@ -143,6 +239,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>7770</td>
       <td>5</td>
       <td><a href="HighYield_V2_Charts/Chart_7770.html" target="_blank">📊 View</a></td>
       <td>君曜</td>
@@ -164,6 +261,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>1446</td>
       <td>6</td>
       <td><a href="HighYield_V2_Charts/Chart_1446.html" target="_blank">📊 View</a></td>
       <td>宏和</td>
@@ -185,6 +283,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>6546</td>
       <td>7</td>
       <td><a href="HighYield_V2_Charts/Chart_6546.html" target="_blank">📊 View</a></td>
       <td>正基</td>
@@ -206,6 +305,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>3158</td>
       <td>8</td>
       <td><a href="HighYield_V2_Charts/Chart_3158.html" target="_blank">📊 View</a></td>
       <td>嘉實</td>
@@ -227,6 +327,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>7757</td>
       <td>9</td>
       <td><a href="HighYield_V2_Charts/Chart_7757.html" target="_blank">📊 View</a></td>
       <td>金色三麥</td>
@@ -248,6 +349,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>7805</td>
       <td>10</td>
       <td><a href="HighYield_V2_Charts/Chart_7805.html" target="_blank">📊 View</a></td>
       <td>威聯通</td>
@@ -269,6 +371,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>2387</td>
       <td>11</td>
       <td><a href="HighYield_V2_Charts/Chart_2387.html" target="_blank">📊 View</a></td>
       <td>精元</td>
@@ -290,6 +393,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>1475</td>
       <td>12</td>
       <td><a href="HighYield_V2_Charts/Chart_1475.html" target="_blank">📊 View</a></td>
       <td>業旺</td>
@@ -311,6 +415,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>7705</td>
       <td>13</td>
       <td><a href="HighYield_V2_Charts/Chart_7705.html" target="_blank">📊 View</a></td>
       <td>三商餐飲</td>
@@ -332,6 +437,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>5546</td>
       <td>14</td>
       <td><a href="HighYield_V2_Charts/Chart_5546.html" target="_blank">📊 View</a></td>
       <td>永固-KY</td>
@@ -353,6 +459,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>7767</td>
       <td>15</td>
       <td><a href="HighYield_V2_Charts/Chart_7767.html" target="_blank">📊 View</a></td>
       <td>仁大資訊</td>
@@ -374,6 +481,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>9943</td>
       <td>16</td>
       <td><a href="HighYield_V2_Charts/Chart_9943.html" target="_blank">📊 View</a></td>
       <td>好樂迪</td>
@@ -395,6 +503,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>5603</td>
       <td>17</td>
       <td><a href="HighYield_V2_Charts/Chart_5603.html" target="_blank">📊 View</a></td>
       <td>陸海</td>
@@ -416,6 +525,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>8163</td>
       <td>18</td>
       <td><a href="HighYield_V2_Charts/Chart_8163.html" target="_blank">📊 View</a></td>
       <td>達方</td>
@@ -437,6 +547,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>3147</td>
       <td>19</td>
       <td><a href="HighYield_V2_Charts/Chart_3147.html" target="_blank">📊 View</a></td>
       <td>大綜</td>
@@ -458,6 +569,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>6143</td>
       <td>20</td>
       <td><a href="HighYield_V2_Charts/Chart_6143.html" target="_blank">📊 View</a></td>
       <td>振曜</td>
@@ -479,6 +591,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>4565</td>
       <td>21</td>
       <td><a href="HighYield_V2_Charts/Chart_4565.html" target="_blank">📊 View</a></td>
       <td>宏偉</td>
@@ -500,6 +613,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>9938</td>
       <td>22</td>
       <td><a href="HighYield_V2_Charts/Chart_9938.html" target="_blank">📊 View</a></td>
       <td>百和</td>
@@ -521,6 +635,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>6212</td>
       <td>23</td>
       <td><a href="HighYield_V2_Charts/Chart_6212.html" target="_blank">📊 View</a></td>
       <td>理銘</td>
@@ -542,6 +657,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>8433</td>
       <td>24</td>
       <td><a href="HighYield_V2_Charts/Chart_8433.html" target="_blank">📊 View</a></td>
       <td>弘帆</td>
@@ -563,6 +679,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>6508</td>
       <td>25</td>
       <td><a href="HighYield_V2_Charts/Chart_6508.html" target="_blank">📊 View</a></td>
       <td>惠光</td>
@@ -584,6 +701,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>6195</td>
       <td>26</td>
       <td><a href="HighYield_V2_Charts/Chart_6195.html" target="_blank">📊 View</a></td>
       <td>詩肯</td>
@@ -605,6 +723,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>3227</td>
       <td>27</td>
       <td><a href="HighYield_V2_Charts/Chart_3227.html" target="_blank">📊 View</a></td>
       <td>原相</td>
@@ -626,6 +745,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>4440</td>
       <td>28</td>
       <td><a href="HighYield_V2_Charts/Chart_4440.html" target="_blank">📊 View</a></td>
       <td>宜新實業</td>
@@ -647,6 +767,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>7575</td>
       <td>29</td>
       <td><a href="HighYield_V2_Charts/Chart_7575.html" target="_blank">📊 View</a></td>
       <td>安美得</td>
@@ -668,6 +789,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>7718</td>
       <td>30</td>
       <td><a href="HighYield_V2_Charts/Chart_7718.html" target="_blank">📊 View</a></td>
       <td>友鋮</td>
@@ -689,6 +811,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>6637</td>
       <td>31</td>
       <td><a href="HighYield_V2_Charts/Chart_6637.html" target="_blank">📊 View</a></td>
       <td>醫影</td>
@@ -710,6 +833,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>2063</td>
       <td>32</td>
       <td><a href="HighYield_V2_Charts/Chart_2063.html" target="_blank">📊 View</a></td>
       <td>世鎧</td>
@@ -731,6 +855,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>5015</td>
       <td>33</td>
       <td><a href="HighYield_V2_Charts/Chart_5015.html" target="_blank">📊 View</a></td>
       <td>華祺</td>
@@ -752,6 +877,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>5220</td>
       <td>34</td>
       <td><a href="HighYield_V2_Charts/Chart_5220.html" target="_blank">📊 View</a></td>
       <td>萬達光電</td>
@@ -773,6 +899,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>5225</td>
       <td>35</td>
       <td><a href="HighYield_V2_Charts/Chart_5225.html" target="_blank">📊 View</a></td>
       <td>東科-KY</td>
@@ -794,6 +921,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>8481</td>
       <td>36</td>
       <td><a href="HighYield_V2_Charts/Chart_8481.html" target="_blank">📊 View</a></td>
       <td>政伸</td>
@@ -815,6 +943,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>4570</td>
       <td>37</td>
       <td><a href="HighYield_V2_Charts/Chart_4570.html" target="_blank">📊 View</a></td>
       <td>傑生</td>
@@ -836,6 +965,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>1713</td>
       <td>38</td>
       <td><a href="HighYield_V2_Charts/Chart_1713.html" target="_blank">📊 View</a></td>
       <td>國化</td>
@@ -857,6 +987,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>3541</td>
       <td>39</td>
       <td><a href="HighYield_V2_Charts/Chart_3541.html" target="_blank">📊 View</a></td>
       <td>西柏</td>
@@ -878,6 +1009,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>8016</td>
       <td>40</td>
       <td><a href="HighYield_V2_Charts/Chart_8016.html" target="_blank">📊 View</a></td>
       <td>矽創</td>
@@ -899,6 +1031,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>5299</td>
       <td>41</td>
       <td><a href="HighYield_V2_Charts/Chart_5299.html" target="_blank">📊 View</a></td>
       <td>杰力</td>
@@ -920,6 +1053,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>9951</td>
       <td>42</td>
       <td><a href="HighYield_V2_Charts/Chart_9951.html" target="_blank">📊 View</a></td>
       <td>皇田</td>
@@ -941,6 +1075,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>6846</td>
       <td>43</td>
       <td><a href="HighYield_V2_Charts/Chart_6846.html" target="_blank">📊 View</a></td>
       <td>綠茵</td>
@@ -962,6 +1097,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>6583</td>
       <td>44</td>
       <td><a href="HighYield_V2_Charts/Chart_6583.html" target="_blank">📊 View</a></td>
       <td>友松</td>
@@ -983,6 +1119,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>9962</td>
       <td>45</td>
       <td><a href="HighYield_V2_Charts/Chart_9962.html" target="_blank">📊 View</a></td>
       <td>有益</td>
@@ -1004,6 +1141,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>3580</td>
       <td>46</td>
       <td><a href="HighYield_V2_Charts/Chart_3580.html" target="_blank">📊 View</a></td>
       <td>友威科</td>
@@ -1025,6 +1163,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>6792</td>
       <td>47</td>
       <td><a href="HighYield_V2_Charts/Chart_6792.html" target="_blank">📊 View</a></td>
       <td>詠業</td>
@@ -1046,6 +1185,7 @@
       <td>3</td>
     </tr>
     <tr>
+      <td>1436</td>
       <td>48</td>
       <td><a href="HighYield_V2_Charts/Chart_1436.html" target="_blank">📊 View</a></td>
       <td>華友聯</td>
@@ -1067,6 +1207,7 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2520</td>
       <td>49</td>
       <td><a href="HighYield_V2_Charts/Chart_2520.html" target="_blank">📊 View</a></td>
       <td>冠德</td>
@@ -1088,6 +1229,7 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6189</td>
       <td>50</td>
       <td><a href="HighYield_V2_Charts/Chart_6189.html" target="_blank">📊 View</a></td>
       <td>豐藝</td>
@@ -1109,8 +1251,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>7782</td>
       <td>51</td>
-      <td></td>
+      <td>NaN</td>
       <td>光速火箭</td>
       <td>居家生活類</td>
       <td>Superior</td>
@@ -1130,8 +1273,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1565</td>
       <td>52</td>
-      <td></td>
+      <td>NaN</td>
       <td>精華</td>
       <td>生技醫療業</td>
       <td>Superior</td>
@@ -1151,8 +1295,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2938</td>
       <td>53</td>
-      <td></td>
+      <td>NaN</td>
       <td>床的世界</td>
       <td>居家生活</td>
       <td>Superior</td>
@@ -1172,8 +1317,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4557</td>
       <td>54</td>
-      <td></td>
+      <td>NaN</td>
       <td>永新-KY</td>
       <td>汽車工業</td>
       <td>Superior</td>
@@ -1193,8 +1339,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6538</td>
       <td>55</td>
-      <td></td>
+      <td>NaN</td>
       <td>倉和</td>
       <td>電子零組件業</td>
       <td>Superior</td>
@@ -1214,8 +1361,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3592</td>
       <td>56</td>
-      <td></td>
+      <td>NaN</td>
       <td>瑞鼎</td>
       <td>電子工業</td>
       <td>Superior</td>
@@ -1235,8 +1383,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6412</td>
       <td>57</td>
-      <td></td>
+      <td>NaN</td>
       <td>群電</td>
       <td>電子零組件業</td>
       <td>Superior</td>
@@ -1256,8 +1405,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6180</td>
       <td>58</td>
-      <td></td>
+      <td>NaN</td>
       <td>橘子</td>
       <td>文化創意業</td>
       <td>Superior</td>
@@ -1277,8 +1427,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6807</td>
       <td>59</td>
-      <td></td>
+      <td>NaN</td>
       <td>峰源-KY</td>
       <td>居家生活</td>
       <td>Superior</td>
@@ -1298,8 +1449,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>8359</td>
       <td>60</td>
-      <td></td>
+      <td>NaN</td>
       <td>錢櫃</td>
       <td>觀光餐旅</td>
       <td>Superior</td>
@@ -1319,8 +1471,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3078</td>
       <td>61</td>
-      <td></td>
+      <td>NaN</td>
       <td>僑威</td>
       <td>電子零組件業</td>
       <td>Superior</td>
@@ -1340,8 +1493,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>8482</td>
       <td>62</td>
-      <td></td>
+      <td>NaN</td>
       <td>商億-KY</td>
       <td>居家生活</td>
       <td>Superior</td>
@@ -1361,8 +1515,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2357</td>
       <td>63</td>
-      <td></td>
+      <td>NaN</td>
       <td>華碩</td>
       <td>電腦及週邊設備業</td>
       <td>Superior</td>
@@ -1382,8 +1537,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4995</td>
       <td>64</td>
-      <td></td>
+      <td>NaN</td>
       <td>晶達</td>
       <td>光電業</td>
       <td>Superior</td>
@@ -1403,8 +1559,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4961</td>
       <td>65</td>
-      <td></td>
+      <td>NaN</td>
       <td>天鈺</td>
       <td>電子工業</td>
       <td>Superior</td>
@@ -1424,8 +1581,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>5312</td>
       <td>66</td>
-      <td></td>
+      <td>NaN</td>
       <td>寶島科</td>
       <td>生技醫療業</td>
       <td>Superior</td>
@@ -1445,8 +1603,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4138</td>
       <td>67</td>
-      <td></td>
+      <td>NaN</td>
       <td>曜亞</td>
       <td>生技醫療業</td>
       <td>Superior</td>
@@ -1466,8 +1625,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3034</td>
       <td>68</td>
-      <td></td>
+      <td>NaN</td>
       <td>聯詠</td>
       <td>半導體業</td>
       <td>Superior</td>
@@ -1487,8 +1647,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6754</td>
       <td>69</td>
-      <td></td>
+      <td>NaN</td>
       <td>匯僑設計</td>
       <td>居家生活</td>
       <td>Superior</td>
@@ -1508,8 +1669,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2393</td>
       <td>70</td>
-      <td></td>
+      <td>NaN</td>
       <td>億光</td>
       <td>電子工業</td>
       <td>Superior</td>
@@ -1529,8 +1691,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6206</td>
       <td>71</td>
-      <td></td>
+      <td>NaN</td>
       <td>飛捷</td>
       <td>電子工業</td>
       <td>Superior</td>
@@ -1550,8 +1713,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6817</td>
       <td>72</td>
-      <td></td>
+      <td>NaN</td>
       <td>溫士頓</td>
       <td>生技醫療業</td>
       <td>Superior</td>
@@ -1571,8 +1735,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6245</td>
       <td>73</td>
-      <td></td>
+      <td>NaN</td>
       <td>立端</td>
       <td>通信網路業</td>
       <td>Superior</td>
@@ -1592,8 +1757,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6294</td>
       <td>74</td>
-      <td></td>
+      <td>NaN</td>
       <td>智基</td>
       <td>文化創意業</td>
       <td>Superior</td>
@@ -1613,8 +1779,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2385</td>
       <td>75</td>
-      <td></td>
+      <td>NaN</td>
       <td>群光</td>
       <td>電子零組件業</td>
       <td>Superior</td>
@@ -1634,8 +1801,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2609</td>
       <td>76</td>
-      <td></td>
+      <td>NaN</td>
       <td>陽明</td>
       <td>航運業</td>
       <td>Superior</td>
@@ -1655,8 +1823,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3512</td>
       <td>77</td>
-      <td></td>
+      <td>NaN</td>
       <td>皇龍</td>
       <td>建材營造</td>
       <td>Superior</td>
@@ -1676,8 +1845,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6176</td>
       <td>78</td>
-      <td></td>
+      <td>NaN</td>
       <td>瑞儀</td>
       <td>光電業</td>
       <td>Superior</td>
@@ -1697,8 +1867,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6771</td>
       <td>79</td>
-      <td></td>
+      <td>NaN</td>
       <td>平和環保-創</td>
       <td>綠能環保</td>
       <td>Superior</td>
@@ -1718,8 +1889,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4438</td>
       <td>80</td>
-      <td></td>
+      <td>NaN</td>
       <td>廣越</td>
       <td>紡織纖維</td>
       <td>Superior</td>
@@ -1739,8 +1911,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3032</td>
       <td>81</td>
-      <td></td>
+      <td>NaN</td>
       <td>偉訓</td>
       <td>電子零組件業</td>
       <td>Superior</td>
@@ -1760,8 +1933,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>5465</td>
       <td>82</td>
-      <td></td>
+      <td>NaN</td>
       <td>富驊</td>
       <td>電腦及週邊設備業</td>
       <td>Superior</td>
@@ -1781,8 +1955,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6150</td>
       <td>83</td>
-      <td></td>
+      <td>NaN</td>
       <td>撼訊</td>
       <td>電腦及週邊設備業</td>
       <td>Superior</td>
@@ -1802,8 +1977,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6703</td>
       <td>84</td>
-      <td></td>
+      <td>NaN</td>
       <td>軒郁</td>
       <td>生技醫療業</td>
       <td>Superior</td>
@@ -1823,8 +1999,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>9939</td>
       <td>85</td>
-      <td></td>
+      <td>NaN</td>
       <td>宏全</td>
       <td>其他</td>
       <td>Superior</td>
@@ -1844,8 +2021,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3546</td>
       <td>86</td>
-      <td></td>
+      <td>NaN</td>
       <td>宇峻</td>
       <td>文化創意業</td>
       <td>Superior</td>
@@ -1865,8 +2043,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>8435</td>
       <td>87</td>
-      <td></td>
+      <td>NaN</td>
       <td>鉅邁</td>
       <td>其他</td>
       <td>Superior</td>
@@ -1886,8 +2065,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4536</td>
       <td>88</td>
-      <td></td>
+      <td>NaN</td>
       <td>拓凱</td>
       <td>運動休閒</td>
       <td>Superior</td>
@@ -1907,8 +2087,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2615</td>
       <td>89</td>
-      <td></td>
+      <td>NaN</td>
       <td>萬海</td>
       <td>航運業</td>
       <td>Superior</td>
@@ -1928,8 +2109,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>8426</td>
       <td>90</td>
-      <td></td>
+      <td>NaN</td>
       <td>紅木-KY</td>
       <td>其他</td>
       <td>Superior</td>
@@ -1949,8 +2131,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6263</td>
       <td>91</td>
-      <td></td>
+      <td>NaN</td>
       <td>普萊德</td>
       <td>通信網路業</td>
       <td>Superior</td>
@@ -1970,8 +2153,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3596</td>
       <td>92</td>
-      <td></td>
+      <td>NaN</td>
       <td>智易</td>
       <td>電子工業</td>
       <td>Superior</td>
@@ -1991,8 +2175,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3515</td>
       <td>93</td>
-      <td></td>
+      <td>NaN</td>
       <td>華擎</td>
       <td>電腦及週邊設備業</td>
       <td>Superior</td>
@@ -2012,8 +2197,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6281</td>
       <td>94</td>
-      <td></td>
+      <td>NaN</td>
       <td>全國電</td>
       <td>電子工業</td>
       <td>Superior</td>
@@ -2033,8 +2219,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1102</td>
       <td>95</td>
-      <td></td>
+      <td>NaN</td>
       <td>亞泥</td>
       <td>水泥工業</td>
       <td>Superior</td>
@@ -2054,8 +2241,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>8442</td>
       <td>96</td>
-      <td></td>
+      <td>NaN</td>
       <td>威宏-KY</td>
       <td>其他</td>
       <td>Superior</td>
@@ -2075,8 +2263,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6292</td>
       <td>97</td>
-      <td></td>
+      <td>NaN</td>
       <td>迅德</td>
       <td>電子零組件業</td>
       <td>Superior</td>
@@ -2096,8 +2285,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3312</td>
       <td>98</td>
-      <td></td>
+      <td>NaN</td>
       <td>弘憶股</td>
       <td>電子通路業</td>
       <td>Superior</td>
@@ -2117,8 +2307,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6582</td>
       <td>99</td>
-      <td></td>
+      <td>NaN</td>
       <td>申豐</td>
       <td>橡膠工業</td>
       <td>Superior</td>
@@ -2138,8 +2329,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3479</td>
       <td>100</td>
-      <td></td>
+      <td>NaN</td>
       <td>安勤</td>
       <td>電腦及週邊設備業</td>
       <td>Superior</td>
@@ -2159,8 +2351,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3168</td>
       <td>101</td>
-      <td></td>
+      <td>NaN</td>
       <td>眾福科</td>
       <td>電子工業</td>
       <td>Superior</td>
@@ -2180,8 +2373,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>5244</td>
       <td>102</td>
-      <td></td>
+      <td>NaN</td>
       <td>弘凱</td>
       <td>電子工業</td>
       <td>Superior</td>
@@ -2201,8 +2395,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>8329</td>
       <td>103</td>
-      <td></td>
+      <td>NaN</td>
       <td>台視</td>
       <td>文化創意業</td>
       <td>Superior</td>
@@ -2222,8 +2417,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2480</td>
       <td>104</td>
-      <td></td>
+      <td>NaN</td>
       <td>敦陽科</td>
       <td>電子工業</td>
       <td>Superior</td>
@@ -2243,8 +2439,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6278</td>
       <td>105</td>
-      <td></td>
+      <td>NaN</td>
       <td>台表科</td>
       <td>光電業</td>
       <td>Superior</td>
@@ -2264,8 +2461,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1457</td>
       <td>106</td>
-      <td></td>
+      <td>NaN</td>
       <td>宜進</td>
       <td>紡織纖維</td>
       <td>Superior</td>
@@ -2285,8 +2483,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3646</td>
       <td>107</td>
-      <td></td>
+      <td>NaN</td>
       <td>艾恩特</td>
       <td>電子零組件業</td>
       <td>Superior</td>
@@ -2306,8 +2505,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2376</td>
       <td>108</td>
-      <td></td>
+      <td>NaN</td>
       <td>技嘉</td>
       <td>電腦及週邊設備業</td>
       <td>Superior</td>
@@ -2327,8 +2527,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3570</td>
       <td>109</td>
-      <td></td>
+      <td>NaN</td>
       <td>大塚</td>
       <td>資訊服務業</td>
       <td>Superior</td>
@@ -2348,8 +2549,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1540</td>
       <td>110</td>
-      <td></td>
+      <td>NaN</td>
       <td>喬福</td>
       <td>電機機械</td>
       <td>Superior</td>
@@ -2369,8 +2571,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>5009</td>
       <td>111</td>
-      <td></td>
+      <td>NaN</td>
       <td>榮剛</td>
       <td>鋼鐵工業</td>
       <td>Superior</td>
@@ -2390,8 +2593,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4974</td>
       <td>112</td>
-      <td></td>
+      <td>NaN</td>
       <td>亞泰</td>
       <td>電子零組件業</td>
       <td>Superior</td>
@@ -2411,8 +2615,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3088</td>
       <td>113</td>
-      <td></td>
+      <td>NaN</td>
       <td>艾訊</td>
       <td>電腦及週邊設備業</td>
       <td>Superior</td>
@@ -2432,8 +2637,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3679</td>
       <td>114</td>
-      <td></td>
+      <td>NaN</td>
       <td>新至陞</td>
       <td>電子零組件業</td>
       <td>Superior</td>
@@ -2453,8 +2659,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3005</td>
       <td>115</td>
-      <td></td>
+      <td>NaN</td>
       <td>神基</td>
       <td>電腦及週邊設備業</td>
       <td>Superior</td>
@@ -2474,8 +2681,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6216</td>
       <td>116</td>
-      <td></td>
+      <td>NaN</td>
       <td>居易</td>
       <td>通信網路業</td>
       <td>Superior</td>
@@ -2495,8 +2703,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2504</td>
       <td>117</td>
-      <td></td>
+      <td>NaN</td>
       <td>國產</td>
       <td>建材營造</td>
       <td>Superior</td>
@@ -2516,8 +2725,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2636</td>
       <td>118</td>
-      <td></td>
+      <td>NaN</td>
       <td>台驊控股</td>
       <td>航運業</td>
       <td>Superior</td>
@@ -2537,8 +2747,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6203</td>
       <td>119</td>
-      <td></td>
+      <td>NaN</td>
       <td>海韻電</td>
       <td>電子零組件業</td>
       <td>Superior</td>
@@ -2558,8 +2769,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2379</td>
       <td>120</td>
-      <td></td>
+      <td>NaN</td>
       <td>瑞昱</td>
       <td>電子工業</td>
       <td>Superior</td>
@@ -2579,8 +2791,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4935</td>
       <td>121</td>
-      <td></td>
+      <td>NaN</td>
       <td>茂林-KY</td>
       <td>光電業</td>
       <td>Superior</td>
@@ -2600,8 +2813,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1582</td>
       <td>122</td>
-      <td></td>
+      <td>NaN</td>
       <td>信錦</td>
       <td>電子零組件業</td>
       <td>Superior</td>
@@ -2621,8 +2835,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1537</td>
       <td>123</td>
-      <td></td>
+      <td>NaN</td>
       <td>廣隆</td>
       <td>電機機械</td>
       <td>Superior</td>
@@ -2642,8 +2857,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3014</td>
       <td>124</td>
-      <td></td>
+      <td>NaN</td>
       <td>聯陽</td>
       <td>電子工業</td>
       <td>Superior</td>
@@ -2663,8 +2879,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3213</td>
       <td>125</td>
-      <td></td>
+      <td>NaN</td>
       <td>茂訊</td>
       <td>電腦及週邊設備業</td>
       <td>Superior</td>
@@ -2684,8 +2901,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6227</td>
       <td>126</td>
-      <td></td>
+      <td>NaN</td>
       <td>茂綸</td>
       <td>電子通路業</td>
       <td>Superior</td>
@@ -2705,8 +2923,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4126</td>
       <td>127</td>
-      <td></td>
+      <td>NaN</td>
       <td>太醫</td>
       <td>生技醫療業</td>
       <td>Superior</td>
@@ -2726,8 +2945,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1599</td>
       <td>128</td>
-      <td></td>
+      <td>NaN</td>
       <td>宏佳騰</td>
       <td>電機機械</td>
       <td>Superior</td>
@@ -2747,8 +2967,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>5534</td>
       <td>129</td>
-      <td></td>
+      <td>NaN</td>
       <td>長虹</td>
       <td>建材營造</td>
       <td>Superior</td>
@@ -2768,8 +2989,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1580</td>
       <td>130</td>
-      <td></td>
+      <td>NaN</td>
       <td>新麥</td>
       <td>電機機械</td>
       <td>Superior</td>
@@ -2789,8 +3011,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3040</td>
       <td>131</td>
-      <td></td>
+      <td>NaN</td>
       <td>遠見</td>
       <td>其他</td>
       <td>Superior</td>
@@ -2810,8 +3033,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3528</td>
       <td>132</td>
-      <td></td>
+      <td>NaN</td>
       <td>安馳</td>
       <td>電子通路業</td>
       <td>Superior</td>
@@ -2831,8 +3055,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2420</td>
       <td>133</td>
-      <td></td>
+      <td>NaN</td>
       <td>新巨</td>
       <td>電子零組件業</td>
       <td>Superior</td>
@@ -2852,8 +3077,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3373</td>
       <td>134</td>
-      <td></td>
+      <td>NaN</td>
       <td>熱映</td>
       <td>其他電子類</td>
       <td>Superior</td>
@@ -2873,8 +3099,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2373</td>
       <td>135</td>
-      <td></td>
+      <td>NaN</td>
       <td>震旦行</td>
       <td>電子工業</td>
       <td>Superior</td>
@@ -2894,8 +3121,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>5236</td>
       <td>136</td>
-      <td></td>
+      <td>NaN</td>
       <td>凌陽創新</td>
       <td>半導體業</td>
       <td>Superior</td>
@@ -2915,8 +3143,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4104</td>
       <td>137</td>
-      <td></td>
+      <td>NaN</td>
       <td>佳醫</td>
       <td>生技醫療業</td>
       <td>Superior</td>
@@ -2936,8 +3165,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1817</td>
       <td>138</td>
-      <td></td>
+      <td>NaN</td>
       <td>凱撒衛</td>
       <td>玻璃陶瓷</td>
       <td>Superior</td>
@@ -2957,8 +3187,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4972</td>
       <td>139</td>
-      <td></td>
+      <td>NaN</td>
       <td>湯石照明</td>
       <td>光電業</td>
       <td>Superior</td>
@@ -2978,8 +3209,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1341</td>
       <td>140</td>
-      <td></td>
+      <td>NaN</td>
       <td>富林-KY</td>
       <td>塑膠工業</td>
       <td>Superior</td>
@@ -2999,8 +3231,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6201</td>
       <td>141</td>
-      <td></td>
+      <td>NaN</td>
       <td>亞弘電</td>
       <td>電子工業</td>
       <td>Superior</td>
@@ -3020,8 +3253,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3029</td>
       <td>142</td>
-      <td></td>
+      <td>NaN</td>
       <td>零壹</td>
       <td>電子工業</td>
       <td>Superior</td>
@@ -3041,8 +3275,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3501</td>
       <td>143</td>
-      <td></td>
+      <td>NaN</td>
       <td>維熹</td>
       <td>電子工業</td>
       <td>Superior</td>
@@ -3062,8 +3297,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6670</td>
       <td>144</td>
-      <td></td>
+      <td>NaN</td>
       <td>復盛應用</td>
       <td>運動休閒</td>
       <td>Superior</td>
@@ -3083,8 +3319,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>8367</td>
       <td>145</td>
-      <td></td>
+      <td>NaN</td>
       <td>建新國際</td>
       <td>航運業</td>
       <td>Superior</td>
@@ -3104,8 +3341,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2608</td>
       <td>146</td>
-      <td></td>
+      <td>NaN</td>
       <td>嘉里大榮</td>
       <td>航運業</td>
       <td>Superior</td>
@@ -3125,8 +3363,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6462</td>
       <td>147</td>
-      <td></td>
+      <td>NaN</td>
       <td>神盾</td>
       <td>半導體業</td>
       <td>Superior</td>
@@ -3146,8 +3385,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6248</td>
       <td>148</td>
-      <td></td>
+      <td>NaN</td>
       <td>沛波</td>
       <td>鋼鐵工業</td>
       <td>Superior</td>
@@ -3167,8 +3407,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6532</td>
       <td>149</td>
-      <td></td>
+      <td>NaN</td>
       <td>瑞耘</td>
       <td>半導體業</td>
       <td>Superior</td>
@@ -3188,8 +3429,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>8446</td>
       <td>150</td>
-      <td></td>
+      <td>NaN</td>
       <td>華研</td>
       <td>文化創意業</td>
       <td>Superior</td>
@@ -3209,8 +3451,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>5548</td>
       <td>151</td>
-      <td></td>
+      <td>NaN</td>
       <td>安倉</td>
       <td>建材營造</td>
       <td>Superior</td>
@@ -3230,8 +3473,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1218</td>
       <td>152</td>
-      <td></td>
+      <td>NaN</td>
       <td>泰山</td>
       <td>食品工業</td>
       <td>Superior</td>
@@ -3251,8 +3495,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2031</td>
       <td>153</td>
-      <td></td>
+      <td>NaN</td>
       <td>新光鋼</td>
       <td>鋼鐵工業</td>
       <td>Superior</td>
@@ -3272,8 +3517,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>8024</td>
       <td>154</td>
-      <td></td>
+      <td>NaN</td>
       <td>佑華</td>
       <td>半導體業</td>
       <td>Superior</td>
@@ -3293,8 +3539,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2471</td>
       <td>155</td>
-      <td></td>
+      <td>NaN</td>
       <td>資通</td>
       <td>電子工業</td>
       <td>Superior</td>
@@ -3314,8 +3561,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>8930</td>
       <td>156</td>
-      <td></td>
+      <td>NaN</td>
       <td>青鋼</td>
       <td>鋼鐵工業</td>
       <td>Superior</td>
@@ -3335,8 +3583,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>8066</td>
       <td>157</td>
-      <td></td>
+      <td>NaN</td>
       <td>來思達</td>
       <td>居家生活類</td>
       <td>Superior</td>
@@ -3356,8 +3605,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1733</td>
       <td>158</td>
-      <td></td>
+      <td>NaN</td>
       <td>五鼎</td>
       <td>化學生技醫療</td>
       <td>Superior</td>
@@ -3377,8 +3627,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3303</td>
       <td>159</td>
-      <td></td>
+      <td>NaN</td>
       <td>岱稜</td>
       <td>其他電子類</td>
       <td>Superior</td>
@@ -3398,8 +3649,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6570</td>
       <td>160</td>
-      <td></td>
+      <td>NaN</td>
       <td>維田</td>
       <td>電腦及週邊設備業</td>
       <td>Superior</td>
@@ -3419,8 +3671,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2916</td>
       <td>161</td>
-      <td></td>
+      <td>NaN</td>
       <td>滿心</td>
       <td>居家生活類</td>
       <td>Superior</td>
@@ -3440,8 +3693,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1725</td>
       <td>162</td>
-      <td></td>
+      <td>NaN</td>
       <td>元禎</td>
       <td>化學生技醫療</td>
       <td>Superior</td>
@@ -3461,8 +3715,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2029</td>
       <td>163</td>
-      <td></td>
+      <td>NaN</td>
       <td>盛餘</td>
       <td>鋼鐵工業</td>
       <td>Superior</td>
@@ -3482,8 +3737,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1604</td>
       <td>164</td>
-      <td></td>
+      <td>NaN</td>
       <td>聲寶</td>
       <td>電器電纜</td>
       <td>Superior</td>
@@ -3503,8 +3759,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>8383</td>
       <td>165</td>
-      <td></td>
+      <td>NaN</td>
       <td>千附</td>
       <td>半導體業</td>
       <td>Superior</td>
@@ -3524,8 +3781,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1109</td>
       <td>166</td>
-      <td></td>
+      <td>NaN</td>
       <td>信大</td>
       <td>水泥工業</td>
       <td>Superior</td>
@@ -3545,8 +3803,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4420</td>
       <td>167</td>
-      <td></td>
+      <td>NaN</td>
       <td>光明</td>
       <td>紡織纖維</td>
       <td>Superior</td>
@@ -3566,8 +3825,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6184</td>
       <td>168</td>
-      <td></td>
+      <td>NaN</td>
       <td>大豐電</td>
       <td>其他</td>
       <td>Superior</td>
@@ -3587,8 +3847,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6728</td>
       <td>169</td>
-      <td></td>
+      <td>NaN</td>
       <td>上洋</td>
       <td>居家生活類</td>
       <td>Superior</td>
@@ -3608,8 +3869,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1527</td>
       <td>170</td>
-      <td></td>
+      <td>NaN</td>
       <td>鑽全</td>
       <td>電機機械</td>
       <td>Superior</td>
@@ -3629,8 +3891,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4575</td>
       <td>171</td>
-      <td></td>
+      <td>NaN</td>
       <td>銓寶</td>
       <td>電機機械</td>
       <td>Superior</td>
@@ -3650,8 +3913,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>8049</td>
       <td>172</td>
-      <td></td>
+      <td>NaN</td>
       <td>晶采</td>
       <td>光電業</td>
       <td>Superior</td>
@@ -3671,8 +3935,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6790</td>
       <td>173</td>
-      <td></td>
+      <td>NaN</td>
       <td>永豐實</td>
       <td>造紙工業</td>
       <td>Superior</td>
@@ -3692,8 +3957,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6732</td>
       <td>174</td>
-      <td></td>
+      <td>NaN</td>
       <td>昇佳電子</td>
       <td>半導體業</td>
       <td>Superior</td>
@@ -3713,8 +3979,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4506</td>
       <td>175</td>
-      <td></td>
+      <td>NaN</td>
       <td>崇友</td>
       <td>電機機械</td>
       <td>Superior</td>
@@ -3734,8 +4001,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4137</td>
       <td>176</td>
-      <td></td>
+      <td>NaN</td>
       <td>麗豐-KY</td>
       <td>化學生技醫療</td>
       <td>Superior</td>
@@ -3755,8 +4023,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6591</td>
       <td>177</td>
-      <td></td>
+      <td>NaN</td>
       <td>動力-KY</td>
       <td>電子工業</td>
       <td>Superior</td>
@@ -3776,8 +4045,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3413</td>
       <td>178</td>
-      <td></td>
+      <td>NaN</td>
       <td>京鼎</td>
       <td>電子工業</td>
       <td>Superior</td>
@@ -3797,8 +4067,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1709</td>
       <td>179</td>
-      <td></td>
+      <td>NaN</td>
       <td>和益</td>
       <td>化學生技醫療</td>
       <td>Superior</td>
@@ -3818,8 +4089,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6170</td>
       <td>180</td>
-      <td></td>
+      <td>NaN</td>
       <td>統振</td>
       <td>通信網路業</td>
       <td>Superior</td>
@@ -3839,8 +4111,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6556</td>
       <td>181</td>
-      <td></td>
+      <td>NaN</td>
       <td>勝品</td>
       <td>光電業</td>
       <td>Superior</td>
@@ -3860,8 +4133,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>8916</td>
       <td>182</td>
-      <td></td>
+      <td>NaN</td>
       <td>光隆</td>
       <td>其他</td>
       <td>Superior</td>
@@ -3881,8 +4155,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4527</td>
       <td>183</td>
-      <td></td>
+      <td>NaN</td>
       <td>方土霖</td>
       <td>電機機械</td>
       <td>Superior</td>
@@ -3902,8 +4177,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4581</td>
       <td>184</td>
-      <td></td>
+      <td>NaN</td>
       <td>光隆精密-KY</td>
       <td>汽車工業</td>
       <td>Superior</td>
@@ -3923,8 +4199,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2020</td>
       <td>185</td>
-      <td></td>
+      <td>NaN</td>
       <td>美亞</td>
       <td>鋼鐵工業</td>
       <td>Superior</td>
@@ -3944,8 +4221,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>8284</td>
       <td>186</td>
-      <td></td>
+      <td>NaN</td>
       <td>三竹</td>
       <td>資訊服務業</td>
       <td>Superior</td>
@@ -3965,8 +4243,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2707</td>
       <td>187</td>
-      <td></td>
+      <td>NaN</td>
       <td>晶華</td>
       <td>觀光餐旅</td>
       <td>Superior</td>
@@ -3986,8 +4265,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3531</td>
       <td>188</td>
-      <td></td>
+      <td>NaN</td>
       <td>先益</td>
       <td>光電業</td>
       <td>Superior</td>
@@ -4007,8 +4287,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3217</td>
       <td>189</td>
-      <td></td>
+      <td>NaN</td>
       <td>優群</td>
       <td>電子零組件業</td>
       <td>Superior</td>
@@ -4028,8 +4309,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>5410</td>
       <td>190</td>
-      <td></td>
+      <td>NaN</td>
       <td>國眾</td>
       <td>資訊服務業</td>
       <td>Superior</td>
@@ -4049,8 +4331,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>5478</td>
       <td>191</td>
-      <td></td>
+      <td>NaN</td>
       <td>智冠</td>
       <td>文化創意業</td>
       <td>Superior</td>
@@ -4070,8 +4353,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6641</td>
       <td>192</td>
-      <td></td>
+      <td>NaN</td>
       <td>基士德-KY</td>
       <td>綠能環保</td>
       <td>Superior</td>
@@ -4091,8 +4375,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>8928</td>
       <td>193</td>
-      <td></td>
+      <td>NaN</td>
       <td>鉅明</td>
       <td>運動休閒類</td>
       <td>Superior</td>
@@ -4112,8 +4397,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2488</td>
       <td>194</td>
-      <td></td>
+      <td>NaN</td>
       <td>漢平</td>
       <td>電子工業</td>
       <td>Superior</td>
@@ -4133,8 +4419,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>9911</td>
       <td>195</td>
-      <td></td>
+      <td>NaN</td>
       <td>櫻花</td>
       <td>居家生活</td>
       <td>Superior</td>
@@ -4154,8 +4441,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1558</td>
       <td>196</td>
-      <td></td>
+      <td>NaN</td>
       <td>伸興</td>
       <td>電機機械</td>
       <td>Superior</td>
@@ -4175,8 +4463,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3042</td>
       <td>197</td>
-      <td></td>
+      <td>NaN</td>
       <td>晶技</td>
       <td>電子零組件業</td>
       <td>Superior</td>
@@ -4196,8 +4485,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>5519</td>
       <td>198</td>
-      <td></td>
+      <td>NaN</td>
       <td>隆大</td>
       <td>建材營造</td>
       <td>Superior</td>
@@ -4217,8 +4507,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>9930</td>
       <td>199</td>
-      <td></td>
+      <td>NaN</td>
       <td>中聯資源</td>
       <td>綠能環保</td>
       <td>Superior</td>
@@ -4238,8 +4529,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>5353</td>
       <td>200</td>
-      <td></td>
+      <td>NaN</td>
       <td>台林</td>
       <td>通信網路業</td>
       <td>Superior</td>
@@ -4259,8 +4551,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2496</td>
       <td>201</td>
-      <td></td>
+      <td>NaN</td>
       <td>卓越</td>
       <td>其他</td>
       <td>Superior</td>
@@ -4280,8 +4573,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>8341</td>
       <td>202</td>
-      <td></td>
+      <td>NaN</td>
       <td>日友</td>
       <td>綠能環保</td>
       <td>Superior</td>
@@ -4301,8 +4595,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1593</td>
       <td>203</td>
-      <td></td>
+      <td>NaN</td>
       <td>祺驊</td>
       <td>運動休閒類</td>
       <td>Superior</td>
@@ -4322,8 +4617,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4942</td>
       <td>204</td>
-      <td></td>
+      <td>NaN</td>
       <td>嘉彰</td>
       <td>電子工業</td>
       <td>Superior</td>
@@ -4343,8 +4639,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4580</td>
       <td>205</td>
-      <td></td>
+      <td>NaN</td>
       <td>捷流閥業</td>
       <td>電機機械</td>
       <td>Superior</td>
@@ -4364,8 +4661,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>9924</td>
       <td>206</td>
-      <td></td>
+      <td>NaN</td>
       <td>福興</td>
       <td>居家生活</td>
       <td>Superior</td>
@@ -4385,8 +4683,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1445</td>
       <td>207</td>
-      <td></td>
+      <td>NaN</td>
       <td>大宇</td>
       <td>紡織纖維</td>
       <td>Superior</td>
@@ -4406,8 +4705,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3130</td>
       <td>208</td>
-      <td></td>
+      <td>NaN</td>
       <td>一零四</td>
       <td>數位雲端</td>
       <td>Superior</td>
@@ -4427,8 +4727,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3388</td>
       <td>209</td>
-      <td></td>
+      <td>NaN</td>
       <td>崇越電</td>
       <td>電子零組件業</td>
       <td>Superior</td>
@@ -4448,8 +4749,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>8926</td>
       <td>210</td>
-      <td></td>
+      <td>NaN</td>
       <td>台汽電</td>
       <td>油電燃氣業</td>
       <td>Superior</td>
@@ -4469,8 +4771,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6177</td>
       <td>211</td>
-      <td></td>
+      <td>NaN</td>
       <td>達麗</td>
       <td>建材營造</td>
       <td>Superior</td>
@@ -4490,8 +4793,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1731</td>
       <td>212</td>
-      <td></td>
+      <td>NaN</td>
       <td>美吾華</td>
       <td>生技醫療業</td>
       <td>Superior</td>
@@ -4511,8 +4815,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4952</td>
       <td>213</td>
-      <td></td>
+      <td>NaN</td>
       <td>凌通</td>
       <td>半導體業</td>
       <td>Superior</td>
@@ -4532,8 +4837,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1730</td>
       <td>214</td>
-      <td></td>
+      <td>NaN</td>
       <td>花仙子</td>
       <td>化學生技醫療</td>
       <td>Superior</td>
@@ -4553,8 +4859,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>1788</td>
       <td>215</td>
-      <td></td>
+      <td>NaN</td>
       <td>杏昌</td>
       <td>生技醫療業</td>
       <td>Superior</td>
@@ -4574,8 +4881,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3093</td>
       <td>216</td>
-      <td></td>
+      <td>NaN</td>
       <td>港建*</td>
       <td>其他電子類</td>
       <td>Superior</td>
@@ -4595,8 +4903,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6151</td>
       <td>217</td>
-      <td></td>
+      <td>NaN</td>
       <td>晉倫</td>
       <td>其他電子類</td>
       <td>Superior</td>
@@ -4616,8 +4925,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4532</td>
       <td>218</td>
-      <td></td>
+      <td>NaN</td>
       <td>瑞智</td>
       <td>電機機械</td>
       <td>Superior</td>
@@ -4637,8 +4947,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>3611</td>
       <td>219</td>
-      <td></td>
+      <td>NaN</td>
       <td>鼎翰</td>
       <td>電腦及週邊設備業</td>
       <td>Superior</td>
@@ -4658,8 +4969,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2414</td>
       <td>220</td>
-      <td></td>
+      <td>NaN</td>
       <td>精技</td>
       <td>電子通路業</td>
       <td>Superior</td>
@@ -4679,8 +4991,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6671</td>
       <td>221</td>
-      <td></td>
+      <td>NaN</td>
       <td>三能-KY</td>
       <td>居家生活</td>
       <td>Superior</td>
@@ -4700,8 +5013,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6957</td>
       <td>222</td>
-      <td></td>
+      <td>NaN</td>
       <td>裕慶-KY</td>
       <td>其他</td>
       <td>Superior</td>
@@ -4721,8 +5035,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2015</td>
       <td>223</td>
-      <td></td>
+      <td>NaN</td>
       <td>豐興</td>
       <td>鋼鐵工業</td>
       <td>Superior</td>
@@ -4742,8 +5057,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>6146</td>
       <td>224</td>
-      <td></td>
+      <td>NaN</td>
       <td>耕興</td>
       <td>其他電子類</td>
       <td>Superior</td>
@@ -4763,8 +5079,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>5609</td>
       <td>225</td>
-      <td></td>
+      <td>NaN</td>
       <td>中菲行</td>
       <td>航運業</td>
       <td>Superior</td>
@@ -4784,8 +5101,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>4915</td>
       <td>226</td>
-      <td></td>
+      <td>NaN</td>
       <td>致伸</td>
       <td>電子零組件業</td>
       <td>Superior</td>
@@ -4805,8 +5123,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>2643</td>
       <td>227</td>
-      <td></td>
+      <td>NaN</td>
       <td>捷迅</td>
       <td>航運業</td>
       <td>Superior</td>
@@ -4826,8 +5145,9 @@
       <td>2</td>
     </tr>
     <tr>
+      <td>8422</td>
       <td>228</td>
-      <td></td>
+      <td>NaN</td>
       <td>可寧衛*</td>
       <td>綠能環保</td>
       <td>Unqualified</td>
@@ -4847,8 +5167,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2245</td>
       <td>229</td>
-      <td></td>
+      <td>NaN</td>
       <td>詠勝昌*</td>
       <td>電機機械</td>
       <td>Unqualified</td>
@@ -4868,8 +5189,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2760</td>
       <td>230</td>
-      <td></td>
+      <td>NaN</td>
       <td>巨宇翔</td>
       <td>觀光餐旅</td>
       <td>Unqualified</td>
@@ -4889,8 +5211,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>9906</td>
       <td>231</td>
-      <td></td>
+      <td>NaN</td>
       <td>欣巴巴</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -4910,8 +5233,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8089</td>
       <td>232</td>
-      <td></td>
+      <td>NaN</td>
       <td>康全電訊</td>
       <td>通信網路業</td>
       <td>Unqualified</td>
@@ -4931,8 +5255,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6219</td>
       <td>233</td>
-      <td></td>
+      <td>NaN</td>
       <td>富旺</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -4952,8 +5277,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>7797</td>
       <td>234</td>
-      <td></td>
+      <td>NaN</td>
       <td>Q Burger</td>
       <td>觀光餐旅</td>
       <td>Unqualified</td>
@@ -4973,8 +5299,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2348</td>
       <td>235</td>
-      <td></td>
+      <td>NaN</td>
       <td>海悅</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -4994,8 +5321,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2741</td>
       <td>236</td>
-      <td></td>
+      <td>NaN</td>
       <td>老四川</td>
       <td>觀光餐旅</td>
       <td>Unqualified</td>
@@ -5015,8 +5343,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6148</td>
       <td>237</td>
-      <td></td>
+      <td>NaN</td>
       <td>驊宏資</td>
       <td>資訊服務業</td>
       <td>Unqualified</td>
@@ -5036,8 +5365,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3557</td>
       <td>238</td>
-      <td></td>
+      <td>NaN</td>
       <td>嘉威</td>
       <td>居家生活</td>
       <td>Unqualified</td>
@@ -5057,8 +5387,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4164</td>
       <td>239</td>
-      <td></td>
+      <td>NaN</td>
       <td>承業醫</td>
       <td>生技醫療業</td>
       <td>Unqualified</td>
@@ -5078,8 +5409,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6028</td>
       <td>240</td>
-      <td></td>
+      <td>NaN</td>
       <td>公勝保經</td>
       <td>金融業</td>
       <td>Unqualified</td>
@@ -5099,8 +5431,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6186</td>
       <td>241</td>
-      <td></td>
+      <td>NaN</td>
       <td>新潤</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -5120,8 +5453,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6276</td>
       <td>242</td>
-      <td></td>
+      <td>NaN</td>
       <td>安鈦克</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -5141,8 +5475,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2392</td>
       <td>243</td>
-      <td></td>
+      <td>NaN</td>
       <td>正崴</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -5162,8 +5497,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2545</td>
       <td>244</td>
-      <td></td>
+      <td>NaN</td>
       <td>皇翔</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -5183,8 +5519,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2353</td>
       <td>245</td>
-      <td></td>
+      <td>NaN</td>
       <td>宏碁</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -5204,8 +5541,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6456</td>
       <td>246</td>
-      <td></td>
+      <td>NaN</td>
       <td>GIS-KY</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -5225,8 +5563,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4933</td>
       <td>247</td>
-      <td></td>
+      <td>NaN</td>
       <td>友輝</td>
       <td>光電業</td>
       <td>Unqualified</td>
@@ -5246,8 +5585,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6128</td>
       <td>248</td>
-      <td></td>
+      <td>NaN</td>
       <td>上福</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -5267,8 +5607,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>7715</td>
       <td>249</td>
-      <td></td>
+      <td>NaN</td>
       <td>裕山</td>
       <td>綠能環保類</td>
       <td>Unqualified</td>
@@ -5288,8 +5629,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6757</td>
       <td>250</td>
-      <td></td>
+      <td>NaN</td>
       <td>台灣虎航</td>
       <td>航運業</td>
       <td>Unqualified</td>
@@ -5309,8 +5651,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5704</td>
       <td>251</td>
-      <td></td>
+      <td>NaN</td>
       <td>老爺知</td>
       <td>觀光餐旅</td>
       <td>Unqualified</td>
@@ -5321,7 +5664,7 @@
       <td>0</td>
       <td>3</td>
       <td>2</td>
-      <td>1.83</td>
+      <td>1.82</td>
       <td>4.25</td>
       <td>129.67</td>
       <td>8.23</td>
@@ -5330,8 +5673,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3022</td>
       <td>252</td>
-      <td></td>
+      <td>NaN</td>
       <td>威強電</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -5351,8 +5695,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>7642</td>
       <td>253</td>
-      <td></td>
+      <td>NaN</td>
       <td>昶瑞機電</td>
       <td>電機機械</td>
       <td>Unqualified</td>
@@ -5372,8 +5717,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2432</td>
       <td>254</td>
-      <td></td>
+      <td>NaN</td>
       <td>倚天酷碁-創</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -5393,8 +5739,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2362</td>
       <td>255</td>
-      <td></td>
+      <td>NaN</td>
       <td>藍天</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -5414,8 +5761,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>7801</td>
       <td>256</td>
-      <td></td>
+      <td>NaN</td>
       <td>華芸科技</td>
       <td>資訊服務業</td>
       <td>Unqualified</td>
@@ -5435,8 +5783,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6171</td>
       <td>257</td>
-      <td></td>
+      <td>NaN</td>
       <td>大城地產</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -5456,8 +5805,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2611</td>
       <td>258</td>
-      <td></td>
+      <td>NaN</td>
       <td>志信</td>
       <td>航運業</td>
       <td>Unqualified</td>
@@ -5477,8 +5827,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8032</td>
       <td>259</td>
-      <td></td>
+      <td>NaN</td>
       <td>光菱</td>
       <td>電子通路業</td>
       <td>Unqualified</td>
@@ -5498,8 +5849,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3545</td>
       <td>260</td>
-      <td></td>
+      <td>NaN</td>
       <td>敦泰</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -5519,8 +5871,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6112</td>
       <td>261</td>
-      <td></td>
+      <td>NaN</td>
       <td>邁達特</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -5540,8 +5893,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>7716</td>
       <td>262</td>
-      <td></td>
+      <td>NaN</td>
       <td>昱臺國際</td>
       <td>航運業</td>
       <td>Unqualified</td>
@@ -5561,8 +5915,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>9940</td>
       <td>263</td>
-      <td></td>
+      <td>NaN</td>
       <td>信義</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -5582,8 +5937,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1598</td>
       <td>264</td>
-      <td></td>
+      <td>NaN</td>
       <td>岱宇</td>
       <td>運動休閒</td>
       <td>Unqualified</td>
@@ -5603,8 +5959,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5533</td>
       <td>265</td>
-      <td></td>
+      <td>NaN</td>
       <td>皇鼎</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -5624,8 +5981,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5907</td>
       <td>266</td>
-      <td></td>
+      <td>NaN</td>
       <td>大洋-KY</td>
       <td>貿易百貨</td>
       <td>Unqualified</td>
@@ -5645,8 +6003,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1777</td>
       <td>267</td>
-      <td></td>
+      <td>NaN</td>
       <td>生泰</td>
       <td>生技醫療業</td>
       <td>Unqualified</td>
@@ -5666,8 +6025,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5213</td>
       <td>268</td>
-      <td></td>
+      <td>NaN</td>
       <td>亞昕</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -5687,8 +6047,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2534</td>
       <td>269</td>
-      <td></td>
+      <td>NaN</td>
       <td>宏盛</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -5708,8 +6069,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6938</td>
       <td>270</td>
-      <td></td>
+      <td>NaN</td>
       <td>藍新資訊</td>
       <td>資訊服務業</td>
       <td>Unqualified</td>
@@ -5729,8 +6091,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2204</td>
       <td>271</td>
-      <td></td>
+      <td>NaN</td>
       <td>中華</td>
       <td>汽車工業</td>
       <td>Unqualified</td>
@@ -5750,8 +6113,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6972</td>
       <td>272</td>
-      <td></td>
+      <td>NaN</td>
       <td>博瑞達應材</td>
       <td>化學工業</td>
       <td>Unqualified</td>
@@ -5771,8 +6135,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3206</td>
       <td>273</td>
-      <td></td>
+      <td>NaN</td>
       <td>志豐</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -5792,8 +6157,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6577</td>
       <td>274</td>
-      <td></td>
+      <td>NaN</td>
       <td>勁豐</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -5813,8 +6179,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2538</td>
       <td>275</td>
-      <td></td>
+      <td>NaN</td>
       <td>基泰</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -5834,8 +6201,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8119</td>
       <td>276</td>
-      <td></td>
+      <td>NaN</td>
       <td>公信</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -5855,8 +6223,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4306</td>
       <td>277</td>
-      <td></td>
+      <td>NaN</td>
       <td>炎洲</td>
       <td>塑膠工業</td>
       <td>Unqualified</td>
@@ -5876,8 +6245,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3325</td>
       <td>278</td>
-      <td></td>
+      <td>NaN</td>
       <td>旭品</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -5897,8 +6267,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1339</td>
       <td>279</td>
-      <td></td>
+      <td>NaN</td>
       <td>昭輝</td>
       <td>汽車工業</td>
       <td>Unqualified</td>
@@ -5918,8 +6289,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2352</td>
       <td>280</td>
-      <td></td>
+      <td>NaN</td>
       <td>佳世達</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -5939,8 +6311,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3597</td>
       <td>281</td>
-      <td></td>
+      <td>NaN</td>
       <td>映興</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -5960,8 +6333,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2397</td>
       <td>282</td>
-      <td></td>
+      <td>NaN</td>
       <td>友通</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -5981,8 +6355,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1515</td>
       <td>283</td>
-      <td></td>
+      <td>NaN</td>
       <td>力山</td>
       <td>電機機械</td>
       <td>Unqualified</td>
@@ -6002,8 +6377,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1702</td>
       <td>284</td>
-      <td></td>
+      <td>NaN</td>
       <td>南僑</td>
       <td>食品工業</td>
       <td>Unqualified</td>
@@ -6023,8 +6399,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>7760</td>
       <td>285</td>
-      <td></td>
+      <td>NaN</td>
       <td>享溫馨</td>
       <td>觀光餐旅</td>
       <td>Unqualified</td>
@@ -6044,8 +6421,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3293</td>
       <td>286</td>
-      <td></td>
+      <td>NaN</td>
       <td>鈊象</td>
       <td>文化創意業</td>
       <td>Unqualified</td>
@@ -6065,8 +6443,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4930</td>
       <td>287</td>
-      <td></td>
+      <td>NaN</td>
       <td>燦星網</td>
       <td>電器電纜</td>
       <td>Unqualified</td>
@@ -6086,8 +6465,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4938</td>
       <td>288</td>
-      <td></td>
+      <td>NaN</td>
       <td>和碩</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -6107,8 +6487,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2430</td>
       <td>289</td>
-      <td></td>
+      <td>NaN</td>
       <td>燦坤</td>
       <td>電子通路業</td>
       <td>Unqualified</td>
@@ -6128,8 +6509,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1569</td>
       <td>290</td>
-      <td></td>
+      <td>NaN</td>
       <td>濱川</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -6149,8 +6531,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1806</td>
       <td>291</td>
-      <td></td>
+      <td>NaN</td>
       <td>冠軍</td>
       <td>玻璃陶瓷</td>
       <td>Unqualified</td>
@@ -6170,8 +6553,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6768</td>
       <td>292</td>
-      <td></td>
+      <td>NaN</td>
       <td>志強-KY</td>
       <td>運動休閒</td>
       <td>Unqualified</td>
@@ -6191,8 +6575,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4766</td>
       <td>293</td>
-      <td></td>
+      <td>NaN</td>
       <td>南寶</td>
       <td>化學生技醫療</td>
       <td>Unqualified</td>
@@ -6212,8 +6597,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2227</td>
       <td>294</td>
-      <td></td>
+      <td>NaN</td>
       <td>裕日車</td>
       <td>汽車工業</td>
       <td>Unqualified</td>
@@ -6233,8 +6619,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2439</td>
       <td>295</td>
-      <td></td>
+      <td>NaN</td>
       <td>美律</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -6254,8 +6641,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4999</td>
       <td>296</td>
-      <td></td>
+      <td>NaN</td>
       <td>鑫禾</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -6275,8 +6663,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1532</td>
       <td>297</td>
-      <td></td>
+      <td>NaN</td>
       <td>勤美</td>
       <td>電機機械</td>
       <td>Unqualified</td>
@@ -6296,8 +6685,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5403</td>
       <td>298</td>
-      <td></td>
+      <td>NaN</td>
       <td>中菲</td>
       <td>資訊服務業</td>
       <td>Unqualified</td>
@@ -6317,8 +6707,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2537</td>
       <td>299</td>
-      <td></td>
+      <td>NaN</td>
       <td>聯上發</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -6338,8 +6729,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8931</td>
       <td>300</td>
-      <td></td>
+      <td>NaN</td>
       <td>大汽電</td>
       <td>油電燃氣業</td>
       <td>Unqualified</td>
@@ -6359,8 +6751,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2745</td>
       <td>301</td>
-      <td></td>
+      <td>NaN</td>
       <td>五福</td>
       <td>觀光餐旅</td>
       <td>Unqualified</td>
@@ -6380,8 +6773,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1722</td>
       <td>302</td>
-      <td></td>
+      <td>NaN</td>
       <td>台肥</td>
       <td>化學生技醫療</td>
       <td>Unqualified</td>
@@ -6401,8 +6795,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1473</td>
       <td>303</td>
-      <td></td>
+      <td>NaN</td>
       <td>台南</td>
       <td>紡織纖維</td>
       <td>Unqualified</td>
@@ -6422,8 +6817,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3015</td>
       <td>304</td>
-      <td></td>
+      <td>NaN</td>
       <td>全漢</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -6443,8 +6839,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2616</td>
       <td>305</td>
-      <td></td>
+      <td>NaN</td>
       <td>山隆</td>
       <td>油電燃氣業</td>
       <td>Unqualified</td>
@@ -6464,8 +6861,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2915</td>
       <td>306</td>
-      <td></td>
+      <td>NaN</td>
       <td>潤泰全</td>
       <td>貿易百貨</td>
       <td>Unqualified</td>
@@ -6485,8 +6883,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2247</td>
       <td>307</td>
-      <td></td>
+      <td>NaN</td>
       <td>汎德永業</td>
       <td>汽車工業</td>
       <td>Unqualified</td>
@@ -6506,8 +6905,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6229</td>
       <td>308</td>
-      <td></td>
+      <td>NaN</td>
       <td>研通</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -6527,8 +6927,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4431</td>
       <td>309</td>
-      <td></td>
+      <td>NaN</td>
       <td>敏成健康</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -6548,8 +6949,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2603</td>
       <td>310</td>
-      <td></td>
+      <td>NaN</td>
       <td>長榮</td>
       <td>航運業</td>
       <td>Unqualified</td>
@@ -6569,8 +6971,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5490</td>
       <td>311</td>
-      <td></td>
+      <td>NaN</td>
       <td>同亨</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -6590,8 +6993,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6648</td>
       <td>312</td>
-      <td></td>
+      <td>NaN</td>
       <td>斯其大</td>
       <td>其他電子業</td>
       <td>Unqualified</td>
@@ -6611,8 +7015,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1402</td>
       <td>313</td>
-      <td></td>
+      <td>NaN</td>
       <td>遠東新</td>
       <td>紡織纖維</td>
       <td>Unqualified</td>
@@ -6632,8 +7037,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6161</td>
       <td>314</td>
-      <td></td>
+      <td>NaN</td>
       <td>捷波</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -6653,8 +7059,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2115</td>
       <td>315</td>
-      <td></td>
+      <td>NaN</td>
       <td>六暉-KY</td>
       <td>汽車工業</td>
       <td>Unqualified</td>
@@ -6674,8 +7081,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>9905</td>
       <td>316</td>
-      <td></td>
+      <td>NaN</td>
       <td>大華</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -6695,8 +7103,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1776</td>
       <td>317</td>
-      <td></td>
+      <td>NaN</td>
       <td>展宇</td>
       <td>化學生技醫療</td>
       <td>Unqualified</td>
@@ -6716,8 +7125,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1583</td>
       <td>318</td>
-      <td></td>
+      <td>NaN</td>
       <td>程泰</td>
       <td>電機機械</td>
       <td>Unqualified</td>
@@ -6737,8 +7147,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1271</td>
       <td>319</td>
-      <td></td>
+      <td>NaN</td>
       <td>晨暉生技</td>
       <td>生技醫療業</td>
       <td>Unqualified</td>
@@ -6758,8 +7169,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1535</td>
       <td>320</td>
-      <td></td>
+      <td>NaN</td>
       <td>中宇</td>
       <td>電機機械</td>
       <td>Unqualified</td>
@@ -6779,8 +7191,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6121</td>
       <td>321</td>
-      <td></td>
+      <td>NaN</td>
       <td>新普</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -6800,8 +7213,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1467</td>
       <td>322</td>
-      <td></td>
+      <td>NaN</td>
       <td>南緯</td>
       <td>紡織纖維</td>
       <td>Unqualified</td>
@@ -6821,8 +7235,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2108</td>
       <td>323</td>
-      <td></td>
+      <td>NaN</td>
       <td>南帝</td>
       <td>橡膠工業</td>
       <td>Unqualified</td>
@@ -6842,8 +7257,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1220</td>
       <td>324</td>
-      <td></td>
+      <td>NaN</td>
       <td>台榮</td>
       <td>食品工業</td>
       <td>Unqualified</td>
@@ -6863,8 +7279,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>9917</td>
       <td>325</td>
-      <td></td>
+      <td>NaN</td>
       <td>中保科</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -6884,8 +7301,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4767</td>
       <td>326</td>
-      <td></td>
+      <td>NaN</td>
       <td>誠泰科技</td>
       <td>化學工業</td>
       <td>Unqualified</td>
@@ -6905,8 +7323,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1264</td>
       <td>327</td>
-      <td></td>
+      <td>NaN</td>
       <td>德麥</td>
       <td>食品工業</td>
       <td>Unqualified</td>
@@ -6926,8 +7345,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1452</td>
       <td>328</td>
-      <td></td>
+      <td>NaN</td>
       <td>宏益</td>
       <td>紡織纖維</td>
       <td>Unqualified</td>
@@ -6947,8 +7367,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2727</td>
       <td>329</td>
-      <td></td>
+      <td>NaN</td>
       <td>王品</td>
       <td>觀光餐旅</td>
       <td>Unqualified</td>
@@ -6968,8 +7389,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8011</td>
       <td>330</td>
-      <td></td>
+      <td>NaN</td>
       <td>台通</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -6989,8 +7411,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3703</td>
       <td>331</td>
-      <td></td>
+      <td>NaN</td>
       <td>欣陸</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -7010,8 +7433,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2433</td>
       <td>332</td>
-      <td></td>
+      <td>NaN</td>
       <td>互盛電</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -7031,8 +7455,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>7455</td>
       <td>333</td>
-      <td></td>
+      <td>NaN</td>
       <td>樺緯物聯</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -7052,8 +7477,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1234</td>
       <td>334</td>
-      <td></td>
+      <td>NaN</td>
       <td>黑松</td>
       <td>食品工業</td>
       <td>Unqualified</td>
@@ -7073,8 +7499,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1466</td>
       <td>335</td>
-      <td></td>
+      <td>NaN</td>
       <td>聚隆</td>
       <td>紡織纖維</td>
       <td>Unqualified</td>
@@ -7094,8 +7521,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3356</td>
       <td>336</td>
-      <td></td>
+      <td>NaN</td>
       <td>奇偶</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -7115,8 +7543,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2453</td>
       <td>337</td>
-      <td></td>
+      <td>NaN</td>
       <td>凌群</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -7136,8 +7565,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3666</td>
       <td>338</td>
-      <td></td>
+      <td>NaN</td>
       <td>光耀</td>
       <td>光電業</td>
       <td>Unqualified</td>
@@ -7157,8 +7587,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6115</td>
       <td>339</td>
-      <td></td>
+      <td>NaN</td>
       <td>鎰勝</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -7178,8 +7609,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2450</td>
       <td>340</td>
-      <td></td>
+      <td>NaN</td>
       <td>神腦</td>
       <td>通信網路業</td>
       <td>Unqualified</td>
@@ -7199,8 +7631,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3705</td>
       <td>341</td>
-      <td></td>
+      <td>NaN</td>
       <td>永信</td>
       <td>生技醫療業</td>
       <td>Unqualified</td>
@@ -7220,8 +7653,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6697</td>
       <td>342</td>
-      <td></td>
+      <td>NaN</td>
       <td>東捷資訊</td>
       <td>資訊服務業</td>
       <td>Unqualified</td>
@@ -7241,8 +7675,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2640</td>
       <td>343</td>
-      <td></td>
+      <td>NaN</td>
       <td>大車隊</td>
       <td>數位雲端類</td>
       <td>Unqualified</td>
@@ -7262,8 +7697,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3209</td>
       <td>344</td>
-      <td></td>
+      <td>NaN</td>
       <td>全科</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -7283,8 +7719,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1539</td>
       <td>345</td>
-      <td></td>
+      <td>NaN</td>
       <td>巨庭</td>
       <td>電機機械</td>
       <td>Unqualified</td>
@@ -7304,8 +7741,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6464</td>
       <td>346</td>
-      <td></td>
+      <td>NaN</td>
       <td>台數科</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -7325,8 +7763,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1451</td>
       <td>347</td>
-      <td></td>
+      <td>NaN</td>
       <td>年興</td>
       <td>紡織纖維</td>
       <td>Unqualified</td>
@@ -7346,8 +7785,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6791</td>
       <td>348</td>
-      <td></td>
+      <td>NaN</td>
       <td>虎門科技</td>
       <td>資訊服務業</td>
       <td>Unqualified</td>
@@ -7367,8 +7807,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6214</td>
       <td>349</td>
-      <td></td>
+      <td>NaN</td>
       <td>精誠</td>
       <td>資訊服務業</td>
       <td>Unqualified</td>
@@ -7388,8 +7829,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2904</td>
       <td>350</td>
-      <td></td>
+      <td>NaN</td>
       <td>匯僑</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -7409,8 +7851,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3033</td>
       <td>351</td>
-      <td></td>
+      <td>NaN</td>
       <td>威健</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -7430,8 +7873,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2228</td>
       <td>352</td>
-      <td></td>
+      <td>NaN</td>
       <td>劍麟</td>
       <td>汽車工業</td>
       <td>Unqualified</td>
@@ -7451,8 +7895,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1232</td>
       <td>353</td>
-      <td></td>
+      <td>NaN</td>
       <td>大統益</td>
       <td>食品工業</td>
       <td>Unqualified</td>
@@ -7472,8 +7917,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>9907</td>
       <td>354</td>
-      <td></td>
+      <td>NaN</td>
       <td>統一實</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -7493,8 +7939,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2903</td>
       <td>355</td>
-      <td></td>
+      <td>NaN</td>
       <td>遠百</td>
       <td>貿易百貨</td>
       <td>Unqualified</td>
@@ -7514,8 +7961,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6590</td>
       <td>356</td>
-      <td></td>
+      <td>NaN</td>
       <td>普鴻</td>
       <td>資訊服務業</td>
       <td>Unqualified</td>
@@ -7535,8 +7983,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6506</td>
       <td>357</td>
-      <td></td>
+      <td>NaN</td>
       <td>雙邦</td>
       <td>紡織纖維</td>
       <td>Unqualified</td>
@@ -7556,8 +8005,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3702</td>
       <td>358</td>
-      <td></td>
+      <td>NaN</td>
       <td>大聯大</td>
       <td>電子通路業</td>
       <td>Unqualified</td>
@@ -7577,8 +8027,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2752</td>
       <td>359</td>
-      <td></td>
+      <td>NaN</td>
       <td>豆府</td>
       <td>觀光餐旅</td>
       <td>Unqualified</td>
@@ -7598,8 +8049,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5356</td>
       <td>360</td>
-      <td></td>
+      <td>NaN</td>
       <td>協益</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -7619,8 +8071,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6616</td>
       <td>361</td>
-      <td></td>
+      <td>NaN</td>
       <td>特昇-KY</td>
       <td>居家生活類</td>
       <td>Unqualified</td>
@@ -7640,8 +8093,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3484</td>
       <td>362</td>
-      <td></td>
+      <td>NaN</td>
       <td>崧騰</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -7661,8 +8115,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8421</td>
       <td>363</td>
-      <td></td>
+      <td>NaN</td>
       <td>旭源</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -7682,8 +8137,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2597</td>
       <td>364</td>
-      <td></td>
+      <td>NaN</td>
       <td>潤弘</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -7703,8 +8159,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1416</td>
       <td>365</td>
-      <td></td>
+      <td>NaN</td>
       <td>廣豐</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -7724,8 +8181,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2390</td>
       <td>366</td>
-      <td></td>
+      <td>NaN</td>
       <td>云辰</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -7745,8 +8203,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2852</td>
       <td>367</td>
-      <td></td>
+      <td>NaN</td>
       <td>第一保</td>
       <td>金融保險</td>
       <td>Unqualified</td>
@@ -7766,8 +8225,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6154</td>
       <td>368</td>
-      <td></td>
+      <td>NaN</td>
       <td>順發</td>
       <td>電子通路業</td>
       <td>Unqualified</td>
@@ -7787,8 +8247,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1456</td>
       <td>369</td>
-      <td></td>
+      <td>NaN</td>
       <td>怡華</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -7808,8 +8269,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2114</td>
       <td>370</td>
-      <td></td>
+      <td>NaN</td>
       <td>鑫永銓</td>
       <td>橡膠工業</td>
       <td>Unqualified</td>
@@ -7829,8 +8291,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>9925</td>
       <td>371</td>
-      <td></td>
+      <td>NaN</td>
       <td>新保</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -7850,8 +8313,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2509</td>
       <td>372</td>
-      <td></td>
+      <td>NaN</td>
       <td>全坤建</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -7871,8 +8335,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5201</td>
       <td>373</td>
-      <td></td>
+      <td>NaN</td>
       <td>凱衛</td>
       <td>資訊服務業</td>
       <td>Unqualified</td>
@@ -7892,8 +8357,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2596</td>
       <td>374</td>
-      <td></td>
+      <td>NaN</td>
       <td>綠意</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -7913,8 +8379,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6797</td>
       <td>375</td>
-      <td></td>
+      <td>NaN</td>
       <td>圓點奈米</td>
       <td>生技醫療業</td>
       <td>Unqualified</td>
@@ -7934,8 +8401,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3323</td>
       <td>376</td>
-      <td></td>
+      <td>NaN</td>
       <td>加百裕</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -7955,8 +8423,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2027</td>
       <td>377</td>
-      <td></td>
+      <td>NaN</td>
       <td>大成鋼</td>
       <td>鋼鐵工業</td>
       <td>Unqualified</td>
@@ -7976,8 +8445,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2548</td>
       <td>378</td>
-      <td></td>
+      <td>NaN</td>
       <td>華固</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -7997,8 +8467,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2908</td>
       <td>379</td>
-      <td></td>
+      <td>NaN</td>
       <td>特力</td>
       <td>貿易百貨</td>
       <td>Unqualified</td>
@@ -8018,8 +8489,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8182</td>
       <td>380</td>
-      <td></td>
+      <td>NaN</td>
       <td>加高</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -8039,8 +8511,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2347</td>
       <td>381</td>
-      <td></td>
+      <td>NaN</td>
       <td>聯強</td>
       <td>電子通路業</td>
       <td>Unqualified</td>
@@ -8060,8 +8533,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6494</td>
       <td>382</td>
-      <td></td>
+      <td>NaN</td>
       <td>九齊</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -8081,8 +8555,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1104</td>
       <td>383</td>
-      <td></td>
+      <td>NaN</td>
       <td>環泥</td>
       <td>水泥工業</td>
       <td>Unqualified</td>
@@ -8102,8 +8577,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3567</td>
       <td>384</td>
-      <td></td>
+      <td>NaN</td>
       <td>逸昌</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -8123,8 +8599,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5464</td>
       <td>385</td>
-      <td></td>
+      <td>NaN</td>
       <td>霖宏</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -8144,8 +8621,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2107</td>
       <td>386</td>
-      <td></td>
+      <td>NaN</td>
       <td>厚生</td>
       <td>橡膠工業</td>
       <td>Unqualified</td>
@@ -8165,8 +8643,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6858</td>
       <td>387</td>
-      <td></td>
+      <td>NaN</td>
       <td>愛比科技</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -8186,8 +8665,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2371</td>
       <td>388</td>
-      <td></td>
+      <td>NaN</td>
       <td>大同</td>
       <td>電機機械</td>
       <td>Unqualified</td>
@@ -8207,8 +8687,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8941</td>
       <td>389</td>
-      <td></td>
+      <td>NaN</td>
       <td>關中</td>
       <td>居家生活類</td>
       <td>Unqualified</td>
@@ -8228,8 +8709,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6803</td>
       <td>390</td>
-      <td></td>
+      <td>NaN</td>
       <td>崑鼎</td>
       <td>綠能環保類</td>
       <td>Unqualified</td>
@@ -8249,8 +8731,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6486</td>
       <td>391</td>
-      <td></td>
+      <td>NaN</td>
       <td>互動</td>
       <td>通信網路業</td>
       <td>Unqualified</td>
@@ -8270,8 +8753,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6136</td>
       <td>392</td>
-      <td></td>
+      <td>NaN</td>
       <td>富爾特</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -8291,8 +8775,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2423</td>
       <td>393</td>
-      <td></td>
+      <td>NaN</td>
       <td>固緯</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -8312,8 +8797,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6924</td>
       <td>394</td>
-      <td></td>
+      <td>NaN</td>
       <td>榮惠-KY創</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -8333,8 +8819,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1708</td>
       <td>395</td>
-      <td></td>
+      <td>NaN</td>
       <td>東鹼</td>
       <td>化學生技醫療</td>
       <td>Unqualified</td>
@@ -8354,8 +8841,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1325</td>
       <td>396</td>
-      <td></td>
+      <td>NaN</td>
       <td>恆大</td>
       <td>塑膠工業</td>
       <td>Unqualified</td>
@@ -8375,8 +8863,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4535</td>
       <td>397</td>
-      <td></td>
+      <td>NaN</td>
       <td>至興</td>
       <td>電機機械</td>
       <td>Unqualified</td>
@@ -8396,8 +8885,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1108</td>
       <td>398</td>
-      <td></td>
+      <td>NaN</td>
       <td>幸福</td>
       <td>水泥工業</td>
       <td>Unqualified</td>
@@ -8417,8 +8907,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6242</td>
       <td>399</td>
-      <td></td>
+      <td>NaN</td>
       <td>立康</td>
       <td>生技醫療業</td>
       <td>Unqualified</td>
@@ -8438,8 +8929,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3051</td>
       <td>400</td>
-      <td></td>
+      <td>NaN</td>
       <td>力特</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -8459,8 +8951,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5215</td>
       <td>401</td>
-      <td></td>
+      <td>NaN</td>
       <td>科嘉-KY</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -8480,8 +8973,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3526</td>
       <td>402</td>
-      <td></td>
+      <td>NaN</td>
       <td>凡甲</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -8501,8 +8995,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2527</td>
       <td>403</td>
-      <td></td>
+      <td>NaN</td>
       <td>宏璟</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -8522,8 +9017,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2942</td>
       <td>404</td>
-      <td></td>
+      <td>NaN</td>
       <td>京站</td>
       <td>居家生活</td>
       <td>Unqualified</td>
@@ -8543,8 +9039,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8401</td>
       <td>405</td>
-      <td></td>
+      <td>NaN</td>
       <td>白紗科</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -8564,8 +9061,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5254</td>
       <td>406</td>
-      <td></td>
+      <td>NaN</td>
       <td>欣訊科技</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -8585,8 +9083,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4550</td>
       <td>407</td>
-      <td></td>
+      <td>NaN</td>
       <td>長佳</td>
       <td>電機機械</td>
       <td>Unqualified</td>
@@ -8606,8 +9105,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6899</td>
       <td>408</td>
-      <td></td>
+      <td>NaN</td>
       <td>創為精密</td>
       <td>光電業</td>
       <td>Unqualified</td>
@@ -8627,8 +9127,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1726</td>
       <td>409</td>
-      <td></td>
+      <td>NaN</td>
       <td>永記</td>
       <td>化學生技醫療</td>
       <td>Unqualified</td>
@@ -8648,8 +9149,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6581</td>
       <td>410</td>
-      <td></td>
+      <td>NaN</td>
       <td>鋼聯</td>
       <td>綠能環保</td>
       <td>Unqualified</td>
@@ -8669,8 +9171,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5859</td>
       <td>411</td>
-      <td></td>
+      <td>NaN</td>
       <td>遠壽</td>
       <td>金融業</td>
       <td>Unqualified</td>
@@ -8690,8 +9193,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6606</td>
       <td>412</td>
-      <td></td>
+      <td>NaN</td>
       <td>建德工業</td>
       <td>電機機械</td>
       <td>Unqualified</td>
@@ -8711,8 +9215,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3118</td>
       <td>413</td>
-      <td></td>
+      <td>NaN</td>
       <td>進階</td>
       <td>生技醫療業</td>
       <td>Unqualified</td>
@@ -8732,8 +9237,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3038</td>
       <td>414</td>
-      <td></td>
+      <td>NaN</td>
       <td>全台</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -8753,8 +9259,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5493</td>
       <td>415</td>
-      <td></td>
+      <td>NaN</td>
       <td>三聯</td>
       <td>其他電子類</td>
       <td>Unqualified</td>
@@ -8774,8 +9281,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5608</td>
       <td>416</td>
-      <td></td>
+      <td>NaN</td>
       <td>四維航</td>
       <td>航運業</td>
       <td>Unqualified</td>
@@ -8795,8 +9303,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>9942</td>
       <td>417</td>
-      <td></td>
+      <td>NaN</td>
       <td>茂順</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -8816,8 +9325,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6407</td>
       <td>418</td>
-      <td></td>
+      <td>NaN</td>
       <td>相互</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -8837,8 +9347,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1612</td>
       <td>419</td>
-      <td></td>
+      <td>NaN</td>
       <td>宏泰</td>
       <td>電器電纜</td>
       <td>Unqualified</td>
@@ -8858,8 +9369,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8424</td>
       <td>420</td>
-      <td></td>
+      <td>NaN</td>
       <td>惠普</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -8879,8 +9391,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2501</td>
       <td>421</td>
-      <td></td>
+      <td>NaN</td>
       <td>國建</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -8900,8 +9413,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2820</td>
       <td>422</td>
-      <td></td>
+      <td>NaN</td>
       <td>華票</td>
       <td>金融保險</td>
       <td>Unqualified</td>
@@ -8921,8 +9435,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8487</td>
       <td>423</td>
-      <td></td>
+      <td>NaN</td>
       <td>愛爾達-創</td>
       <td>創新板股票</td>
       <td>Unqualified</td>
@@ -8942,8 +9457,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2816</td>
       <td>424</td>
-      <td></td>
+      <td>NaN</td>
       <td>旺旺保</td>
       <td>金融保險</td>
       <td>Unqualified</td>
@@ -8963,8 +9479,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4183</td>
       <td>425</td>
-      <td></td>
+      <td>NaN</td>
       <td>福永生技</td>
       <td>生技醫療業</td>
       <td>Unqualified</td>
@@ -8984,8 +9501,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6024</td>
       <td>426</td>
-      <td></td>
+      <td>NaN</td>
       <td>群益期</td>
       <td>金融保險</td>
       <td>Unqualified</td>
@@ -9005,8 +9523,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6020</td>
       <td>427</td>
-      <td></td>
+      <td>NaN</td>
       <td>大展證</td>
       <td>金融業</td>
       <td>Unqualified</td>
@@ -9026,8 +9545,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5523</td>
       <td>428</td>
-      <td></td>
+      <td>NaN</td>
       <td>豐謙</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -9047,8 +9567,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1530</td>
       <td>429</td>
-      <td></td>
+      <td>NaN</td>
       <td>亞崴</td>
       <td>電機機械</td>
       <td>Unqualified</td>
@@ -9068,8 +9589,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6723</td>
       <td>430</td>
-      <td></td>
+      <td>NaN</td>
       <td>傑智環境</td>
       <td>綠能環保</td>
       <td>Unqualified</td>
@@ -9089,8 +9611,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2850</td>
       <td>431</td>
-      <td></td>
+      <td>NaN</td>
       <td>新產</td>
       <td>金融保險</td>
       <td>Unqualified</td>
@@ -9110,8 +9633,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2546</td>
       <td>432</td>
-      <td></td>
+      <td>NaN</td>
       <td>根基</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -9131,8 +9655,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5471</td>
       <td>433</td>
-      <td></td>
+      <td>NaN</td>
       <td>松翰</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -9152,8 +9677,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3031</td>
       <td>434</td>
-      <td></td>
+      <td>NaN</td>
       <td>佰鴻</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -9173,8 +9699,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3537</td>
       <td>435</td>
-      <td></td>
+      <td>NaN</td>
       <td>堡達</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -9194,8 +9721,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3659</td>
       <td>436</td>
-      <td></td>
+      <td>NaN</td>
       <td>百辰</td>
       <td>光電業</td>
       <td>Unqualified</td>
@@ -9215,8 +9743,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6996</td>
       <td>437</td>
-      <td></td>
+      <td>NaN</td>
       <td>力領科技</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -9236,8 +9765,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1342</td>
       <td>438</td>
-      <td></td>
+      <td>NaN</td>
       <td>八貫</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -9257,8 +9787,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2382</td>
       <td>439</td>
-      <td></td>
+      <td>NaN</td>
       <td>廣達</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -9278,8 +9809,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2459</td>
       <td>440</td>
-      <td></td>
+      <td>NaN</td>
       <td>敦吉</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -9299,8 +9831,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2356</td>
       <td>441</td>
-      <td></td>
+      <td>NaN</td>
       <td>英業達</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -9320,8 +9853,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4736</td>
       <td>442</td>
-      <td></td>
+      <td>NaN</td>
       <td>泰博</td>
       <td>生技醫療業</td>
       <td>Unqualified</td>
@@ -9341,8 +9875,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2064</td>
       <td>443</td>
-      <td></td>
+      <td>NaN</td>
       <td>晉椿</td>
       <td>鋼鐵工業</td>
       <td>Unqualified</td>
@@ -9362,8 +9897,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6174</td>
       <td>444</td>
-      <td></td>
+      <td>NaN</td>
       <td>安碁</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -9383,8 +9919,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1720</td>
       <td>445</td>
-      <td></td>
+      <td>NaN</td>
       <td>生達</td>
       <td>生技醫療業</td>
       <td>Unqualified</td>
@@ -9404,8 +9941,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2034</td>
       <td>446</td>
-      <td></td>
+      <td>NaN</td>
       <td>允強</td>
       <td>鋼鐵工業</td>
       <td>Unqualified</td>
@@ -9425,8 +9963,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2477</td>
       <td>447</td>
-      <td></td>
+      <td>NaN</td>
       <td>美隆電</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -9446,8 +9985,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6613</td>
       <td>448</td>
-      <td></td>
+      <td>NaN</td>
       <td>朋億*</td>
       <td>其他電子類</td>
       <td>Unqualified</td>
@@ -9467,8 +10007,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>9960</td>
       <td>449</td>
-      <td></td>
+      <td>NaN</td>
       <td>邁達康</td>
       <td>運動休閒類</td>
       <td>Unqualified</td>
@@ -9488,8 +10029,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2851</td>
       <td>450</td>
-      <td></td>
+      <td>NaN</td>
       <td>中再保</td>
       <td>金融保險</td>
       <td>Unqualified</td>
@@ -9509,8 +10051,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6898</td>
       <td>451</td>
-      <td></td>
+      <td>NaN</td>
       <td>程曦資訊</td>
       <td>資訊服務業</td>
       <td>Unqualified</td>
@@ -9530,8 +10073,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2493</td>
       <td>452</td>
-      <td></td>
+      <td>NaN</td>
       <td>揚博</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -9551,8 +10095,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6596</td>
       <td>453</td>
-      <td></td>
+      <td>NaN</td>
       <td>寬宏藝術</td>
       <td>文化創意業</td>
       <td>Unqualified</td>
@@ -9572,8 +10117,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2006</td>
       <td>454</td>
-      <td></td>
+      <td>NaN</td>
       <td>東和鋼鐵</td>
       <td>鋼鐵工業</td>
       <td>Unqualified</td>
@@ -9593,8 +10139,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6651</td>
       <td>455</td>
-      <td></td>
+      <td>NaN</td>
       <td>全宇昕</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -9614,8 +10161,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5223</td>
       <td>456</td>
-      <td></td>
+      <td>NaN</td>
       <td>安力-KY</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -9635,8 +10183,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8938</td>
       <td>457</td>
-      <td></td>
+      <td>NaN</td>
       <td>明安</td>
       <td>運動休閒類</td>
       <td>Unqualified</td>
@@ -9656,8 +10205,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3633</td>
       <td>458</td>
-      <td></td>
+      <td>NaN</td>
       <td>云光</td>
       <td>光電業</td>
       <td>Unqualified</td>
@@ -9677,8 +10227,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1712</td>
       <td>459</td>
-      <td></td>
+      <td>NaN</td>
       <td>興農</td>
       <td>化學生技醫療</td>
       <td>Unqualified</td>
@@ -9698,8 +10249,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3231</td>
       <td>460</td>
-      <td></td>
+      <td>NaN</td>
       <td>緯創</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -9719,8 +10271,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6662</td>
       <td>461</td>
-      <td></td>
+      <td>NaN</td>
       <td>樂斯科</td>
       <td>生技醫療業</td>
       <td>Unqualified</td>
@@ -9740,8 +10293,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4906</td>
       <td>462</td>
-      <td></td>
+      <td>NaN</td>
       <td>正文</td>
       <td>通信網路業</td>
       <td>Unqualified</td>
@@ -9761,8 +10315,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4568</td>
       <td>463</td>
-      <td></td>
+      <td>NaN</td>
       <td>科際精密</td>
       <td>電機機械</td>
       <td>Unqualified</td>
@@ -9782,8 +10337,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6672</td>
       <td>464</td>
-      <td></td>
+      <td>NaN</td>
       <td>騰輝電子-KY</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -9803,8 +10359,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5212</td>
       <td>465</td>
-      <td></td>
+      <td>NaN</td>
       <td>凌網</td>
       <td>資訊服務業</td>
       <td>Unqualified</td>
@@ -9824,8 +10381,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6560</td>
       <td>466</td>
-      <td></td>
+      <td>NaN</td>
       <td>欣普羅</td>
       <td>光電業</td>
       <td>Unqualified</td>
@@ -9845,8 +10403,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4417</td>
       <td>467</td>
-      <td></td>
+      <td>NaN</td>
       <td>金洲</td>
       <td>紡織纖維</td>
       <td>Unqualified</td>
@@ -9866,8 +10425,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>9927</td>
       <td>468</td>
-      <td></td>
+      <td>NaN</td>
       <td>泰銘</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -9887,8 +10447,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2617</td>
       <td>469</td>
-      <td></td>
+      <td>NaN</td>
       <td>台航</td>
       <td>航運業</td>
       <td>Unqualified</td>
@@ -9908,8 +10469,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5520</td>
       <td>470</td>
-      <td></td>
+      <td>NaN</td>
       <td>力泰</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -9929,8 +10491,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5604</td>
       <td>471</td>
-      <td></td>
+      <td>NaN</td>
       <td>中連</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -9950,8 +10513,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3669</td>
       <td>472</td>
-      <td></td>
+      <td>NaN</td>
       <td>圓展</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -9971,8 +10535,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2606</td>
       <td>473</td>
-      <td></td>
+      <td>NaN</td>
       <td>裕民</td>
       <td>航運業</td>
       <td>Unqualified</td>
@@ -9992,8 +10557,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2324</td>
       <td>474</td>
-      <td></td>
+      <td>NaN</td>
       <td>仁寶</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -10013,8 +10579,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6744</td>
       <td>475</td>
-      <td></td>
+      <td>NaN</td>
       <td>豐技生技</td>
       <td>生技醫療業</td>
       <td>Unqualified</td>
@@ -10034,8 +10601,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8924</td>
       <td>476</td>
-      <td></td>
+      <td>NaN</td>
       <td>大田</td>
       <td>運動休閒類</td>
       <td>Unqualified</td>
@@ -10055,8 +10623,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6951</td>
       <td>477</td>
-      <td></td>
+      <td>NaN</td>
       <td>青新-創</td>
       <td>綠能環保</td>
       <td>Unqualified</td>
@@ -10076,8 +10645,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1409</td>
       <td>478</td>
-      <td></td>
+      <td>NaN</td>
       <td>新纖</td>
       <td>紡織纖維</td>
       <td>Unqualified</td>
@@ -10097,8 +10667,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5547</td>
       <td>479</td>
-      <td></td>
+      <td>NaN</td>
       <td>久舜</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -10118,8 +10689,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8213</td>
       <td>480</td>
-      <td></td>
+      <td>NaN</td>
       <td>志超</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -10139,8 +10711,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3071</td>
       <td>481</td>
-      <td></td>
+      <td>NaN</td>
       <td>協禧</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -10160,8 +10733,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6525</td>
       <td>482</td>
-      <td></td>
+      <td>NaN</td>
       <td>捷敏-KY</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -10181,8 +10755,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>7713</td>
       <td>483</td>
-      <td></td>
+      <td>NaN</td>
       <td>威力德生醫</td>
       <td>生技醫療業</td>
       <td>Unqualified</td>
@@ -10202,8 +10777,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2061</td>
       <td>484</td>
-      <td></td>
+      <td>NaN</td>
       <td>風青</td>
       <td>電器電纜</td>
       <td>Unqualified</td>
@@ -10223,8 +10799,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6204</td>
       <td>485</td>
-      <td></td>
+      <td>NaN</td>
       <td>艾華</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -10244,8 +10821,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6023</td>
       <td>486</td>
-      <td></td>
+      <td>NaN</td>
       <td>元大期</td>
       <td>金融業</td>
       <td>Unqualified</td>
@@ -10265,8 +10843,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1308</td>
       <td>487</td>
-      <td></td>
+      <td>NaN</td>
       <td>亞聚</td>
       <td>塑膠工業</td>
       <td>Unqualified</td>
@@ -10286,8 +10865,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8081</td>
       <td>488</td>
-      <td></td>
+      <td>NaN</td>
       <td>致新</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -10307,8 +10887,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4949</td>
       <td>489</td>
-      <td></td>
+      <td>NaN</td>
       <td>有成精密</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -10328,8 +10909,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3498</td>
       <td>490</td>
-      <td></td>
+      <td>NaN</td>
       <td>陽程</td>
       <td>其他電子類</td>
       <td>Unqualified</td>
@@ -10349,8 +10931,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4987</td>
       <td>491</td>
-      <td></td>
+      <td>NaN</td>
       <td>科誠</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -10370,8 +10953,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2010</td>
       <td>492</td>
-      <td></td>
+      <td>NaN</td>
       <td>春源</td>
       <td>鋼鐵工業</td>
       <td>Unqualified</td>
@@ -10391,8 +10975,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5538</td>
       <td>493</td>
-      <td></td>
+      <td>NaN</td>
       <td>東明-KY</td>
       <td>鋼鐵工業</td>
       <td>Unqualified</td>
@@ -10412,8 +10997,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2211</td>
       <td>494</td>
-      <td></td>
+      <td>NaN</td>
       <td>長榮鋼</td>
       <td>鋼鐵工業</td>
       <td>Unqualified</td>
@@ -10433,8 +11019,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3171</td>
       <td>495</td>
-      <td></td>
+      <td>NaN</td>
       <td>炎洲流通</td>
       <td>居家生活類</td>
       <td>Unqualified</td>
@@ -10454,8 +11041,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6116</td>
       <td>496</td>
-      <td></td>
+      <td>NaN</td>
       <td>彩晶</td>
       <td>光電業</td>
       <td>Unqualified</td>
@@ -10475,8 +11063,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2905</td>
       <td>497</td>
-      <td></td>
+      <td>NaN</td>
       <td>三商</td>
       <td>貿易百貨</td>
       <td>Unqualified</td>
@@ -10496,8 +11085,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5511</td>
       <td>498</td>
-      <td></td>
+      <td>NaN</td>
       <td>德昌</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -10517,8 +11107,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4105</td>
       <td>499</td>
-      <td></td>
+      <td>NaN</td>
       <td>東洋</td>
       <td>生技醫療業</td>
       <td>Unqualified</td>
@@ -10538,8 +11129,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2637</td>
       <td>500</td>
-      <td></td>
+      <td>NaN</td>
       <td>慧洋-KY</td>
       <td>航運業</td>
       <td>Unqualified</td>
@@ -10559,8 +11151,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6168</td>
       <td>501</td>
-      <td></td>
+      <td>NaN</td>
       <td>宏齊</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -10580,8 +11173,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2221</td>
       <td>502</td>
-      <td></td>
+      <td>NaN</td>
       <td>大甲</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -10601,8 +11195,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5315</td>
       <td>503</td>
-      <td></td>
+      <td>NaN</td>
       <td>光聯</td>
       <td>光電業</td>
       <td>Unqualified</td>
@@ -10622,8 +11217,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2399</td>
       <td>504</td>
-      <td></td>
+      <td>NaN</td>
       <td>映泰</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -10643,8 +11239,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2731</td>
       <td>505</td>
-      <td></td>
+      <td>NaN</td>
       <td>雄獅</td>
       <td>觀光餐旅</td>
       <td>Unqualified</td>
@@ -10664,8 +11261,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3689</td>
       <td>506</td>
-      <td></td>
+      <td>NaN</td>
       <td>湧德</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -10685,8 +11283,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8416</td>
       <td>507</td>
-      <td></td>
+      <td>NaN</td>
       <td>實威</td>
       <td>資訊服務業</td>
       <td>Unqualified</td>
@@ -10706,8 +11305,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2883</td>
       <td>508</td>
-      <td></td>
+      <td>NaN</td>
       <td>凱基金</td>
       <td>金融保險</td>
       <td>Unqualified</td>
@@ -10727,8 +11327,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4953</td>
       <td>509</td>
-      <td></td>
+      <td>NaN</td>
       <td>緯軟</td>
       <td>資訊服務業</td>
       <td>Unqualified</td>
@@ -10748,8 +11349,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6432</td>
       <td>510</td>
-      <td></td>
+      <td>NaN</td>
       <td>今展科</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -10769,8 +11371,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3455</td>
       <td>511</td>
-      <td></td>
+      <td>NaN</td>
       <td>由田</td>
       <td>光電業</td>
       <td>Unqualified</td>
@@ -10790,8 +11393,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6191</td>
       <td>512</td>
-      <td></td>
+      <td>NaN</td>
       <td>精成科</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -10811,8 +11415,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8083</td>
       <td>513</td>
-      <td></td>
+      <td>NaN</td>
       <td>瑞穎</td>
       <td>電機機械</td>
       <td>Unqualified</td>
@@ -10832,8 +11437,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6275</td>
       <td>514</td>
-      <td></td>
+      <td>NaN</td>
       <td>元山</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -10853,8 +11459,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8109</td>
       <td>515</td>
-      <td></td>
+      <td>NaN</td>
       <td>博大</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -10874,8 +11481,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5434</td>
       <td>516</td>
-      <td></td>
+      <td>NaN</td>
       <td>崇越</td>
       <td>電子通路業</td>
       <td>Unqualified</td>
@@ -10895,8 +11503,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6202</td>
       <td>517</td>
-      <td></td>
+      <td>NaN</td>
       <td>盛群</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -10916,8 +11525,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6210</td>
       <td>518</td>
-      <td></td>
+      <td>NaN</td>
       <td>慶生</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -10937,8 +11547,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8048</td>
       <td>519</td>
-      <td></td>
+      <td>NaN</td>
       <td>德勝</td>
       <td>通信網路業</td>
       <td>Unqualified</td>
@@ -10958,8 +11569,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6270</td>
       <td>520</td>
-      <td></td>
+      <td>NaN</td>
       <td>倍微</td>
       <td>電子通路業</td>
       <td>Unqualified</td>
@@ -10979,8 +11591,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6721</td>
       <td>521</td>
-      <td></td>
+      <td>NaN</td>
       <td>信實</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -11000,8 +11613,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6164</td>
       <td>522</td>
-      <td></td>
+      <td>NaN</td>
       <td>華興</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -11021,8 +11635,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5007</td>
       <td>523</td>
-      <td></td>
+      <td>NaN</td>
       <td>三星</td>
       <td>鋼鐵工業</td>
       <td>Unqualified</td>
@@ -11042,8 +11657,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4544</td>
       <td>524</td>
-      <td></td>
+      <td>NaN</td>
       <td>春日</td>
       <td>電機機械</td>
       <td>Unqualified</td>
@@ -11063,8 +11679,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3556</td>
       <td>525</td>
-      <td></td>
+      <td>NaN</td>
       <td>禾瑞亞</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -11084,8 +11701,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2937</td>
       <td>526</td>
-      <td></td>
+      <td>NaN</td>
       <td>集雅社</td>
       <td>居家生活類</td>
       <td>Unqualified</td>
@@ -11105,8 +11723,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5209</td>
       <td>527</td>
-      <td></td>
+      <td>NaN</td>
       <td>新鼎</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -11126,8 +11745,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>7558</td>
       <td>528</td>
-      <td></td>
+      <td>NaN</td>
       <td>群利科技</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -11147,8 +11767,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3026</td>
       <td>529</td>
-      <td></td>
+      <td>NaN</td>
       <td>禾伸堂</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -11168,8 +11789,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6190</td>
       <td>530</td>
-      <td></td>
+      <td>NaN</td>
       <td>萬泰科</td>
       <td>通信網路業</td>
       <td>Unqualified</td>
@@ -11189,8 +11811,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6261</td>
       <td>531</td>
-      <td></td>
+      <td>NaN</td>
       <td>久元</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -11210,8 +11833,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6776</td>
       <td>532</td>
-      <td></td>
+      <td>NaN</td>
       <td>展碁國際</td>
       <td>電子通路業</td>
       <td>Unqualified</td>
@@ -11231,8 +11855,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2535</td>
       <td>533</td>
-      <td></td>
+      <td>NaN</td>
       <td>達欣工</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -11252,8 +11877,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6470</td>
       <td>534</td>
-      <td></td>
+      <td>NaN</td>
       <td>宇智</td>
       <td>通信網路業</td>
       <td>Unqualified</td>
@@ -11273,8 +11899,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2515</td>
       <td>535</td>
-      <td></td>
+      <td>NaN</td>
       <td>中工</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -11294,8 +11921,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5515</td>
       <td>536</td>
-      <td></td>
+      <td>NaN</td>
       <td>建國</td>
       <td>建材營造</td>
       <td>Unqualified</td>
@@ -11315,8 +11943,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8240</td>
       <td>537</td>
-      <td></td>
+      <td>NaN</td>
       <td>華宏</td>
       <td>光電業</td>
       <td>Unqualified</td>
@@ -11336,8 +11965,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8249</td>
       <td>538</td>
-      <td></td>
+      <td>NaN</td>
       <td>菱光</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -11357,8 +11987,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6192</td>
       <td>539</td>
-      <td></td>
+      <td>NaN</td>
       <td>巨路</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -11378,8 +12009,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1570</td>
       <td>540</td>
-      <td></td>
+      <td>NaN</td>
       <td>力肯</td>
       <td>電機機械</td>
       <td>Unqualified</td>
@@ -11399,8 +12031,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2882</td>
       <td>541</td>
-      <td></td>
+      <td>NaN</td>
       <td>國泰金</td>
       <td>金融保險</td>
       <td>Unqualified</td>
@@ -11420,8 +12053,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2030</td>
       <td>542</td>
-      <td></td>
+      <td>NaN</td>
       <td>彰源</td>
       <td>鋼鐵工業</td>
       <td>Unqualified</td>
@@ -11441,8 +12075,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6904</td>
       <td>543</td>
-      <td></td>
+      <td>NaN</td>
       <td>伯鑫</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -11462,8 +12097,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5878</td>
       <td>544</td>
-      <td></td>
+      <td>NaN</td>
       <td>台名</td>
       <td>金融業</td>
       <td>Unqualified</td>
@@ -11483,8 +12119,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8034</td>
       <td>545</td>
-      <td></td>
+      <td>NaN</td>
       <td>榮群</td>
       <td>通信網路業</td>
       <td>Unqualified</td>
@@ -11504,8 +12141,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4745</td>
       <td>546</td>
-      <td></td>
+      <td>NaN</td>
       <td>合富-KY</td>
       <td>生技醫療業</td>
       <td>Unqualified</td>
@@ -11525,8 +12163,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5267</td>
       <td>547</td>
-      <td></td>
+      <td>NaN</td>
       <td>龍翩</td>
       <td>光電業</td>
       <td>Unqualified</td>
@@ -11546,8 +12185,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6816</td>
       <td>548</td>
-      <td></td>
+      <td>NaN</td>
       <td>捷智商訊</td>
       <td>資訊服務業</td>
       <td>Unqualified</td>
@@ -11567,8 +12207,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2235</td>
       <td>549</td>
-      <td></td>
+      <td>NaN</td>
       <td>謚源</td>
       <td>電機機械</td>
       <td>Unqualified</td>
@@ -11588,8 +12229,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4927</td>
       <td>550</td>
-      <td></td>
+      <td>NaN</td>
       <td>泰鼎-KY</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -11609,8 +12251,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6664</td>
       <td>551</td>
-      <td></td>
+      <td>NaN</td>
       <td>群翊</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -11630,8 +12273,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8436</td>
       <td>552</td>
-      <td></td>
+      <td>NaN</td>
       <td>大江</td>
       <td>生技醫療業</td>
       <td>Unqualified</td>
@@ -11651,8 +12295,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2323</td>
       <td>553</td>
-      <td></td>
+      <td>NaN</td>
       <td>中環</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -11672,8 +12317,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3090</td>
       <td>554</td>
-      <td></td>
+      <td>NaN</td>
       <td>日電貿</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -11693,8 +12339,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2891</td>
       <td>555</td>
-      <td></td>
+      <td>NaN</td>
       <td>中信金</td>
       <td>金融保險</td>
       <td>Unqualified</td>
@@ -11714,8 +12361,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3402</td>
       <td>556</td>
-      <td></td>
+      <td>NaN</td>
       <td>漢科</td>
       <td>其他電子類</td>
       <td>Unqualified</td>
@@ -11735,8 +12383,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6750</td>
       <td>557</td>
-      <td></td>
+      <td>NaN</td>
       <td>泰創工程</td>
       <td>其他電子業</td>
       <td>Unqualified</td>
@@ -11756,8 +12405,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6654</td>
       <td>558</td>
-      <td></td>
+      <td>NaN</td>
       <td>天正國際</td>
       <td>其他電子類</td>
       <td>Unqualified</td>
@@ -11777,8 +12427,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5245</td>
       <td>559</td>
-      <td></td>
+      <td>NaN</td>
       <td>智晶</td>
       <td>光電業</td>
       <td>Unqualified</td>
@@ -11798,8 +12449,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4121</td>
       <td>560</td>
-      <td></td>
+      <td>NaN</td>
       <td>優盛</td>
       <td>生技醫療業</td>
       <td>Unqualified</td>
@@ -11819,8 +12471,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1215</td>
       <td>561</td>
-      <td></td>
+      <td>NaN</td>
       <td>卜蜂</td>
       <td>食品工業</td>
       <td>Unqualified</td>
@@ -11840,8 +12493,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3030</td>
       <td>562</td>
-      <td></td>
+      <td>NaN</td>
       <td>德律</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -11861,8 +12515,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8091</td>
       <td>563</td>
-      <td></td>
+      <td>NaN</td>
       <td>翔名</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -11882,8 +12537,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8111</td>
       <td>564</td>
-      <td></td>
+      <td>NaN</td>
       <td>立碁</td>
       <td>光電業</td>
       <td>Unqualified</td>
@@ -11903,8 +12559,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6761</td>
       <td>565</td>
-      <td></td>
+      <td>NaN</td>
       <td>穩得</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -11924,8 +12581,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3048</td>
       <td>566</td>
-      <td></td>
+      <td>NaN</td>
       <td>益登</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -11945,8 +12603,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2472</td>
       <td>567</td>
-      <td></td>
+      <td>NaN</td>
       <td>立隆電</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -11966,8 +12625,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2404</td>
       <td>568</td>
-      <td></td>
+      <td>NaN</td>
       <td>漢唐</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -11987,8 +12647,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6005</td>
       <td>569</td>
-      <td></td>
+      <td>NaN</td>
       <td>群益證</td>
       <td>金融保險</td>
       <td>Unqualified</td>
@@ -12008,8 +12669,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3036</td>
       <td>570</td>
-      <td></td>
+      <td>NaN</td>
       <td>文曄</td>
       <td>電子通路業</td>
       <td>Unqualified</td>
@@ -12029,8 +12691,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2612</td>
       <td>571</td>
-      <td></td>
+      <td>NaN</td>
       <td>中航</td>
       <td>航運業</td>
       <td>Unqualified</td>
@@ -12050,8 +12713,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3010</td>
       <td>572</td>
-      <td></td>
+      <td>NaN</td>
       <td>華立</td>
       <td>電子通路業</td>
       <td>Unqualified</td>
@@ -12071,8 +12735,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6026</td>
       <td>573</td>
-      <td></td>
+      <td>NaN</td>
       <td>福邦證</td>
       <td>金融業</td>
       <td>Unqualified</td>
@@ -12092,8 +12757,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3426</td>
       <td>574</td>
-      <td></td>
+      <td>NaN</td>
       <td>台興</td>
       <td>電機機械</td>
       <td>Unqualified</td>
@@ -12113,8 +12779,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2885</td>
       <td>575</td>
-      <td></td>
+      <td>NaN</td>
       <td>元大金</td>
       <td>金融保險</td>
       <td>Unqualified</td>
@@ -12134,8 +12801,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6856</td>
       <td>576</td>
-      <td></td>
+      <td>NaN</td>
       <td>鑫傳</td>
       <td>文化創意業</td>
       <td>Unqualified</td>
@@ -12155,8 +12823,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2855</td>
       <td>577</td>
-      <td></td>
+      <td>NaN</td>
       <td>統一證</td>
       <td>金融保險</td>
       <td>Unqualified</td>
@@ -12176,8 +12845,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8905</td>
       <td>578</td>
-      <td></td>
+      <td>NaN</td>
       <td>裕國</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -12197,8 +12867,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2249</td>
       <td>579</td>
-      <td></td>
+      <td>NaN</td>
       <td>湧盛</td>
       <td>電機機械</td>
       <td>Unqualified</td>
@@ -12218,8 +12889,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3357</td>
       <td>580</td>
-      <td></td>
+      <td>NaN</td>
       <td>臺慶科</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -12239,8 +12911,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1312</td>
       <td>581</td>
-      <td></td>
+      <td>NaN</td>
       <td>國喬</td>
       <td>塑膠工業</td>
       <td>Unqualified</td>
@@ -12260,8 +12933,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2069</td>
       <td>582</td>
-      <td></td>
+      <td>NaN</td>
       <td>運錩</td>
       <td>鋼鐵工業</td>
       <td>Unqualified</td>
@@ -12281,8 +12955,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3684</td>
       <td>583</td>
-      <td></td>
+      <td>NaN</td>
       <td>榮昌</td>
       <td>通信網路業</td>
       <td>Unqualified</td>
@@ -12302,8 +12977,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1608</td>
       <td>584</td>
-      <td></td>
+      <td>NaN</td>
       <td>華榮</td>
       <td>電器電纜</td>
       <td>Unqualified</td>
@@ -12323,8 +12999,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6788</td>
       <td>585</td>
-      <td></td>
+      <td>NaN</td>
       <td>華景電</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -12344,8 +13021,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8499</td>
       <td>586</td>
-      <td></td>
+      <td>NaN</td>
       <td>鼎炫-KY</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -12365,8 +13043,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6691</td>
       <td>587</td>
-      <td></td>
+      <td>NaN</td>
       <td>洋基工程</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -12386,8 +13065,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2941</td>
       <td>588</td>
-      <td></td>
+      <td>NaN</td>
       <td>米斯特</td>
       <td>居家生活類</td>
       <td>Unqualified</td>
@@ -12407,8 +13087,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6290</td>
       <td>589</td>
-      <td></td>
+      <td>NaN</td>
       <td>良維</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -12428,8 +13109,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6220</td>
       <td>590</td>
-      <td></td>
+      <td>NaN</td>
       <td>岳豐</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -12449,8 +13131,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8342</td>
       <td>591</td>
-      <td></td>
+      <td>NaN</td>
       <td>益張</td>
       <td>其他</td>
       <td>Unqualified</td>
@@ -12470,8 +13153,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1780</td>
       <td>592</td>
-      <td></td>
+      <td>NaN</td>
       <td>立弘</td>
       <td>生技醫療業</td>
       <td>Unqualified</td>
@@ -12491,8 +13175,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6015</td>
       <td>593</td>
-      <td></td>
+      <td>NaN</td>
       <td>宏遠證</td>
       <td>金融業</td>
       <td>Unqualified</td>
@@ -12512,8 +13197,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5262</td>
       <td>594</td>
-      <td></td>
+      <td>NaN</td>
       <td>立達</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -12533,8 +13219,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2832</td>
       <td>595</td>
-      <td></td>
+      <td>NaN</td>
       <td>台產</td>
       <td>金融保險</td>
       <td>Unqualified</td>
@@ -12554,8 +13241,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6016</td>
       <td>596</td>
-      <td></td>
+      <td>NaN</td>
       <td>康和證</td>
       <td>金融業</td>
       <td>Unqualified</td>
@@ -12575,8 +13263,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6862</td>
       <td>597</td>
-      <td></td>
+      <td>NaN</td>
       <td>三集瑞-KY</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -12596,8 +13285,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2478</td>
       <td>598</td>
-      <td></td>
+      <td>NaN</td>
       <td>大毅</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -12617,8 +13307,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3211</td>
       <td>599</td>
-      <td></td>
+      <td>NaN</td>
       <td>順達</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -12638,8 +13329,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5469</td>
       <td>600</td>
-      <td></td>
+      <td>NaN</td>
       <td>瀚宇博</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -12659,8 +13351,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5291</td>
       <td>601</td>
-      <td></td>
+      <td>NaN</td>
       <td>邑昇</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -12680,8 +13373,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2467</td>
       <td>602</td>
-      <td></td>
+      <td>NaN</td>
       <td>志聖</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -12701,8 +13395,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6138</td>
       <td>603</td>
-      <td></td>
+      <td>NaN</td>
       <td>茂達</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -12722,8 +13417,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3372</td>
       <td>604</td>
-      <td></td>
+      <td>NaN</td>
       <td>典範</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -12743,8 +13439,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3028</td>
       <td>605</td>
-      <td></td>
+      <td>NaN</td>
       <td>增你強</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -12764,8 +13461,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2303</td>
       <td>606</td>
-      <td></td>
+      <td>NaN</td>
       <td>聯電</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -12785,8 +13483,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2441</td>
       <td>607</td>
-      <td></td>
+      <td>NaN</td>
       <td>超豐</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -12806,8 +13505,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3265</td>
       <td>608</td>
-      <td></td>
+      <td>NaN</td>
       <td>台星科</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -12827,8 +13527,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4722</td>
       <td>609</td>
-      <td></td>
+      <td>NaN</td>
       <td>國精化</td>
       <td>化學生技醫療</td>
       <td>Unqualified</td>
@@ -12848,8 +13549,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3044</td>
       <td>610</td>
-      <td></td>
+      <td>NaN</td>
       <td>健鼎</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -12869,8 +13571,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6126</td>
       <td>611</td>
-      <td></td>
+      <td>NaN</td>
       <td>信音</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -12890,8 +13593,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6727</td>
       <td>612</td>
-      <td></td>
+      <td>NaN</td>
       <td>亞泰金屬</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -12911,8 +13615,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8390</td>
       <td>613</td>
-      <td></td>
+      <td>NaN</td>
       <td>金益鼎</td>
       <td>綠能環保類</td>
       <td>Unqualified</td>
@@ -12932,8 +13637,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3709</td>
       <td>614</td>
-      <td></td>
+      <td>NaN</td>
       <td>鑫聯大投控</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -12953,8 +13659,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3221</td>
       <td>615</td>
-      <td></td>
+      <td>NaN</td>
       <td>台嘉碩</td>
       <td>通信網路業</td>
       <td>Unqualified</td>
@@ -12974,8 +13681,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8103</td>
       <td>616</td>
-      <td></td>
+      <td>NaN</td>
       <td>瀚荃</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -12995,8 +13703,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4958</td>
       <td>617</td>
-      <td></td>
+      <td>NaN</td>
       <td>臻鼎-KY</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -13016,8 +13725,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5347</td>
       <td>618</td>
-      <td></td>
+      <td>NaN</td>
       <td>世界</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -13037,8 +13747,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6257</td>
       <td>619</td>
-      <td></td>
+      <td>NaN</td>
       <td>矽格</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -13058,8 +13769,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8112</td>
       <td>620</td>
-      <td></td>
+      <td>NaN</td>
       <td>至上</td>
       <td>電子通路業</td>
       <td>Unqualified</td>
@@ -13079,8 +13791,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2369</td>
       <td>621</td>
-      <td></td>
+      <td>NaN</td>
       <td>菱生</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -13100,8 +13813,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8039</td>
       <td>622</td>
-      <td></td>
+      <td>NaN</td>
       <td>台虹</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -13121,8 +13835,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3481</td>
       <td>623</td>
-      <td></td>
+      <td>NaN</td>
       <td>群創</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -13142,8 +13857,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>7709</td>
       <td>624</td>
-      <td></td>
+      <td>NaN</td>
       <td>榮田</td>
       <td>電機機械</td>
       <td>Unqualified</td>
@@ -13163,8 +13879,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4577</td>
       <td>625</td>
-      <td></td>
+      <td>NaN</td>
       <td>達航科技</td>
       <td>其他電子類</td>
       <td>Unqualified</td>
@@ -13184,8 +13901,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3711</td>
       <td>626</td>
-      <td></td>
+      <td>NaN</td>
       <td>日月光投控</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -13205,8 +13923,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>4973</td>
       <td>627</td>
-      <td></td>
+      <td>NaN</td>
       <td>廣穎</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -13226,8 +13945,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6599</td>
       <td>628</td>
-      <td></td>
+      <td>NaN</td>
       <td>普達系統</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -13247,8 +13967,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8271</td>
       <td>629</td>
-      <td></td>
+      <td>NaN</td>
       <td>宇瞻</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -13268,8 +13989,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6239</td>
       <td>630</td>
-      <td></td>
+      <td>NaN</td>
       <td>力成</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -13289,8 +14011,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6274</td>
       <td>631</td>
-      <td></td>
+      <td>NaN</td>
       <td>台燿</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -13310,8 +14033,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8150</td>
       <td>632</td>
-      <td></td>
+      <td>NaN</td>
       <td>南茂</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -13331,8 +14055,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8088</td>
       <td>633</td>
-      <td></td>
+      <td>NaN</td>
       <td>品安</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -13352,8 +14077,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6903</td>
       <td>634</td>
-      <td></td>
+      <td>NaN</td>
       <td>巨漢</td>
       <td>其他電子類</td>
       <td>Unqualified</td>
@@ -13373,8 +14099,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3264</td>
       <td>635</td>
-      <td></td>
+      <td>NaN</td>
       <td>欣銓</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -13394,8 +14121,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2073</td>
       <td>636</td>
-      <td></td>
+      <td>NaN</td>
       <td>雄順</td>
       <td>鋼鐵工業</td>
       <td>Unqualified</td>
@@ -13415,8 +14143,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>1802</td>
       <td>637</td>
-      <td></td>
+      <td>NaN</td>
       <td>台玻</td>
       <td>玻璃陶瓷</td>
       <td>Unqualified</td>
@@ -13436,8 +14165,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2449</td>
       <td>638</td>
-      <td></td>
+      <td>NaN</td>
       <td>京元電子</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -13457,8 +14187,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2451</td>
       <td>639</td>
-      <td></td>
+      <td>NaN</td>
       <td>創見</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -13478,8 +14209,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8074</td>
       <td>640</td>
-      <td></td>
+      <td>NaN</td>
       <td>鉅橡</td>
       <td>電子零組件業</td>
       <td>Unqualified</td>
@@ -13499,8 +14231,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3485</td>
       <td>641</td>
-      <td></td>
+      <td>NaN</td>
       <td>敘豐</td>
       <td>光電業</td>
       <td>Unqualified</td>
@@ -13520,8 +14253,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8131</td>
       <td>642</td>
-      <td></td>
+      <td>NaN</td>
       <td>福懋科</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -13541,8 +14275,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5289</td>
       <td>643</td>
-      <td></td>
+      <td>NaN</td>
       <td>宜鼎</td>
       <td>電腦及週邊設備業</td>
       <td>Unqualified</td>
@@ -13562,8 +14297,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>8021</td>
       <td>644</td>
-      <td></td>
+      <td>NaN</td>
       <td>尖點</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -13583,8 +14319,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>3260</td>
       <td>645</td>
-      <td></td>
+      <td>NaN</td>
       <td>威剛</td>
       <td>半導體業</td>
       <td>Unqualified</td>
@@ -13604,8 +14341,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2337</td>
       <td>646</td>
-      <td></td>
+      <td>NaN</td>
       <td>旺宏</td>
       <td>電子工業</td>
       <td>Unqualified</td>
@@ -13625,8 +14363,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>5277</td>
       <td>647</td>
-      <td></td>
+      <td>NaN</td>
       <td>葳天</td>
       <td>光電業</td>
       <td>Unqualified</td>
@@ -13646,8 +14385,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2888</td>
       <td>648</td>
-      <td></td>
+      <td>NaN</td>
       <td>新光金</td>
       <td>金融保險</td>
       <td>Unqualified</td>
@@ -13667,8 +14407,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>2809</td>
       <td>649</td>
-      <td></td>
+      <td>NaN</td>
       <td>京城銀</td>
       <td>金融保險</td>
       <td>Unqualified</td>
@@ -13688,8 +14429,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>7841</td>
       <td>650</td>
-      <td></td>
+      <td>NaN</td>
       <td>經貿聯網</td>
       <td>資訊服務業</td>
       <td>Unqualified</td>
@@ -13709,8 +14451,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>7848</td>
       <td>651</td>
-      <td></td>
+      <td>NaN</td>
       <td>騏億鑫</td>
       <td>其他電子業</td>
       <td>Unqualified</td>
@@ -13730,8 +14473,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6965</td>
       <td>652</td>
-      <td></td>
+      <td>NaN</td>
       <td>中傑-KY</td>
       <td>運動休閒</td>
       <td>Unqualified</td>
@@ -13751,8 +14495,9 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>6887</td>
       <td>653</td>
-      <td></td>
+      <td>NaN</td>
       <td>寶綠特-KY</td>
       <td>綠能環保</td>
       <td>Unqualified</td>
@@ -13773,19 +14518,30 @@
     </tr>
   </tbody>
 </table>
+                </div>
             </div>
         </div>
+        
+        
+<footer class="footer">
+    <div class="container">
+        <p class="mb-0">© 2026 FinMind Antigravity. Generated by Automated Analysis System.</p>
+    </div>
+</footer>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Scripts -->
+
+        <!-- DataTables Script override for Bootstrap 5 style if needed (or standard) -->
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
         
         <script>
             $(document).ready(function() {
-                var table = $('.table').DataTable({
+                $('.table').DataTable({
                     "pageLength": 50,
-                    "order": [[ 0, "asc" ]], // Default sort by 1st column (StrategyRank)
+                    "order": [[ 0, "asc" ]], 
                     "language": {
                         "search": "🔍 搜尋:",
                         "lengthMenu": "每頁顯示 _MENU_ 筆",
